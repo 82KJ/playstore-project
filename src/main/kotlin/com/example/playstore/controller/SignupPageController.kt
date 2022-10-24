@@ -1,7 +1,8 @@
 package com.example.playstore.controller
 
-import com.example.playstore.mapper.UserMapper
-import com.example.playstore.model.User
+
+import com.example.playstore.model.Account
+import com.example.playstore.service.AccountService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam
 class SignupPageController {
 
     @Autowired
-    lateinit var userMapper:UserMapper
+    lateinit var accountService: AccountService
 
     @GetMapping("")
     fun showSignUpPage(): String {
@@ -24,12 +25,12 @@ class SignupPageController {
 
     @PostMapping("/success")
     fun saveUserInfo(@RequestParam("id") id:String, @RequestParam("password") password:String, model:Model): String {
-        var user = User(id=id, password=password)
+        var account = Account(id=id, password=password, is_admin = 0)
+        accountService.saveAccount(account)
 
         model.addAttribute("id", id)
         model.addAttribute("password", password)
 
-        userMapper.insert(user)
         return "signupSuccess.html"
     }
 
