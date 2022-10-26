@@ -1,5 +1,6 @@
 package com.example.playstore.controller
 
+import com.example.playstore.model.Account
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,7 +17,8 @@ class UserPageController {
     @GetMapping("")
     fun showUserPage(request:HttpServletRequest, model:Model): String {
 
-        var id = request.session.getAttribute("ss_id")
+        var account:Account = request.session.getAttribute("ss_account") as Account
+        var id = account.id
         model.addAttribute("id",id)
 
         return "userMain.html"

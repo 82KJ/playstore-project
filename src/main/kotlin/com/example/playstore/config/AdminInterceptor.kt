@@ -1,5 +1,6 @@
 package com.example.playstore.config
 
+import com.example.playstore.model.Account
 import org.springframework.stereotype.Component
 import org.springframework.web.servlet.HandlerInterceptor
 import javax.servlet.http.HttpServletRequest
@@ -14,7 +15,8 @@ class AdminInterceptor: HandlerInterceptor {
 
         var session: HttpSession? = request.session
 
-        var isAdmin:Any? = session?.getAttribute("ss_is_admin")
+        var account:Account? = session?.getAttribute("ss_account") as Account
+        var isAdmin = account?.is_admin
 
         if (isAdmin == null || isAdmin == 0) {
             response.sendRedirect("/accessFail")

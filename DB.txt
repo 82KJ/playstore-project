@@ -1,0 +1,11 @@
+create database playstore default character set utf8mb4 default collate utf8mb4_general_ci;
+create user 'test'@'%' identified by '알아서바꾸기(password 위치)'
+grant all on playstore.* to 'test'@'%';
+
+use playstore;
+create table account (
+	id VARCHAR(50) PRIMARY KEY,
+	password VARCHAR(50),
+	is_admin INTEGER,
+	INDEX(id)
+)

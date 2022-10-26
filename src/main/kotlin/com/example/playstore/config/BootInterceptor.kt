@@ -14,7 +14,7 @@ class BootInterceptor: HandlerInterceptor {
 
         var session: HttpSession? = request.session
 
-        if (session?.getAttribute("ss_id") == null) {
+        if (session?.getAttribute("ss_account") == null) {
             response.sendRedirect("/")
             return false
         }
