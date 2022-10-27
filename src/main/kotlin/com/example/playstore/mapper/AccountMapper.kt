@@ -12,7 +12,7 @@ interface AccountMapper {
     @Insert("INSERT INTO account(id, password, is_admin) VALUES(#{account.id}, #{account.password}, #{account.is_admin})")
     fun insert(@Param("account") account: Account)
 
-    @Select("SELECT * FROM account WHERE id=#{id} AND password=#{password}")
-    fun findAccount(@Param("id") id:String, @Param("password") password:String):Account?
+    @Select("SELECT * FROM account WHERE id=#{id}")
+    fun findAccount(@Param("id") id:String):Account?
 
 }

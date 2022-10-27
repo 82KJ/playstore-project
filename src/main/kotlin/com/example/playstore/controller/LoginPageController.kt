@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
+import org.springframework.web.servlet.support.RequestContextUtils
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 
@@ -21,15 +22,23 @@ class LoginPageController {
     lateinit var accountService: AccountService
 
     @GetMapping("")
-    fun showLoginPage(): String {
+    fun showLoginPage(model:Model): String {
+        var msg = model.asMap()["msg"] as String?
+        if (msg == null) msg = "Welcome"
+
+        model.addAttribute("msg", msg)
         return "login.html"
     }
 
     @PostMapping("")
-    fun checkLogin(@RequestParam("id") id:String, @RequestParam("password") password:String, request:HttpServletRequest): String {
-        var account = accountService.findAccount(id, password)
+    fun checkLogin(@RequestParam("id") id:String, @RequestParam("password") password:String, request:HttpServletRequest, redirectAttributes: RedirectAttributes): String {
+        var account = accountService.findAccount(id)
 
         return if (account == null){
+            redirectAttributes.addFlashAttribute("msg", "ID가 존재하지 않습니다")
+            "redirect:/"
+        } else if (account.password != password){
+            redirectAttributes.addFlashAttribute("msg", "Password가 일치하지 않습니다")
             "redirect:/"
         } else if (account.is_admin == 1){
             var session:HttpSession = request.session

@@ -15,7 +15,7 @@ class AccountService {
         accountMapper.insert(account)
     }
 
-    fun findAccount(id:String, password:String):Account?{
-        return accountMapper.findAccount(id, password)
+    fun findAccount(id:String):Account?{
+        return accountMapper.findAccount(id)
     }
 }
