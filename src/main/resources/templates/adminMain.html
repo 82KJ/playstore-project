@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
 <body>
 <h1> 여기는 관리자 메인 페이지 입니다</h1>
+<div id="gameList">
+  <div th:each="game,i : ${games}" th:style="${'height:20%'}">
+    <span th:text="${i.count}"></span>
+    <img th:src="@{${game.img_path}}" th:style="${'width: 20%; height:100%;'}"/>
+    <br>
+    가격 :
+    <span th:text="${game.price}"></span>
+    <br>
+    이름 :
+    <span th:text="${game.name}"></span>
+    <br>
+    설명 :
+    <span th:text="${game.description}"></span>
+
+  </div>
+</div>
+
+
 </body>
 </html>

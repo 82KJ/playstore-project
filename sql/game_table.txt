@@ -1,0 +1,11 @@
+CREATE TABLE `game` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45),
+  `description` varchar(1000),
+  `price` int,
+  `img_name` varchar(500),
+  `img_path` varchar(500),
+  PRIMARY KEY (`id`)
+) 
+
+INSERT INTO game values(0, "Battle Ground", "Test Description..", 15000, "battle_ground", "/imgs/test1.png")
