@@ -6,6 +6,9 @@
 </head>
 <body>
 <h1> 여기는 관리자 메인 페이지 입니다</h1>
+
+<a th:href="@{/admin/add}"></a>
+
 <div id="gameList">
   <div th:each="game,i : ${games}" th:style="${'height:20%'}">
     <span th:text="${i.count}"></span>
@@ -19,6 +22,9 @@
     <br>
     설명 :
     <span th:text="${game.description}"></span>
+    <br>
+    나이 제한 :
+    <span th:text="${game.limit_age}"></span>
 
   </div>
 </div>

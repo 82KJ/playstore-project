@@ -6,5 +6,6 @@ data class Game(
     var description:String,
     var price:Int,
     var img_name:String,
-    var img_path:String
+    var img_path:String,
+    var limit_age:Int
 )
