@@ -7,7 +7,7 @@
 <body>
 <h1> 여기는 관리자 메인 페이지 입니다</h1>
 
-<a th:href="@{/admin/add}"></a>
+<a th:href="@{/admin/add}">게임 추가하기</a>
 
 <div id="gameList">
   <div th:each="game,i : ${games}" th:style="${'height:20%'}">
