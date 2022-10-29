@@ -17,7 +17,7 @@ class WebMvcConfig: WebMvcConfigurer {
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(bootInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/", "/signup")
+                .excludePathPatterns("/", "/signup","/css/**", "/img/**", "/js/**")
 
         registry.addInterceptor(adminInterceptor)
                 .addPathPatterns("/admin/**")
