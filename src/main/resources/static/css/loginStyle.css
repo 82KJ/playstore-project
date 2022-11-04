@@ -11,6 +11,19 @@
     --logo-size: calc(15rem + 5vw);
 }
 
+@font-face{
+    font-family: "Typo_SsangmunDongB";
+    src:url("static/fonts/Typo_SsangmunDongB.ttf")format("truetype");
+}
+
+input[type="text"], input[type="password"] {
+    height: auto;
+    line-height: normal;
+    opacity: 50%;
+    font-family: Typo_SsangmunDongB;
+    padding-left: .8em;
+}
+
 body{
     /* Layout Properties */
     top: 0px;
@@ -20,6 +33,7 @@ body{
     /* UI Properties */
     background: var(--background-color);
     opacity: 1;
+    font-family:Typo_SsangmunDongB;
 }
 /* ===============login-box ===============*/
 .login-box{
@@ -70,6 +84,7 @@ body{
 .login-box_contents form > .inputBoxs > .login_result{
     padding-bottom: 0px;
     padding-top: calc(var(--padding-bottom) / 2);
+    color: #FF4141;
 }
 
 .login-box_contents form > .inputBoxs > div> input, .login-box_contents form > input{

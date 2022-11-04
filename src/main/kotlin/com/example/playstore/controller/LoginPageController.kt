@@ -24,7 +24,7 @@ class LoginPageController {
     @GetMapping("")
     fun showLoginPage(model:Model): String {
         var msg = model.asMap()["msg"] as String?
-        if (msg == null) msg = "Welcome"
+        if (msg == null) msg = ""
 
         model.addAttribute("msg", msg)
         return "login.html"
