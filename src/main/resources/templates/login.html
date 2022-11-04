@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/css/loginStyle.css}" rel="stylesheet" href="/css/loginStyle.css">
 </head>
 <body>
-    <div class="login-box">
-      <h1>Play Store</h1>
-      <form action="/" method="post">
-        <div class="id-box">
-          <input name="id" type="text" placeholder="아이디">
-        </div>
-        <div class="password-box">
-          <input name="password" type="text" placeholder="비밀번호">
-        </div>
-        <input type="submit">
-      </form>
-        <div th:text="${msg}"></div>
-        <a href="/signup">회원가입</a>
+<div class="login-box">
+    <div class="login-box_logo">
+        <img th:src="@{/images/logo.png}" src="/images/logo.png" alt="logo">
     </div>
+    <div class="login-box_contents">
+        <h2>Sign in</h2>
+        <form action="/" method="post">
+            <div class="inputBoxs">
+                <div class="id-box">
+                    <input name="id" type="text" placeholder="id">
+                </div>
+                <div class="password-box">
+                    <input name="password" type="text" placeholder="password">
+                </div>
+                <a href="/signup">Create an account</a>
+                <div class = "login_result" th:text="${msg}"></div>
+            </div>
+            <input type="submit" placeholder="Sign in">
+        </form>
+    </div>
+</div>
 </body>
 </html>
