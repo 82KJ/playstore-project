@@ -10,7 +10,7 @@
 <a th:href="@{/admin/add}">게임 추가하기</a>
 
 <div id="gameList">
-  <div th:each="game,i : ${games}" th:style="${'height:20%'}">
+  <div th:each="game,i : ${games}" th:style="${'height:20%; cursor:pointer;'}" th:onclick="|location.href='@{/admin/games/{gameId}(gameId=${game.id})}'|">
     <span th:text="${i.count}"></span>
     <img th:src="@{${game.img_path}}" th:style="${'width: 20%; height:100%;'}"/>
     <br>
