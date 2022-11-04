@@ -13,7 +13,7 @@
 
 @font-face{
     font-family: "Typo_SsangmunDongB";
-    src:url("static/fonts/Typo_SsangmunDongB.ttf")format("truetype");
+    src:url("Typo_SsangmunDongB.ttf")format("truetype");
 }
 
 input[type="text"], input[type="password"] {

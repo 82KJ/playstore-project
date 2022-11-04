@@ -2,11 +2,68 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/userMainStyle.css}" rel="stylesheet" href="/css/userMainStyle.css">
     <title>Title</title>
 </head>
 <body>
-    <h1> 여기는 사용자 메인 페이지 입니다</h1>
-    <div th:text="${id}"></div>
-    전용 페이지
+<div class="menuBox">
+    <div class="menuBox_top">
+        <img th:src="@{/img/logo.png}" src="/img/logo.png">
+        <input type="text" placeholder="Search game">
+    </div>
+    <div class="menuBox_bottom">
+        <a href="/mypage"><img th:src="@{/img/mypage_icon.png}" src="/img/mypage_icon.png"></a>
+        <p th:text="'게임머니: ' + ${id} + '원'">게임 머니: 999,999원</p>
+    </div>
+</div>
+<div class="gameBox">
+    <div class="gameBox_top">
+        <a href="#"><img th:src="@{/img/backet_icon.png}" src="/img/backet_icon.png"></a>
+    </div>
+    <ul>
+        <li><a href="#"><div>
+            <img th:src="@{/img/game_img.png}" src="/images/game_img.png" alt="!game_image">
+            <div class="info">
+                <p>NONE</p>
+                <p class="price">22,311원</p>
+            </div>
+        </div></a></li>
+        <li><a href="#"><div>
+            <img th:src="@{/img/game_img.png}" src="/images/game_img.png" alt="!game_image">
+            <div class="info">
+                <p>NONE</p>
+                <p class="price">22,311원</p>
+            </div>
+        </div></a></li>
+        <li><a href="#"><div>
+            <img th:src="@{/img/game_img.png}" src="/images/game_img.png" alt="!game_image">
+            <div class="info">
+                <p>NONE</p>
+                <p class="price">22,311원</p>
+            </div>
+        </div></a></li>
+        <li><a href="#"><div>
+            <img th:src="@{/img/game_img.png}" src="/images/game_img.png" alt="!game_image">
+            <div class="info">
+                <p>NONE</p>
+                <p class="price">22,311원</p>
+            </div>
+        </div></a></li>
+        <li><a href="#"><div>
+            <img th:src="@{/img/game_img.png}" src="/images/game_img.png" alt="!game_image">
+            <div class="info">
+                <p>NONE</p>
+                <p class="price">22,311원</p>
+            </div>
+        </div></a></li>
+        <li><a href="#"><div>
+            <img th:src="@{/img/game_img.png}" src="/images/game_img.png" alt="!game_image">
+            <div class="info">
+                <p>NONE</p>
+                <p class="price">22,311원</p>
+            </div>
+        </div></a></li>
+    </ul>
+</div>
 </body>
 </html>
