@@ -1,34 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link th:href="@{/css/adminMainStyle.css}" rel="stylesheet" href="css/adminMainStyle.css">
+  <title>playstore - admin</title>
 </head>
 <body>
-<h1> 여기는 관리자 메인 페이지 입니다</h1>
-
-<a th:href="@{/admin/add}">게임 추가하기</a>
-
-<div id="gameList">
-  <div th:each="game,i : ${games}" th:style="${'height:20%; cursor:pointer;'}" th:onclick="|location.href='@{/admin/games/{gameId}(gameId=${game.id})}'|">
-    <span th:text="${i.count}"></span>
-    <img th:src="@{${game.img_path}}" th:style="${'width: 20%; height:100%;'}"/>
-    <br>
-    가격 :
-    <span th:text="${game.price}"></span>
-    <br>
-    이름 :
-    <span th:text="${game.name}"></span>
-    <br>
-    설명 :
-    <span th:text="${game.description}"></span>
-    <br>
-    나이 제한 :
-    <span th:text="${game.limit_age}"></span>
-
+<div class="menuBox">
+  <form class="menuBox_top" action="/" method="post">
+    <img th:src="@{/img/logo.png}" src="img/logo.png">
+    <div>
+      <input class="searchBar" name="searchBar" type="text" placeholder="Search game">
+      <input class="submit" type="submit">
+    </div>
+  </form>
+  <div class="menuBox_bottom">
+    <a href="/mypage"><img src="img/mypage_icon.png"></a>
   </div>
 </div>
-
-
+<div class="gameBox" >
+  <div class="gameBox_top">
+    <a href="/mypage"><img th:src="@{/img/add_icon.png}" src="img/add_icon.png"></a>
+    <a href="/mypage"><img th:src="@{/img/logout_dark_icon.png}" src="img/logout_dark_icon.png"></a>
+  </div>
+  <ul>
+    <li th:each="game,i : ${games}" ><a th:href='@{/admin/games/{gameId}(gameId=${game.id})}'><div>
+      <img th:src="@{${game.img_path}}">
+      <div class="info">
+        <div>
+          <p th:text="${game.name}">NONE</p>
+          <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
+        </div>
+        <p class="price"th:text="${game.price}">NONE</p>
+      </div>
+    </div></a></li>
+  </ul>
+</div>
 </body>
 </html>

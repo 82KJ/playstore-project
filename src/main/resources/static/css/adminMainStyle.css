@@ -7,7 +7,7 @@
     --gameBox-width: 70vw;
     --gameBox-height: 100vh;
 
-    --blue-color: #3B8BF8;
+    --red-color: #F95E62;
 }
 
 @font-face{
@@ -33,7 +33,7 @@ body{
     justify-content: space-between;
     width: var(--menuBox-width);
     height: var(--menuBox-height);
-    background: var(--blue-color) 0% 0% no-repeat padding-box;
+    background: var(--red-color) 0% 0% no-repeat padding-box;
 }
 
 .menuBox > .menuBox_top {
@@ -47,9 +47,6 @@ body{
     width: 18.64vw;
 }
 
-.gameBox .gameBox_top > a > img:hover{
-    opacity: 0.7;
-}
 
 .menuBox > .menuBox_top > div >input{
     height: 6.75vh;
@@ -75,7 +72,8 @@ body{
 }
 
 .menuBox > .menuBox_bottom {
-    display: flex;
+    align-self: flex-start;
+    padding-left: 3.425vh;
     padding-bottom: 3.425vh;
 }
 
@@ -88,14 +86,6 @@ body{
     width: 75%
 }
 
-.menuBox > .menuBox_bottom p{
-    color:#FFFFFF;
-    font-weight: bold;
-    align-self: flex-end;
-    padding-bottom: 3vh;
-    font: normal normal bold 1.3rem Malgun Gothic;
-    font-size: 1.5vw;
-}
 
 
 /* ====================== game box ======================== */

@@ -9,7 +9,10 @@
 <div class="menuBox">
     <form class="menuBox_top" action="/" method="post">
         <img th:src="@{/img/logo.png}" src="/img/logo.png">
-        <input type="text" placeholder="Search game">
+        <div>
+            <input class="searchBar" name="searchBar" type="text" placeholder="Search game">
+            <input class="submit" type="submit">
+        </div>
     </form>
     <div class="menuBox_bottom">
         <a href="/mypage"><img th:src="@{/img/mypage_icon.png}" src="/img/mypage_icon.png"></a>
