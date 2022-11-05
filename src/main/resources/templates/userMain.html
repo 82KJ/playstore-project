@@ -7,10 +7,10 @@
 </head>
 <body>
 <div class="menuBox">
-    <div class="menuBox_top">
+    <form class="menuBox_top" action="/" method="post">
         <img th:src="@{/img/logo.png}" src="/img/logo.png">
         <input type="text" placeholder="Search game">
-    </div>
+    </form>
     <div class="menuBox_bottom">
         <a href="/mypage"><img th:src="@{/img/mypage_icon.png}" src="/img/mypage_icon.png"></a>
         <p th:text="'게임머니: ' + ${id} + '원'">게임 머니: 999,999원</p>
@@ -19,6 +19,7 @@
 <div class="gameBox">
     <div class="gameBox_top">
         <a href="#"><img th:src="@{/img/backet_icon.png}" src="/img/backet_icon.png"></a>
+        <a href="#"><img th:src="@{/img/logout_icon.png}" src="/img/logout_icon.png.png"></a>
     </div>
     <ul>
         <li><a href="#"><div>

@@ -9,15 +9,11 @@
 
     --blue-color: #3B8BF8;
 }
-/*@font-face{*/
-/*    font-family: "Typo_SsangmunDongB";*/
-/*    src:url("Typo_SsangmunDongB.ttf")format("truetype");*/
-/*}*/
+
 
 body{
     display: flex;
     flex-direction: row;
-    /*font-family:Typo_SsangmunDongB;*/
 }
 
 /* ====================== menu box ======================== */
@@ -41,6 +37,9 @@ body{
     width: 18.64vw;
 }
 
+.gameBox .gameBox_top > a > img:hover{
+    opacity: 0.7;
+}
 
 .menuBox > .menuBox_top > input{
     width: 19vw;
@@ -67,6 +66,7 @@ body{
 
 .menuBox > .menuBox_bottom img:hover{
     opacity: 0.7;
+    width: 75%
 }
 
 .menuBox > .menuBox_bottom p{
@@ -91,12 +91,12 @@ body{
 .gameBox .gameBox_top{
     display: flex;
     justify-content: flex-end;
-    padding-right: 5.677vw;
-    padding-top: 2.22vh;
+    padding-right: 4vw;
+    padding-top: 0.468vh;
 }
 
 .gameBox .gameBox_top > a > img{
-    width: 9.895vw;
+    width: 3.75vw;
 }
 
 .gameBox .gameBox_top > a > img:hover{
@@ -111,6 +111,7 @@ body{
     flex-wrap: wrap;
     width: 62vw;
     padding-left: 3.229vw;
+    margin-top: 6vh;
 }
 
 /* 스크롤바 설정*/
@@ -134,7 +135,13 @@ body{
     width: 16vw;
     height: 59.53vh;
     background-color: #ffffff;
-    box-shadow: 10px 10px 10px #00000029;
+    box-shadow: 5px 5px 5px 5px #00000029;
+}
+
+.gameBox > ul >li > a> div:hover{
+    width: 16.5vw;
+    height: 60vh;
+    opacity: 0.7;
 }
 
 .gameBox > ul >li > a> div > img{
