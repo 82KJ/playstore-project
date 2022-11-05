@@ -7,10 +7,13 @@
 </head>
 <body>
 <div class="menuBox">
-    <div class="menuBox_top">
+    <form class="menuBox_top" action="/" method="post">
         <img th:src="@{/img/logo.png}" src="/img/logo.png">
-        <input type="text" placeholder="Search game">
-    </div>
+        <div>
+            <input class="searchBar" name="searchBar" type="text" placeholder="Search game">
+            <input class="submit" type="submit">
+        </div>
+    </form>
     <div class="menuBox_bottom">
         <a href="/mypage"><img th:src="@{/img/mypage_icon.png}" src="/img/mypage_icon.png"></a>
         <p th:text="'게임머니: ' + ${id} + '원'">게임 머니: 999,999원</p>
@@ -19,16 +22,21 @@
 <div class="gameBox">
     <div class="gameBox_top">
         <a href="#"><img th:src="@{/img/backet_icon.png}" src="/img/backet_icon.png"></a>
+        <a href="#"><img th:src="@{/img/logout_icon.png}" src="/img/logout_icon.png.png"></a>
     </div>
     <ul>
-        <li th:each="game,i : ${games}"><a href='@{/user/games/{gameId}(gameId=${game.id})}'><div>
-            <img th:src="@{${game.img_path}}" src="/images/game_img.png" alt="!game_image">
+
+        <li th:each="game,i : ${games}" ><a th:href='@{/admin/games/{gameId}(gameId=${game.id})}'><div>
+            <img th:src="@{${game.img_path}}">
             <div class="info">
-                <p>NONE</p>
-                <p class="price" th:text="${game.price}">원</p>
+                <div>
+                    <p th:text="${game.name}">NONE</p>
+                    <br>
+                    <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
+                </div>
+                <p class="price"th:text="${game.price}">NONE</p>
             </div>
         </div></a></li>
-
     </ul>
 </div>
 </body>

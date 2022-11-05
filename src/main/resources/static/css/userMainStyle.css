@@ -63,10 +63,18 @@ body{
     width: 12.916vw;
 }
 
+.menuBox > .menuBox_top > div > .searchBar:hover{
+    opacity: 0.7;
+}
+
 .menuBox > .menuBox_top > div > .submit{
     width: 5.78vw;
     font-size: 1.1vw;
     color: dimgray;
+}
+
+.menuBox > .menuBox_top > div > .submit:hover{
+    opacity: 0.7;
 }
 
 .menuBox > .menuBox_bottom{
