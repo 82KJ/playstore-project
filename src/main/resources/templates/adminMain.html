@@ -22,8 +22,8 @@
 </div>
 <div class="gameBox" >
   <div class="gameBox_top">
-    <a href="/mypage"><img th:src="@{/img/add_icon.png}" src="img/add_icon.png"></a>
-    <a href="/mypage"><img th:src="@{/img/logout_dark_icon.png}" src="img/logout_dark_icon.png"></a>
+    <a th:href="@{/admin/add}"><img th:src="@{/img/add_icon.png}" src="img/add_icon.png"></a>
+    <a href="#"><img th:src="@{/img/logout_dark_icon.png}" src="img/logout_dark_icon.png"></a>
   </div>
   <ul>
     <li th:each="game,i : ${games}" ><a th:href='@{/admin/games/{gameId}(gameId=${game.id})}'><div>
@@ -31,6 +31,7 @@
       <div class="info">
         <div>
           <p th:text="${game.name}">NONE</p>
+          <br>
           <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
         </div>
         <p class="price"th:text="${game.price}">NONE</p>
