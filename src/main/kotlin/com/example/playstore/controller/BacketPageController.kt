@@ -14,32 +14,11 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 
 @Controller
-@RequestMapping("/user")
-class UserPageController {
-
-    @Autowired
-    lateinit var gameService: GameService
+@RequestMapping("/backet")
+class BacketPageController {
 
     @GetMapping("")
-    fun showUserPage(request:HttpServletRequest, model:Model): String {
-
-       var games:List<Game> = gameService.findAllGame()
-
-       model.addAttribute("games", games)
-
-        return "userMain.html"
-    }
-
-    @GetMapping("/mypage")
-    fun showMyPage():String{
-        return "mypage.html"
-    }
-
-    @GetMapping("/backet")
-    fun showbacket():String{
+    fun showBacketPage(): String{
         return "backet.html"
     }
-
-
-
 }

@@ -18,8 +18,13 @@ class GameService {
         return gameMapper.findAllGame()
     }
 
+    fun findGame(searchName:String):List<Game>{
+        return gameMapper.findGame(searchName)
+    }
+
+
     fun addGame(game:Game, img:MultipartFile){
-        var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\imgs"
+        var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\img"
 
         var uuid:String = UUID.randomUUID().toString()
 
@@ -29,7 +34,7 @@ class GameService {
         img.transferTo(file)
 
         game.img_name = imgName
-        game.img_path = "/imgs/" + imgName
+        game.img_path = "/img/" + imgName
 
         gameMapper.saveGame(game)
     }
