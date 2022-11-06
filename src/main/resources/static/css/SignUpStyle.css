@@ -1,0 +1,128 @@
+@import 'reset.css';
+
+:root{
+    --background-color: #3B8BF8 0% 0% no-repeat padding-box;
+    --inputBox-width-size :34vw;
+    --inputBox-height-size: 9vh;
+
+    --padding-bottom: 5%;
+
+    --logo-padding-right:  10%;
+    --logo-size: calc(15rem + 5vw);
+}
+
+@font-face{
+    font-family: "Typo_SsangmunDongB";
+    src:url("Typo_SsangmunDongB.ttf")format("truetype");
+}
+
+input[type="text"], input[type="password"], input[type="date"]{
+    height: auto;
+    line-height: normal;
+    opacity: 50%;
+    font-family: Typo_SsangmunDongB;
+    padding-left: .8em;
+}
+
+ input[type="date"]::before {
+    content: attr(data-placeholder);
+    width: 100%;
+}
+
+input[data-placeholder]::before{ opacity: 60%; }
+
+input[type="date"]:valid::before { display: none; }
+
+input[type="date"]::-webkit-clear-button,
+input[type="date"]::-webkit-inner-spin-button { display: none; }
+
+body{
+    /* Layout Properties */
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    /* UI Properties */
+    background: var(--background-color);
+    opacity: 1;
+    font-family:Typo_SsangmunDongB;
+}
+/* ===============login-box ===============*/
+.sign-up-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sign-up-box_logo{
+    padding-right: var(--logo-padding-right);
+}
+
+.sign-up-box_logo > img{
+    width: var(--logo-size);
+}
+
+.sign-up-box_contents{
+    display: flex;
+    flex-direction: column;
+    width: 55vw;
+    height: 100vh;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-box_contents h2{
+    padding-bottom: var(--padding-bottom);
+    font-size: calc(1rem + 1vw);
+    font-weight: bold;
+}
+
+.sign-up-box_contents form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: var(--padding-bottom);
+}
+
+.sign-up-box_contents form > .inputBoxs{
+    padding-bottom: calc(var(--padding-bottom) * 2);
+}
+
+.sign-up-box_contents form > .inputBoxs > div{
+    padding-bottom: var(--padding-bottom);
+}
+
+.sign-up-box_contents form > .inputBoxs > .sign_up_result{
+    padding-bottom: 0px;
+    padding-top: calc(var(--padding-bottom) / 2);
+    color: #FF4141;
+}
+
+.sign-up-box_contents form > .inputBoxs > div> input, .sign-up-box_contents form > input{
+    width: var(--inputBox-width-size);
+    height: var(--inputBox-height-size);
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #00000029;
+    border-radius: 22px;
+    opacity: 1;
+    border:none;
+}
+
+.sign-up-box_contents form> a{
+    text-align: left;
+    color: #4D98FD;
+    font-size: calc(2rem);
+    font-weight: bold;
+    padding-top: calc(var(--padding-bottom) / 2);
+}
+
+.sign-up-box_contents form> input {
+     background: #3B8BF8 0% 0% no-repeat padding-box;
+     color:#FFFFFF;
+     font-size: calc(2rem);
+     font-weight: bold;
+}
+
+

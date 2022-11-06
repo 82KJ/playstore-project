@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/css/SignUpStyle.css}" rel="stylesheet" href="/css/SignUpStyle.css">
 </head>
 <body>
-    <div class="sign-up-box">
+<div class="sign-up-box">
+    <div class="sign-up-box_contents">
+        <h2>Create Accout</h2>
         <form action="/signup/success" method="post">
-            <div class="id-box">
-                <input name="id" type="text" placeholder="아이디">
+            <div class="inputBoxs">
+                <div class="id-box">
+                    <input name="id" type="text" placeholder="id" required>
+                </div>
+                <div class="birthDate-box">
+                    <input name="birthDate" type="date" data-placeholder="date of birth: yyyy-mm-dd" required aria-required="true" th:min="${minDate}" th:max="${maxDate}">
+                </div>
+                <div class="password-box">
+                    <input name="password" type="password" placeholder="Password" required>
+                </div>
+                <div class="pwcheck-box">
+                    <input name="pwcheck" type="password" placeholder="Repeat password" required>
+                </div>
+
+                <div class="sign_up_result" th:text="${msg}"></div>
             </div>
-            <div class="password-box">
-                <input name="password" type="text" placeholder="비밀번호">
-            </div>
-            <input type="submit">
+            <input type="submit" value="Submit">
+            <a href="/login">Already have an account?</a>
         </form>
     </div>
+
+    <div class="sign-up-box_logo">
+        <img th:src="@{/img/logo.png}" src="/img/logo.png" alt="logo">
+    </div>
+</div>
 
 </body>
 </html>
