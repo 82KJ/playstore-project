@@ -22,7 +22,11 @@ class LoginPageController {
     lateinit var accountService: AccountService
 
     @GetMapping("")
-    fun showLoginPage(model:Model): String {
+    fun showLoginPage(model:Model, request:HttpServletRequest): String {
+
+        var session:HttpSession = request.session
+        session.invalidate()
+
         var msg = model.asMap()["msg"] as String?
         if (msg == null) msg = ""
 
