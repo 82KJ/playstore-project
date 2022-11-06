@@ -26,7 +26,7 @@
     <a href="/"><img th:src="@{/img/logout_dark_icon.png}" src="img/logout_dark_icon.png"></a>
   </div>
   <ul>
-    <li th:each="game,i : ${games}" ><a th:href='@{/admin/games/{gameId}(gameId=${game.id})}'><div>
+    <li th:each="game,i : ${games}" ><a th:href='@{/admin/game/{gameId}(gameId=${game.id})}'><div>
       <img th:src="@{${game.img_path}}">
       <div class="info">
         <div>

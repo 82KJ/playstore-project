@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>여기는 게임 수정 및 삭제 페이지 입니다</h1>
+
+
+<form id="delete_form" th:action="@{/admin/game/{gameId}/delete(gameId=${game.id})}" method="post">
+    <a onclick="if (confirm('정말로 삭제하시겠습니까?')) document.getElementById('delete_form').submit();" style="cursor: pointer;">삭제</a>
+</form>
+
+
+<img th:src="@{${game.img_path}}">
+<div class="info">
+    <div>
+        <p th:text="${game.name}">NONE</p>
+        <br>
+        <p th:text="${game.description}">NONE</p>
+        <br>
+        <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
+    </div>
+    <p class="price"th:text="${game.price}">NONE</p>
+</div>
+
+</body>
+</html>

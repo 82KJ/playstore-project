@@ -22,6 +22,13 @@ class GameService {
         return gameMapper.findGame(searchName)
     }
 
+    fun findGame(gameId:Int): Game{
+        return gameMapper.findGameWithId(gameId)
+    }
+
+    fun deleteGame(gameId:Int): Boolean{
+        return gameMapper.deleteGame(gameId)
+    }
 
     fun addGame(game:Game, img:MultipartFile){
         var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\img"
