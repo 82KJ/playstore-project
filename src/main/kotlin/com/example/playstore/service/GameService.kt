@@ -31,7 +31,7 @@ class GameService {
     }
 
     fun addGame(game:Game, img:MultipartFile){
-        var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\img"
+        var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\imgs"
 
         var uuid:String = UUID.randomUUID().toString()
 
@@ -41,9 +41,30 @@ class GameService {
         img.transferTo(file)
 
         game.img_name = imgName
-        game.img_path = "/img/" + imgName
+        game.img_path = "/imgs/" + imgName
 
         gameMapper.saveGame(game)
+    }
+
+    fun modifyGame(game:Game, gameId: Int): Boolean {
+        return gameMapper.modifyGame(game, gameId)
+    }
+
+    fun modifyGame(game: Game, img: MultipartFile, gameId:Int): Boolean {
+
+        var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\imgs"
+
+        var uuid:String = UUID.randomUUID().toString()
+
+        var imgName:String = uuid + "_" + img.originalFilename
+        var file:File = File(imgPath, imgName)
+
+        img.transferTo(file)
+
+        game.img_name = imgName
+        game.img_path = "/imgs/" + imgName
+
+        return gameMapper.modifyGameWithImg(game, gameId)
     }
 
 }

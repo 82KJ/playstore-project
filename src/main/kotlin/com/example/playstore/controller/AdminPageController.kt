@@ -57,4 +57,16 @@ class AdminPageController {
         return "redirect:/admin"
     }
 
+    @PostMapping("/game/{gameId}/modify")
+    fun modifyGame(@PathVariable gameId: Int, game:Game, file:MultipartFile):String{
+        if(file.isEmpty){
+            gameService.modifyGame(game, gameId)
+        }
+        else{
+            gameService.modifyGame(game,file,gameId)
+        }
+
+        return "redirect:/admin"
+    }
+
 }

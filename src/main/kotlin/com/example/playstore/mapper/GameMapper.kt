@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert
 import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Param
 import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.Update
 
 
 @Mapper
@@ -25,5 +26,11 @@ interface GameMapper {
 
     @Delete("DELETE FROM game WHERE id=#{gameId}")
     fun deleteGame(@Param("gameId") gameId:Int): Boolean
+
+    @Update("UPDATE game SET name=#{game.name}, description=#{game.description}, price=#{game.price}, limit_age=#{game.limit_age} WHERE id=#{gameId}")
+    fun modifyGame(@Param("game") game:Game, @Param("gameId") gameId:Int) : Boolean
+
+    @Update("UPDATE game SET name=#{game.name}, description=#{game.description}, price=#{game.price}, img_path=#{game.img_path}, img_name=#{game.img_name}, limit_age=#{game.limit_age} WHERE id=#{gameId}")
+    fun modifyGameWithImg(@Param("game") game:Game, @Param("gameId") gameId:Int) : Boolean
 
 }
