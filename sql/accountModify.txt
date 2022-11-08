@@ -1,5 +1,5 @@
 ALTER TABLE `playstore`.`account` 
-ADD COLUMN `birthDate` DATE NULL AFTER `is_admin`
+ADD COLUMN `birthDate` DATE NULL AFTER `is_admin`,
 ADD COLUMN `gameMoney` INT NULL AFTER `is_admin`,
 ADD COLUMN `gameList` JSON NULL AFTER `gameMoney`,
 ADD COLUMN `basketList` JSON NULL AFTER `gameList`;

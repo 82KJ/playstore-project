@@ -26,9 +26,11 @@ class SignupPageController {
 
     @GetMapping("")
     fun showSignUpPage(model:Model, request:HttpServletRequest): String {
-        var session: HttpSession = request.session
-        session.invalidate()
+        // 세션 초기화 코드는 회원가입 페이지에서 필요없습니다~ 알아서 지워주세요!
+//        var session: HttpSession = request.session
+//        session.invalidate()
 
+        // 하단 메세지 코드는 id 중복 체크때 msg 띄우는 용도로 활용하면 될수도?
         var msg = model.asMap()["msg"] as String?
         if (msg == null) msg = ""
 
