@@ -2,29 +2,38 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/gameModify.css}" rel="stylesheet" href="/css/gameModify.css">
     <title>Title</title>
 </head>
 <body>
-<h1>여기는 게임 수정 및 삭제 페이지 입니다</h1>
-
-
-<form id="delete_form" th:action="@{/admin/game/{gameId}/delete(gameId=${game.id})}" method="post">
-    <a onclick="if (confirm('정말로 삭제하시겠습니까?')) document.getElementById('delete_form').submit();" style="cursor: pointer;">삭제</a>
-</form>
-
-<div class="info">
-    수정 폼 - 이름, 설명, 가격, 나이, 이미지(이미지 선택안할시 기존 이미지가 들어감)
-    <form th:action="@{/admin/game/{gameId}/modify(gameId=${game.id})}" method="post" enctype="multipart/form-data">
-        <input name="name" type="text" th:value="${game.name}">
-        <textarea name="description" th:text="${game.description}"></textarea>
-        <input name="price" type="text" th:value="${game.price}">
-        <input name="limit_age" type="text" th:value="${game.limit_age}">
-        <img th:src="@{${game.img_path}}">
-        <input type="file" name="file">
-        <button type="submit">작성</button>
-    </form>
-
+<div class="imgBox">
+    <div>
+        <img th:src="@{/img/logo.png}" src="/img/logo.png">
+    </div>
 </div>
-
+<div class="layout">
+    <form th:action="@{/admin/game/{gameId}/modify(gameId=${game.id})}" method="post" enctype="multipart/form-data">
+        <div class="layout_img">
+            <input type="file" name="file">
+            <img th:src="@{${game.img_path}}">
+        </div>
+        <div class="layout_bottom">
+            <div>
+                <input class="nameInput" name="name" type="text" th:value="${game.name}">
+                <input name="price" type="text" th:value="${game.price}">
+                <input name="limit_age" type="text" th:value="${game.limit_age}">
+            </div>
+        </div>
+        <textarea name="description" th:text="${game.description}"></textarea>
+        <div class="saveButton">
+            <button type="submit">저장</button>
+        </div>
+    </form>
+    <div class="buttonBox">
+        <form id="delete_form" th:action="@{/admin/game/{gameId}/delete(gameId=${game.id})}" method="post">
+            <a onclick="if (confirm('정말로 삭제하시겠습니까?')) document.getElementById('delete_form').submit();" style="cursor: pointer;"><button>삭제</button></a>
+        </form>
+    </div>
+</div>
 </body>
 </html>

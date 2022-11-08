@@ -1,0 +1,143 @@
+@import 'reset.css';
+
+body{
+    display: flex;
+    /* align-items: center; */
+    height: 100vh;
+}
+
+.imgBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F95E62;
+    height: 100vh;
+    width: 40vw;
+}
+
+/* =====================layout=================== */
+.layout{
+    width: 60vw;
+    padding-left: 5vw;
+}
+
+.layout > .buttonBox{
+    position: absolute;
+    padding-top: 3vh;
+}
+
+.layout > .buttonBox > form {
+    padding-right: 1vw;
+}
+
+
+
+.layout > form {
+    width: 44vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+}
+
+.layout > form  input{
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #00000029;
+    border-radius: 22px;
+    border:none;
+}
+
+
+/* ========================layout_img======================== */
+
+.layout > form > .layout_img{
+    height: 46vh;
+    display: flex;
+    justify-content: center;
+}
+
+.layout > form > .layout_img {
+    background-color:#dfdfdf;
+    position: relative;
+}
+.layout > form > .layout_img > input{
+    position:absolute;
+    top: 20vh;
+    left: 15vw;
+    opacity: 0.7;
+}
+
+.layout > form > .layout_img img{
+    height: 46vh;
+}
+
+/* ========================layout_bottom======================== */
+
+.layout > form > .layout_bottom{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+.layout > form > .layout_bottom > div>input{
+    width: calc(28.166vw / 2);
+    height: 6.888vh;
+}
+
+/* =======================textarea=================== */
+.layout > form> textarea{
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #00000029;
+    border-radius: 22px;
+    border: none;
+    height: 10vh;
+}
+
+.layout > form> textarea:hover{
+    box-shadow: 0px 5px 20px #00000029;
+}
+
+
+input:hover{
+    opacity: 0.7;
+}
+
+.layout > form > .saveButton {
+    margin-top: 5vh;
+}
+
+.layout > form > .saveButton > button{
+    width: 44vw;
+    height: 6.888vh;
+    background: #b5b5b5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #00000029;
+    border-radius: 22px;
+    border:none;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+
+.layout > form > .saveButton > button:hover{
+    opacity: 0.7;
+}
+.layout .buttonBox > form > a > button:hover{
+    opacity: 0.7;
+}
+
+.layout .buttonBox > form > a > button{
+    width: 44vw;
+    height: 6.888vh;
+    background: #787878 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #00000029;
+    border-radius: 22px;
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}

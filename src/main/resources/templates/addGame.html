@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/css/addGameStyle.css}" rel="stylesheet" href="/css/addGameStyle.css">
+    <title>관리자 - 게임 추가</title>
 </head>
 <body>
-
-    <div class="layout">
-        <form action="/admin/add-game" method="post" enctype="multipart/form-data">
-            <input name="name" type="text">
-            <textarea name="description"></textarea>
-            <input name="price" type="text">
-            <input name="limit_age" type="text">
-            <input type="file" name="file">
-            <button type="submit">작성</button>
-        </form>
+<div class="imgBox">
+    <div>
+        <img th:src="@{/img/logo.png}" src="/img/logo.png">
     </div>
-
+</div>
+<div class="layout">
+    <form action="/admin/add-game" method="post" enctype="multipart/form-data">
+        <div class="layout_top">
+            <input class="nameInput" name="name" type="text"placeholder="game name">
+            <div class="buttonBox">
+                <button type="submit">저장</button>
+            </div>
+        </div>
+        <div class="layout_img">
+            <input type="file" name="file">
+            <img src="img/game_img.png">
+        </div>
+        <div class="layout_bottom">
+            <div>
+                <input name="price" type="text" placeholder="game price">
+                <input name="limit_age" type="text" placeholder="limit age">
+            </div>
+            <div class="layout_bottom_fakeButon">장바구니</div>
+        </div>
+        <textarea name="description" ></textarea>
+    </form>
+</div>
 </body>
 </html>
