@@ -2,6 +2,7 @@ package com.example.playstore.controller
 
 
 import com.example.playstore.model.Account
+import com.example.playstore.model.Game
 import com.example.playstore.service.AccountService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -10,6 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.multipart.MultipartFile
+import org.springframework.web.servlet.mvc.support.RedirectAttributes
+import java.sql.Date
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpSession
 
 @Controller
 @RequestMapping("/signup")
@@ -19,13 +25,26 @@ class SignupPageController {
     lateinit var accountService: AccountService
 
     @GetMapping("")
-    fun showSignUpPage(): String {
+    fun showSignUpPage(model:Model, request:HttpServletRequest): String {
+        var session: HttpSession = request.session
+        session.invalidate()
+
+        var msg = model.asMap()["msg"] as String?
+        if (msg == null) msg = ""
+
+        model.addAttribute("msg", msg)
+
         return "signup.html"
     }
 
     @PostMapping("/success")
-    fun saveUserInfo(@RequestParam("id") id:String, @RequestParam("password") password:String, model:Model): String {
-        var account = Account(id=id, password=password, is_admin = 0)
+    fun saveUserInfo(
+        @RequestParam("id") id: String,
+        @RequestParam("birthDate") birthDate: Date,
+        @RequestParam("password") password: String,
+        model: Model
+    ): String {
+        var account = Account(id = id, password = password, is_admin = 0, birthDate = birthDate)
         accountService.saveAccount(account)
 
         model.addAttribute("id", id)
@@ -33,5 +52,4 @@ class SignupPageController {
 
         return "signupSuccess.html"
     }
-
 }

@@ -9,8 +9,7 @@ import org.apache.ibatis.annotations.Select
 @Mapper
 interface AccountMapper {
 
-    @Insert("INSERT INTO account(id, password, is_admin) |" +
-            "VALUES#{account.id}, #{account.password}, #{account.is_admin})")
+    @Insert("INSERT INTO account(id, password, is_admin, birthDate) VALUES(#{account.id}, #{account.password}, #{account.is_admin}, #{account.birthDate})")
     fun insert(@Param("account") account: Account)
 
     @Select("SELECT * FROM account WHERE id=#{id}")
