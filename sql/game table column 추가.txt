@@ -1,0 +1,6 @@
+ALTER TABLE `playstore`.`game` 
+ADD COLUMN `sub_img_name` VARCHAR(500) NULL DEFAULT NULL AFTER `limit_age`,
+ADD COLUMN `sub_img_path` VARCHAR(500) NULL DEFAULT NULL AFTER `sub_img_name`,
+ADD COLUMN `invisible` INT NULL DEFAULT NULL AFTER `sub_img_path`,
+CHANGE COLUMN `img_name` `main_img_name` VARCHAR(500) NULL DEFAULT NULL ,
+CHANGE COLUMN `img_path` `main_img_path` VARCHAR(500) NULL DEFAULT NULL ;

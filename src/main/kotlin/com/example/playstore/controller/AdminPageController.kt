@@ -23,7 +23,7 @@ class AdminPageController {
     @GetMapping("")
     fun showAdminPage(model:Model): String {
 
-        var games:List<Game> = gameService.findAllGame()
+        var games:List<Game> = gameService.findVisibleGame()
 
         model.addAttribute("games", games)
 
@@ -36,8 +36,8 @@ class AdminPageController {
     }
 
     @PostMapping("/add-game")
-    fun addGame(game:Game, file:MultipartFile):String{
-        gameService.addGame(game, file)
+    fun addGame(game:Game, main_img:MultipartFile, sub_img:MultipartFile):String{
+        gameService.addGame(game, main_img, sub_img)
 
         return "redirect:/admin"
     }
@@ -58,13 +58,9 @@ class AdminPageController {
     }
 
     @PostMapping("/game/{gameId}/modify")
-    fun modifyGame(@PathVariable gameId: Int, game:Game, file:MultipartFile):String{
-        if(file.isEmpty){
-            gameService.modifyGame(game, gameId)
-        }
-        else{
-            gameService.modifyGame(game,file,gameId)
-        }
+    fun modifyGame(@PathVariable gameId: Int, game:Game, main_img:MultipartFile, sub_img:MultipartFile):String{
+
+        gameService.modifyGame(game,main_img,sub_img,gameId)
 
         return "redirect:/admin"
     }

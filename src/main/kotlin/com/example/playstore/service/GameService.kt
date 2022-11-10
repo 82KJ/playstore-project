@@ -14,8 +14,8 @@ class GameService {
     @Autowired
     lateinit var gameMapper: GameMapper
 
-    fun findAllGame():List<Game>{
-        return gameMapper.findAllGame()
+    fun findVisibleGame():List<Game>{
+        return gameMapper.findVisibleGame()
     }
 
     fun findGame(searchName:String):List<Game>{
@@ -30,41 +30,61 @@ class GameService {
         return gameMapper.deleteGame(gameId)
     }
 
-    fun addGame(game:Game, img:MultipartFile){
+    fun addGame(game:Game, main_img:MultipartFile, sub_img:MultipartFile){
         var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\imgs"
 
-        var uuid:String = UUID.randomUUID().toString()
+        var uuid1:String = UUID.randomUUID().toString()
+        var mainImgName:String = uuid1 + "_" + main_img.originalFilename
+        var file1:File = File(imgPath, mainImgName)
+        main_img.transferTo(file1)
 
-        var imgName:String = uuid + "_" + img.originalFilename
-        var file:File = File(imgPath, imgName)
+        var uuid2:String = UUID.randomUUID().toString()
+        var subImgName:String = uuid2 + "_" + sub_img.originalFilename
+        var file2:File = File(imgPath, subImgName)
+        sub_img.transferTo(file2)
 
-        img.transferTo(file)
+        game.main_img_name = mainImgName
+        game.main_img_path = "/imgs/" + mainImgName
 
-        game.img_name = imgName
-        game.img_path = "/imgs/" + imgName
+        game.sub_img_name = subImgName
+        game.sub_img_path = "/imgs/" + subImgName
+        game.invisible = 0
 
         gameMapper.saveGame(game)
     }
 
-    fun modifyGame(game:Game, gameId: Int): Boolean {
-        return gameMapper.modifyGame(game, gameId)
-    }
 
-    fun modifyGame(game: Game, img: MultipartFile, gameId:Int): Boolean {
+    fun modifyGame(game: Game, main_img: MultipartFile, sub_img: MultipartFile, gameId:Int): Boolean {
+
+        var cur_game = gameMapper.findGameWithId(gameId)
+        game.main_img_name = cur_game.main_img_name
+        game.main_img_path = cur_game.main_img_path
+        game.sub_img_name = cur_game.sub_img_name
+        game.sub_img_path = cur_game.sub_img_path
 
         var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\imgs"
 
-        var uuid:String = UUID.randomUUID().toString()
+        if (!main_img.isEmpty){
+            var uuid1:String = UUID.randomUUID().toString()
+            var mainImgName:String = uuid1 + "_" + main_img.originalFilename
+            var file1:File = File(imgPath, mainImgName)
+            main_img.transferTo(file1)
 
-        var imgName:String = uuid + "_" + img.originalFilename
-        var file:File = File(imgPath, imgName)
+            game.main_img_name = mainImgName
+            game.main_img_path = "/imgs/" + mainImgName
+        }
 
-        img.transferTo(file)
+        if (!sub_img.isEmpty){
+            var uuid2:String = UUID.randomUUID().toString()
+            var subImgName:String = uuid2 + "_" + sub_img.originalFilename
+            var file2:File = File(imgPath, subImgName)
+            sub_img.transferTo(file2)
 
-        game.img_name = imgName
-        game.img_path = "/imgs/" + imgName
+            game.sub_img_name = subImgName
+            game.sub_img_path = "/imgs/" + subImgName
+        }
 
-        return gameMapper.modifyGameWithImg(game, gameId)
+        return gameMapper.modifyGame(game, gameId)
     }
 
 }

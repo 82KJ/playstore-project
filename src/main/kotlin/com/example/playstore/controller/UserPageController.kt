@@ -23,7 +23,7 @@ class UserPageController {
     @GetMapping("")
     fun showUserPage(request:HttpServletRequest, model:Model): String {
 
-       var games:List<Game> = gameService.findAllGame()
+       var games:List<Game> = gameService.findVisibleGame()
 
        model.addAttribute("games", games)
 

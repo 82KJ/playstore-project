@@ -12,8 +12,8 @@ import org.apache.ibatis.annotations.Update
 @Mapper
 interface GameMapper {
 
-    @Select("SELECT * FROM game")
-    fun findAllGame(): List<Game>
+    @Select("SELECT * FROM game WHERE invisible=0")
+    fun findVisibleGame(): List<Game>
 
     @Select("SELECT * FROM game WHERE name LIKE '%'+searchName+'%'")
     fun findGame(searchName:String): List<Game>
@@ -21,16 +21,13 @@ interface GameMapper {
     @Select("SELECT * FROM game WHERE id=#{gameId}")
     fun findGameWithId(@Param("gameId") gameId:Int): Game
 
-    @Insert("INSERT INTO game(name, description, price, img_name, img_path, limit_age) VALUES(#{game.name}, #{game.description}, #{game.price}, #{game.img_name}, #{game.img_path}, #{game.limit_age})")
+    @Insert("INSERT INTO game(name, description, price, main_img_name, main_img_path, limit_age, sub_img_name, sub_img_path, invisible) VALUES(#{game.name}, #{game.description}, #{game.price}, #{game.main_img_name}, #{game.main_img_path}, #{game.limit_age}, #{game.sub_img_name}, #{game.sub_img_path}, #{game.invisible})")
     fun saveGame(@Param("game") game: Game)
 
-    @Delete("DELETE FROM game WHERE id=#{gameId}")
+    @Update("UPDATE game SET invisible=1 WHERE id=#{gameId}")
     fun deleteGame(@Param("gameId") gameId:Int): Boolean
 
-    @Update("UPDATE game SET name=#{game.name}, description=#{game.description}, price=#{game.price}, limit_age=#{game.limit_age} WHERE id=#{gameId}")
+    @Update("UPDATE game SET name=#{game.name}, description=#{game.description}, price=#{game.price}, main_img_path=#{game.main_img_path}, main_img_name=#{game.main_img_name}, limit_age=#{game.limit_age}, sub_img_path=#{game.sub_img_path}, sub_img_name=#{game.sub_img_name} WHERE id=#{gameId}")
     fun modifyGame(@Param("game") game:Game, @Param("gameId") gameId:Int) : Boolean
-
-    @Update("UPDATE game SET name=#{game.name}, description=#{game.description}, price=#{game.price}, img_path=#{game.img_path}, img_name=#{game.img_name}, limit_age=#{game.limit_age} WHERE id=#{gameId}")
-    fun modifyGameWithImg(@Param("game") game:Game, @Param("gameId") gameId:Int) : Boolean
 
 }

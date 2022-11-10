@@ -5,7 +5,10 @@ data class Game(
     var name:String,
     var description:String,
     var price:Int,
-    var img_name:String?,
-    var img_path:String?,
-    var limit_age:Int
+    var main_img_name:String?,
+    var main_img_path:String?,
+    var limit_age:Int,
+    var sub_img_name:String?,
+    var sub_img_path:String?,
+    var invisible:Int?
 )

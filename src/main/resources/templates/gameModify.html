@@ -14,9 +14,16 @@
 <div class="layout">
     <form th:action="@{/admin/game/{gameId}/modify(gameId=${game.id})}" method="post" enctype="multipart/form-data">
         <div class="layout_img">
-            <input type="file" name="file">
-            <img th:src="@{${game.img_path}}">
+            <input type="file" name="main_img">
+            <img th:src="@{${game.main_img_path}}">
         </div>
+
+<!-- 두번째 이미지 보여주는 곳-->
+        <div class="layout_img2">
+            <input type="file" name="sub_img">
+            <img th:src="@{${game.sub_img_path}}">
+        </div>
+
         <div class="layout_bottom">
             <div>
                 <input class="nameInput" name="name" type="text" th:value="${game.name}">
