@@ -12,11 +12,12 @@ import org.apache.ibatis.annotations.Update
 @Mapper
 interface GameMapper {
 
+
     @Select("SELECT * FROM game WHERE invisible=0")
     fun findVisibleGame(): List<Game>
 
-    @Select("SELECT * FROM game WHERE name LIKE '%'+searchName+'%'")
-    fun findGame(searchName:String): List<Game>
+    @Select("SELECT * FROM game WHERE name LIKE CONCAT('%', #{gameName}, '%') and invisible = 0")
+    fun findVisibleGameWithName(@Param("gameName") gameName:String):List<Game>
 
     @Select("SELECT * FROM game WHERE id=#{gameId}")
     fun findGameWithId(@Param("gameId") gameId:Int): Game

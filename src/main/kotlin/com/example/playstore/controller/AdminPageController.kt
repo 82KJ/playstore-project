@@ -21,11 +21,18 @@ class AdminPageController {
     lateinit var gameService: GameService
 
     @GetMapping("")
-    fun showAdminPage(model:Model): String {
+    fun showAdminPage(model:Model, @RequestParam(required = false) search: String?): String {
 
-        var games:List<Game> = gameService.findVisibleGame()
+        var games:List<Game>
 
-        model.addAttribute("games", games)
+        if (search == null){
+            games = gameService.findVisibleGame()
+            model.addAttribute("games", games)
+        }
+        else{
+            games = gameService.findVisibleGame(search)
+            model.addAttribute("games", games)
+        }
 
         return "adminMain.html"
     }

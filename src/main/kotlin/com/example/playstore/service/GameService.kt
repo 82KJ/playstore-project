@@ -18,8 +18,8 @@ class GameService {
         return gameMapper.findVisibleGame()
     }
 
-    fun findGame(searchName:String):List<Game>{
-        return gameMapper.findGame(searchName)
+    fun findVisibleGame(gameName : String):List<Game>{
+        return gameMapper.findVisibleGameWithName(gameName)
     }
 
     fun findGame(gameId:Int): Game{

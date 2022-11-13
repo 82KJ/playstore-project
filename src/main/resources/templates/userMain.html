@@ -7,10 +7,13 @@
 </head>
 <body>
 <div class="menuBox">
-    <form class="menuBox_top" action="/" method="post">
+
+<!--  만약 search를 통해 넘어온 games가 비어있다면, " 검색 결과가 없습니다"라고 문구 띄우도록 수정해줘-->
+
+    <form class="menuBox_top" action="/user" method="get">
         <img th:src="@{/img/logo.png}" src="/img/logo.png">
         <div>
-            <input class="searchBar" name="searchBar" type="text" placeholder="Search game">
+            <input class="searchBar" name="search" type="text" placeholder="Search game">
             <input class="submit" type="submit">
         </div>
     </form>
