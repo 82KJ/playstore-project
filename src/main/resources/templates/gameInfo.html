@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    여기는 게임 상세 페이지입니다
+
+    <br>
+    <img th:src="@{${game.main_img_path}}">
+    <img th:src="@{${game.sub_img_path}}">
+    <div th:text="${game.name}"></div>
+    <div th:text="${game.description}"></div>
+    <div th:text="${game.price}"></div>
+    <div th:text="${game.limit_age}"></div>
+    <br>
+
+<!--    isInBasket이 false라면 버튼이 보이고, true라면 버튼이 안보이고 '장바구니에 담겨 있다'라는 문구 출력하도록 설계하기-->
+    <form th:action="@{/user/push-basket/{gameId}(gameId=${game.id})}" method="post">
+        <input type="submit" name="basket">
+    </form>
+
+</body>
+</html>

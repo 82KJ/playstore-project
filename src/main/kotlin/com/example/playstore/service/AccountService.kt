@@ -18,4 +18,16 @@ class AccountService {
     fun findAccount(id:String):Account?{
         return accountMapper.findAccount(id)
     }
+
+    fun saveBasket(account_id:String, gameId:Int): MutableList<Int>? {
+        accountMapper.saveBasket(account_id, gameId)
+        var gameInBasket = accountMapper.findGameInBasket(account_id)
+        var games : MutableList<Int>? = mutableListOf()
+
+        gameInBasket?.forEach{
+            games?.add(it.third)
+        }
+
+        return games
+    }
 }

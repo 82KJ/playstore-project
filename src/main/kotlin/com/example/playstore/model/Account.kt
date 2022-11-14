@@ -6,5 +6,6 @@ data class Account(
     var id:String,
     var password:String,
     var is_admin:Int,
-    var birthDate:Date?
+    var birthDate:Date?,
+    var basket:MutableList<Int>?
 )

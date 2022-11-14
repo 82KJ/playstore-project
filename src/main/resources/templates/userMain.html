@@ -29,7 +29,7 @@
     </div>
     <ul>
 
-        <li th:each="game,i : ${games}" ><a th:href='@{/user/games/{gameId}(gameId=${game.id})}'><div>
+        <li th:each="game,i : ${games}" ><a th:href='@{/user/game/{gameId}(gameId=${game.id})}'><div>
             <img th:src="@{${game.main_img_path}}">
             <div class="info">
                 <div>
