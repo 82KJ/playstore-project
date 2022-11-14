@@ -18,7 +18,6 @@ interface AccountMapper {
     @Select("INSERT INTO basket(account_id, game_id) VALUES(#{account_id}, #{game_id})")
     fun saveBasket(@Param("account_id") account_id:String, @Param("game_id") game_id:Int)
 
-    @Select("SELECT * FROM basket WHERE account_id=#{account_id}")
-    fun findGameInBasket(@Param("account_id") account_id:String): MutableList<Triple<Int,String, Int>>?
-
+    @Select("SELECT game_id FROM basket WHERE account_id=#{account_id}")
+    fun findGameInBasket(@Param("account_id") account_id:String): MutableList<Int>?
 }
