@@ -1,6 +1,5 @@
 package com.example.playstore.controller
 
-
 import com.example.playstore.model.Account
 import com.example.playstore.model.Game
 import com.example.playstore.service.AccountService
@@ -15,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 
-
 @Controller
-@RequestMapping("/mypage")
-class MyPageController {
-
+@RequestMapping("/refund")
+class RefundPageController {
     @Autowired
     lateinit var gameService: GameService
     @Autowired
@@ -38,7 +35,6 @@ class MyPageController {
         model.addAttribute("games", games)
 
 
-        return "mypage.html"
+        return "refund.html"
     }
-
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>유저 - 마이페이지</title>
+    <title>refund</title>
 </head>
 <body>
 <div class="menuBox">
@@ -23,7 +23,7 @@
     </div>
     <ul>
 
-        <li th:each="game,i : ${games}" ><a th:href=''><div>
+        <li th:each="game,i : ${games}" ><a th:href='@{/user/game/{gameId}(gameId=${game.id})}'><div>
             <img th:src="@{${game.main_img_path}}">
             <div class="info">
                 <div>
