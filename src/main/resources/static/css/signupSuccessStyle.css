@@ -1,0 +1,137 @@
+@import 'reset.css';
+
+@font-face{
+    font-family: "Typo_SsangmunDongB";
+    src:url("Typo_SsangmunDongB.ttf")format("truetype");
+}
+
+:root{
+    --logo_box_width: 100vw;
+    --logo_box_height: 8vh;
+    --logo_box_background_color: #3B8BF8 0% 0% no-repeat padding-box;
+
+    --logo_img_width: 7vw;
+    --logo_img_height: 5vh;
+    --logo_img_padding_width:  1vw;
+    --logo_img_padding_height:  1vh;
+
+    --content_width: 100vw;
+    --content_height: 70vh;
+    --content_padding_height: 5vh;
+
+    --button_height: 5.5vh;
+    --button_width: 7vw;
+    --button_background_blue_color: #4D98FD 0% 0% no-repeat padding-box;
+
+    --box_shadow: 0px 5px 10px #00000029;
+    --border_radius: 22px;
+    --hover_opacity: 0.7;
+
+    --font_size: 1.2rem;
+}
+
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family:Typo_SsangmunDongB;
+}
+
+button {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+     width: var(--button_width);
+     height: var(--button_height);
+
+     box-shadow: var(--box_shadow);
+     border-radius: var(--border_radius);
+     border:none;
+
+     color: white;
+     background: var(--button_background_blue_color);
+
+     font-size: large;
+     font-weight: bold;
+}
+
+button:hover{
+    opacity: var(--hover_opacity);
+    cursor: pointer;
+}
+
+.sign-up-success_logo{
+    position: relative;
+
+    width: var(--logo_box_width);
+    height: var(--logo_box_height);
+
+    background: var(--logo_box_background_color);
+}
+
+.sign-up-success_logo > img{
+    position: absolute;
+
+    width: var(--logo_img_width);
+    height: var(--logo_img_height);
+
+    left: var(--logo_img_padding_width);
+    top: var(--logo_img_padding_height);
+}
+
+.sign-up-success-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--content_width);
+    height: var(--content_height);
+
+    background-color: white;
+}
+
+.sign-up-success-box > .sign-up-success-box_head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-bottom: var(--content_padding_height);
+}
+
+.sign-up-success-box > .sign-up-success-box_head h1{
+    font-size: calc(var(--font_size) * 3);
+    font-weight: bold;
+}
+
+.sign-up-success-box > .sign-up-success-box_contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: var(--font_size);
+
+    padding-top: var(--content_padding_height);
+    padding-bottom: var(--content_padding_height);
+}
+
+.sign-up-success-box > .sign-up-success-box_contents > div{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: calc(var(--content_padding_height) - 1.5vh);
+}
+
+.sign-up-success-box > .sign-up-success-box_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: calc(var(--content_padding_height) - 1.5vh);
+}
+
+
+
+

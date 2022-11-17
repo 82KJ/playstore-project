@@ -2,14 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/signupSuccessStyle.css}" rel="stylesheet" href="/css/signupSuccessStyle.css">
     <title>Title</title>
 </head>
 <body>
-    <h1> 회원 가입에 성공했습니다</h1>
-    id:
-    <span th:text="${id}"></span>
-    <br>
-    password:
-    <span th:text="${password}"></span>
+    <div class="sign-up-success_logo">
+        <img th:src="@{/img/logo.png}" src="/img/logo.png" alt="logo">
+    </div>
+    <div class="sign-up-success-box">
+        <div class="sign-up-success-box_head">
+            <h1>Welcome!</h1>
+        </div>
+        <div class="sign-up-success-box_contents">
+            <div>
+                <span th:text="${id}"></span>
+                <span>님 PlayStore 회원가입이 완료되었습니다.</span>
+            </div>
+            <div>
+                <span>가입된 아이디로 로그인 하신후 PlayStore의 서비스를 이용해주세요.</span>
+            </div>
+        </div>
+        <div class="sign-up-success_bottom">
+            <a href="/login"><button>Home</button></a>
+        </div>
+    </div>
 </body>
 </html>
