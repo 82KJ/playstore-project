@@ -6,41 +6,59 @@
     <title>Title</title>
 </head>
 <body>
-<div class="imgBox">
-    <div>
-        <img th:src="@{/img/logo.png}" src="/img/logo.png">
-    </div>
-</div>
-<div class="layout">
-    <form th:action="@{/admin/game/{gameId}/modify(gameId=${game.id})}" method="post" enctype="multipart/form-data">
-        <div class="layout_img">
-            <input type="file" name="main_img">
-            <img th:src="@{${game.main_img_path}}">
-        </div>
-
-<!-- 두번째 이미지 보여주는 곳-->
-        <div class="layout_img2">
-            <input type="file" name="sub_img">
-            <img th:src="@{${game.sub_img_path}}">
-        </div>
-
-        <div class="layout_bottom">
-            <div>
-                <input class="nameInput" name="name" type="text" th:value="${game.name}">
-                <input name="price" type="text" th:value="${game.price}">
-                <input name="limit_age" type="text" th:value="${game.limit_age}">
+    <div class="layout">
+        <div class="delete_undo">
+            <div class="undo">
+                <a href="/admin"><button>취소</button></a>
+            </div>
+            <div class="delete">
+                <form th:action="@{/admin/game/{gameId}/delete(gameId=${game.id})}" method="post">
+                    <a onclick="if (confirm('정말로 삭제하시겠습니까?')) document.getElementById('delete_form').submit();" style="cursor: pointer;" ><button>삭제</button></a>
+                </form>
             </div>
         </div>
-        <textarea name="description" th:text="${game.description}"></textarea>
-        <div class="saveButton">
-            <button type="submit">저장</button>
+
+        <div class="modify">
+            <form th:action="@{/admin/game/{gameId}/modify(gameId=${game.id})}" method="post" enctype="multipart/form-data">
+                <div class="layout_main_img_input">
+                    <img th:src="@{${game.main_img_path}}">
+                    <div class="img_label">
+                        <label for="main_img_upload"><img th:src="@{/img/edit_icon.png}" src="img/edit_icon.png"></label>
+                        <input type="file" name="main_img" id="main_img_upload">
+                    </div>
+                </div>
+
+                <div class="layout_content">
+                    <div class="layout_top">
+                        <div class="name_input">
+                            <input class="nameInput" name="name" type="text" th:value="${game.name}" required>
+                        </div>
+                        <div class="saveButton">
+                            <button type="submit">저장</button>
+                        </div>
+                    </div>
+
+                    <div class="layout_mid">
+                        <div class="sub_img_input">
+                            <img th:src="@{${game.sub_img_path}}">
+                            <div class="img_label">
+                                <label for="sub_img_upload"><img th:src="@{/img/edit_icon.png}" src="img/edit_icon.png"></label>
+                                <input type="file" name="sub_img" id="sub_img_upload">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layout_bottom">
+                        <div>
+                            <input name="price" type="text" th:value="${game.price}" required>
+                            <input name="limit_age" type="text" th:value="${game.limit_age}" required>
+                        </div>
+                        <div class="fakeButton"><button disabled>장바구니</button></div>
+                    </div>
+                    <textarea name="description" th:text="${game.description}" required></textarea>
+                </div>
+            </form>
         </div>
-    </form>
-    <div class="buttonBox">
-        <form id="delete_form" th:action="@{/admin/game/{gameId}/delete(gameId=${game.id})}" method="post">
-            <a onclick="if (confirm('정말로 삭제하시겠습니까?')) document.getElementById('delete_form').submit();" style="cursor: pointer;"><button>삭제</button></a>
-        </form>
     </div>
-</div>
 </body>
 </html>

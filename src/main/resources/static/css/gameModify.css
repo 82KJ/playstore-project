@@ -1,143 +1,294 @@
 @import 'reset.css';
 
+@font-face{
+    font-family: "Typo_SsangmunDongB";
+    src:url("Typo_SsangmunDongB.ttf")format("truetype");
+}
+
+:root{
+    --main_img_width: 40vw;
+    --layout_content_width: 50vw;
+    --name_width: calc(var(--layout_content_width) / 2);
+    --price-age_width: calc( var(--layout_content_width) / 2 / 2 );
+    --button_width: 7vw;
+    --edit_img_width: 4vw;
+
+    --main_img_height: 100vh;
+    --sub_img_height: 45vh;
+    --input_height: 6.5vh;
+    --button_height: 5.5vh;
+    --edit_img_height: 5vh;
+
+    --layout_content_width_padding: 5vw;
+    --layout_content_height_padding: 8vh;
+    --layout_content_inside_width_padding: 2vw;
+    --layout_content_inside_height_padding: 3vh;
+    --input_inside_padding: .8em;
+
+    --img_background_color: #dfdfdf;
+    --input_background_color: #FFFFFF 0% 0% no-repeat padding-box;
+    --button_background_red_color: #F95E62 0% 0% no-repeat padding-box;
+    --button_background_blue_color: #4D98FD 0% 0% no-repeat padding-box;
+    --button_background_gray_color: #787878 0% 0% no-repeat padding-box;
+
+    --box_shadow: 0px 5px 10px #00000029;
+    --border_radius: 22px;
+    --input_opacity: 0.5;
+    --hover_opacity: 0.7;
+    --img_opacity: 0.7;
+}
+
 body{
     display: flex;
-    /* align-items: center; */
     height: 100vh;
 }
 
-.imgBox{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F95E62;
-    height: 100vh;
-    width: 40vw;
+button{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+     width: var(--button_width);
+     height: var(--button_height);
+
+     box-shadow: var(--box_shadow);
+     border-radius: var(--border_radius);
+     border:none;
+
+     color: white;
+     font-size: large;
+     font-weight: bold;
+}
+
+button:hover{
+    opacity: var(--hover_opacity);
+    cursor: pointer;
+}
+
+input{
+    height: var(--input_height);
+
+    background: var(--input_background_color);
+
+    box-shadow: var(--box_shadow);
+    border-radius: var(--border_radius);
+    border:none;
+
+    opacity: var(--input_opacity);
+    font-family: Typo_SsangmunDongB;
+
+    padding-left: var(--input_inside_padding);
+}
+
+input:hover{
+    opacity: var(--hover_opacity);
+}
+
+input[type="text"]{
+    height: auto;
+    line-height: normal;
+}
+
+input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+label {
+  position : absolute
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  opacity: 1;
+}
+
+textarea {
+    width: var(--layout_content_width);
+    height: calc(var(--input_height) * 3);
+    line-height: normal;
+
+    background: var(--input_background_color);
+
+    box-shadow: var(--box_shadow);
+    border-radius: var(--border_radius);
+    border: none;
+
+    font-family: Typo_SsangmunDongB;
+
+    opacity: var(--input_opacity);
+
+    padding-left: var(--input_inside_padding);
+    padding-top: var(--input_inside_padding);
+}
+
+textarea:hover{
+    box-shadow: 0px 5px 20px #00000029;
 }
 
 /* =====================layout=================== */
 .layout{
-    width: 60vw;
-    padding-left: 5vw;
-}
+    position : relative;
 
-.layout > .buttonBox{
-    position: absolute;
-    padding-top: 3vh;
-}
-
-.layout > .buttonBox > form {
-    padding-right: 1vw;
-}
-
-
-
-.layout > form {
-    width: 44vw;
     display: flex;
     flex-direction: column;
-    margin-top: 5vh;
+
+    width: 100vw;
 }
 
-.layout > form  input{
-    /* UI Properties */
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 10px #00000029;
-    border-radius: 22px;
-    border:none;
-}
+.layout > .delete_undo{
+    position: absolute;
 
-
-/* ========================layout_img======================== */
-
-.layout > form > .layout_img{
-    height: 46vh;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+
+    right: calc(var(--button_width) + var(--layout_content_inside_width_padding) + var(--layout_content_width_padding));
+    top: var(--layout_content_height_padding);
 }
 
-.layout > form > .layout_img {
-    background-color:#dfdfdf;
+.layout > .delete_undo > .undo{
     position: relative;
-}
-.layout > form > .layout_img > input{
-    position:absolute;
-    top: 20vh;
-    left: 15vw;
-    opacity: 0.7;
+    right: var(--layout_content_inside_width_padding);
 }
 
-.layout > form > .layout_img img{
-    height: 46vh;
+.layout > .delete_undo > .undo > a > button{
+    background: var(--button_background_red_color);
 }
 
-/* ========================layout_bottom======================== */
+.layout > .delete_undo > .delete > form > a > button{
+    background: var(--button_background_red_color);
+    margin_left: var(--layout_content_inside_width_padding);
+}
 
-.layout > form > .layout_bottom{
+.layout > .modify > form {
+    width: 100vw;
+    display: flex;
+}
+
+.layout > .modify > form > .layout_main_img_input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--main_img_width);
+    height: var(--main_img_height);
+
+    background-color: var(--img_background_color);
+}
+
+.layout > .modify > form > .layout_main_img_input img{
+    position: absolute;
+
+    width: var(--main_img_width);
+    height: var(--main_img_height);
+
+    opacity: var(--img_opacity);
+}
+
+.layout > .modify > form > .layout_main_img_input > .img_label img{
+    position: absolute;
+
+    top: calc(var(--main_img_height) / 2 - var(--edit_img_height) / 2);
+    left: calc(var(--main_img_width) / 2 - var(--edit_img_width) / 2);
+
+    width: var(--edit_img_width);
+    height: var(--edit_img_height);
+}
+
+.layout > .modify > form > .layout_content{
+    width: var(--layout_content_width);
+
+    padding-left: var(--layout_content_width_padding);
+    padding-right: var(--layout_content_width_padding);
+    padding-top: var(--layout_content_height_padding);
+}
+
+.layout > .modify > form > .layout_content >.layout_top{
     display: flex;
     justify-content: space-between;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
+
+    width: var(--layout_content_width);
+
+    padding-bottom: var(--layout_content_inside_height_padding);
 }
 
-.layout > form > .layout_bottom > div>input{
-    width: calc(28.166vw / 2);
-    height: 6.888vh;
+.layout > .modify > form > .layout_content > .layout_top > .name_input > input{
+    width: calc(var(--name_width) - var(--button_width) / 2);
+    height: var(--input_height);
 }
 
-/* =======================textarea=================== */
-.layout > form> textarea{
-    /* UI Properties */
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 10px #00000029;
-    border-radius: 22px;
-    border: none;
-    height: 10vh;
+.layout > .modify > form > .layout_content > .layout_top > .saveButton > button{
+    background: var(--button_background_blue_color);
 }
 
-.layout > form> textarea:hover{
-    box-shadow: 0px 5px 20px #00000029;
+.layout > .modify > form > .layout_content > .layout_mid {
+
 }
 
+.layout > .modify > form > .layout_content > .layout_mid > .sub_img_input{
+    position: relative;
 
-input:hover{
-    opacity: 0.7;
-}
-
-.layout > form > .saveButton {
-    margin-top: 5vh;
-}
-
-.layout > form > .saveButton > button{
-    width: 44vw;
-    height: 6.888vh;
-    background: #b5b5b5 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 10px #00000029;
-    border-radius: 22px;
-    border:none;
-    color: white;
-    font-size: large;
-    font-weight: bold;
-}
-
-.layout > form > .saveButton > button:hover{
-    opacity: 0.7;
-}
-.layout .buttonBox > form > a > button:hover{
-    opacity: 0.7;
-}
-
-.layout .buttonBox > form > a > button{
-    width: 44vw;
-    height: 6.888vh;
-    background: #787878 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 10px #00000029;
-    border-radius: 22px;
-    border:none;
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: white;
-    font-size: large;
-    font-weight: bold;
+    justify-content: center;
+
+    width: var(--layout_content_width);
+    height: var(--sub_img_height);
+
+    background-color: var(--img_background_color);
 }
+
+.layout > .modify > form > .layout_content > .layout_mid > .sub_img_input img{
+    position:absolute;
+
+    width: var(--layout_content_width);
+    height: var(--sub_img_height);
+
+    opacity: var(--img_opacity);
+}
+
+.layout > .modify > form > .layout_content > .layout_mid > .sub_img_input > .img_label img{
+    position:absolute;
+
+    top: calc(var(--sub_img_height) / 2 - var(--edit_img_height) / 2);
+    left: calc(var(--layout_content_width) / 2 - var(--edit_img_width) / 2);
+
+    width: var(--edit_img_width);
+    height: var(--edit_img_height);
+}
+
+.layout > .modify > form > .layout_content > .layout_bottom{
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: var(--layout_content_inside_height_padding);
+    padding-bottom: var(--layout_content_inside_height_padding);
+}
+
+.layout > .modify > form > .layout_content > .layout_bottom > div > input{
+    width: var(--price-age_width);
+    height: var(--input_height);
+
+    margin-right: var(--layout_content_inside_width_padding);
+}
+
+.layout > .modify > form > .layout_content > .layout_bottom >.fakeButton button{
+    background: var(--button_background_gray_color);
+}
+
+
+.layout > .modify > form > .layout_content > .layout_bottom >.fakeButton button:hover{
+    opacity: 1;
+    cursor: default;
+}
+
+
