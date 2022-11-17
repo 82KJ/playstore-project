@@ -1,0 +1,11 @@
+use playstore;
+CREATE TABLE account_and_game
+(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    account_id VARCHAR(50),
+    game_id INT,
+    playtime datetime,
+
+    FOREIGN KEY (account_id) REFERENCES account(id),
+    FOREIGN KEY (game_id) REFERENCES game(id)
+);

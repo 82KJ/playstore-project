@@ -16,9 +16,11 @@ class AccountService {
     }
 
     fun findAccount(id:String):Account?{
-        var games = accountMapper.findGameInBasket(id)
+        var gamesInBasket = accountMapper.findGameInBasket(id)
+        var myGames = accountMapper.findMyGame(id)
         var account = accountMapper.findAccount(id)
-        account?.basket = games
+        account?.basket = gamesInBasket
+        account?.myGame = myGames
 
         return account
     }

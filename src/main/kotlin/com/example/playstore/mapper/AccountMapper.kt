@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert
 import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Param
 import org.apache.ibatis.annotations.Select
+import java.time.LocalDateTime
 
 @Mapper
 interface AccountMapper {
@@ -20,4 +21,7 @@ interface AccountMapper {
 
     @Select("SELECT game_id FROM basket WHERE account_id=#{account_id}")
     fun findGameInBasket(@Param("account_id") account_id:String): MutableList<Int>?
+
+    @Select("SELECT game_id, playtime FROM account_and_game WHERE account_id=#{account_id}")
+    fun findMyGame(@Param("account_id") account_id: String): MutableList<Pair<Int, LocalDateTime?>>?
 }
