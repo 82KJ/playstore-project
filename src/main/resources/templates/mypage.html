@@ -2,41 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>유저 - 마이페이지</title>
+    <link th:href="@{/css/mypageStyle.css}" rel="stylesheet" href="/css/mypageStyle.css">
+    <title>mypage</title>
 </head>
 <body>
 <div class="menuBox">
-
-
     <form class="menuBox_top" action="/user" method="get">
-        <img th:src="@{/img/logo.png}" src="/img/logo.png">
+        <img th:src="@{/img/logo.png}" src="img/logo.png">
+        <div>
+            <input class="searchBar" name="search" type="text" placeholder="Search game">
+            <input class="submit" type="submit">
+        </div>
     </form>
     <div class="menuBox_bottom">
-        <a href="/refund"><img th:src="@{/img/mypage_icon.png}" src="/img/mypage_icon.png"></a>
+        <a href="/user"><img th:src="@{/img/mainPage_icon.png}" src="img/mainPage_icon.png"></a>
         <p th:text="'게임머니: ' + ${id} + '원'">게임 머니: 999,999원</p>
     </div>
 </div>
 <div class="gameBox">
     <div class="gameBox_top">
-        <a href="#"><img th:src="@{/img/backet_icon.png}" src="/img/backet_icon.png"></a>
-        <a href="/"><img th:src="@{/img/logout_icon.png}" src="/img/logout_icon.png.png"></a>
+        <a href="/">🧾 영수증</a>
+        <a href="/">🔏 패스워드 수정</a>
+        <a href="/">🔋 충전</a>
+        <a href="/">💲 환불</a>
     </div>
+    <hr style="border:1px color= silver;" width="90%">
     <ul>
-
-        <li th:each="game,i : ${games}" >
-            <div>
-                <img th:src="@{${game.main_img_path}}">
-                <img th:src="@{${game.sub_img_path}}">
-                <div class="info">
-                    <div>
+        <li th:if="${games.size} == 0" style="font-weight: bold; font-size: 2vw;">구입한 게임이 없습니다😂</li>
+        <li th:each="game,i : ${games}" ><div>
+            <div class="leftBox">
+                <img th:src="@{${game.main_img_path}}" src="img/game_img.png">
+                <div class="infoBox">
+                    <div class="name">
                         <p th:text="${game.name}">NONE</p>
-                        <br>
-                        <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
+                        <p>(환불가능)</p>
                     </div>
-                    <p class="price"th:text="${game.price}">NONE</p>
+                    <div class="dsc">
+                        <p th:text="${game.description}">NONE</p>
+                    </div>
                 </div>
             </div>
-        </li>
+            <div class="buttonBox">
+                <a href="#">🔄REFUND</a>
+                <a href="#">🕹PLAY</a>
+            </div>
+        </div></li>
     </ul>
 </div>
 </body>

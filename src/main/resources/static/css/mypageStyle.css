@@ -1,0 +1,245 @@
+@import 'reset.css';
+
+:root{
+    --menuBox-width: 30vw;
+    --menuBox-height: 100vh;
+
+    --gameBox-width: 70vw;
+    --gameBox-height: 100vh;
+
+    --grar-color: #848484;
+    --blue-color: #3B8BF8;
+}
+
+
+@font-face{
+    font-family: "Typo_SsangmunDongB";
+    font-weight: normal;
+    src:url("Typo_SsangmunDongB.ttf")format("truetype");
+}
+
+input{
+    font-weight: bold;
+}
+
+
+body{
+    display: flex;
+    flex-direction: row;
+    font-family: Typo_SsangmunDongB;
+}
+
+/* ====================== menu box ======================== */
+.menuBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: var(--menuBox-width);
+    height: var(--menuBox-height);
+    background: var(--blue-color) 0% 0% no-repeat padding-box;
+}
+
+.menuBox > .menuBox_top {
+    padding-left: var(--logo-padding-left);
+    padding-top: 10.56vh;
+    padding-left: 5.208vw;
+}
+
+.menuBox > .menuBox_top > img {
+    padding-bottom: 3vw;
+    width: 18.64vw;
+}
+
+.gameBox .gameBox_top > a > img:hover{
+    opacity: 0.7;
+}
+
+.menuBox > .menuBox_top > div >input{
+    height: 6.75vh;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 48px;
+    border:none;
+}
+
+.menuBox > .menuBox_top > div > .searchBar{
+    width: 12.916vw;
+}
+
+.menuBox > .menuBox_top > div > .searchBar:hover{
+    opacity: 0.7;
+}
+
+.menuBox > .menuBox_top > div > .submit{
+    width: 5.78vw;
+    font-size: 1.1vw;
+    color: var(--grar-color);;
+}
+
+.menuBox > .menuBox_top > div > .submit:hover{
+    opacity: 0.7;
+}
+
+.menuBox > .menuBox_bottom{
+    display: flex;
+    justify-content: space-around;
+}
+
+.menuBox > .menuBox_bottom {
+    display: flex;
+    padding-bottom: 3.425vh;
+}
+
+.menuBox > .menuBox_bottom img{
+    width: 70%
+}
+
+.menuBox > .menuBox_bottom img:hover{
+    opacity: 0.7;
+    width: 75%
+}
+
+.menuBox > .menuBox_bottom p{
+    color:#FFFFFF;
+    font-weight: bold;
+    align-self: flex-end;
+    padding-bottom: 3vh;
+    font: normal normal bold 1.3rem Malgun Gothic;
+    font-size: 1.5vw;
+}
+
+
+/* ====================== game box ======================== */
+
+.gameBox{
+    display: flex;
+    flex-direction: column;
+    width: var(--gameBox-width);
+    height: var(--gameBox-height);
+}
+
+.gameBox .gameBox_top{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 4vw;
+    padding-top: 5vh;
+}
+
+.gameBox .gameBox_top > a {
+    font-size: 1.25vw;
+    color: var(--grar-color);
+    padding-left: 1vw;
+}
+
+.gameBox .gameBox_top > a:hover{
+    opacity: 0.7;
+}
+
+/* =======================ui======================== */
+
+.gameBox > ul{
+    overflow-y: scroll;
+
+}
+
+/* 스크롤바 설정*/
+.gameBox > ul::-webkit-scrollbar{
+    width: 1.66vw;
+}
+
+/* 스크롤바 막대 설정*/
+.gameBox > ul::-webkit-scrollbar-thumb{
+    background-color: #E7E7E7;
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 39px;
+}
+
+.gameBox > ul{
+    padding-top: 5vh;
+    padding-left: 3vw;
+}
+
+.gameBox > ul > li{
+    padding-bottom: 5vh;
+}
+
+.gameBox > ul > li > div{
+    width: 50vw;
+    height: 27vh;
+    display: flex;
+    flex-direction: row;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #00000029;
+    justify-content: space-between;
+}
+
+.gameBox > ul > li > div > .leftBox{
+    display: flex;
+}
+.gameBox > ul > li > div > .leftBox>.infoBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gameBox > ul > li > div > .leftBox> .infoBox{
+    padding-left: 1vw;
+}
+
+.gameBox > ul > li > div > .leftBox> .infoBox > div> p{
+    font-size: 1.5vw;
+    color: #454545;
+}
+
+.gameBox > ul > li > div > .leftBox> .infoBox > .name{
+    padding-top: 2vh;
+}
+.gameBox > ul > li > div > .leftBox>  .infoBox > .dsc{
+    width: 20vw;
+}
+
+.gameBox > ul > li > div > .leftBox>  .infoBox > .dsc> p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gameBox > ul > li > div > .leftBox > img{
+    height: 27vh;  
+}
+
+.gameBox > ul > li > div > .buttonBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 1vw;
+    padding-top: 2vh;
+}
+
+.gameBox > ul > li > div > .buttonBox > a{
+    font-size: 1.5vw;
+    color: #2f60a3
+}
+
+/* .gameBox > ul > li > div > .infoBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gameBox > ul > li > div > .infoBox > .dsc{
+    width: 20vw;
+}
+
+.gameBox > ul > li > div > .infoBox > .dsc > p{
+    word-break:break-all;
+    text-overflow: ellipsis;
+}
+
+.gameBox > ul > li > div > .buttonBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+} */
