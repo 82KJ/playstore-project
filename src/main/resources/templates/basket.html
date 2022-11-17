@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>여기는 장바구니 페이지입니다</h1>
+  <div th:text="${account.id}"></div>
+  <br>
+
+  <li th:each="game,i : ${games}" >
+      <div>
+          <img th:src="@{${game.main_img_path}}">
+          <img th:src="@{${game.sub_img_path}}">
+          <div class="info">
+              <div>
+                  <p th:text="${game.name}">NONE</p>
+                  <br>
+                  <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
+              </div>
+              <p class="price"th:text="${game.price}">NONE</p>
+          </div>
+      </div>
+  </li>
+
+</body>
+</html>

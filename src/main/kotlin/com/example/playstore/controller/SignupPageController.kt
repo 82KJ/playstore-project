@@ -46,7 +46,7 @@ class SignupPageController {
         @RequestParam("password") password: String,
         model: Model
     ): String {
-        var account = Account(id = id, password = password, is_admin = 0, birthDate = birthDate, basket = null, myGame = null)
+        var account = Account(id = id, password = password, is_admin = 0, birthDate = birthDate, gameMoney = 0)
         accountService.saveAccount(account)
 
         model.addAttribute("id", id)

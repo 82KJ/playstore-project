@@ -23,18 +23,20 @@
     </div>
     <ul>
 
-        <li th:each="game,i : ${games}" ><div>
-            <img th:src="@{${game.main_img_path}}">
-            <img th:src="@{${game.sub_img_path}}">
-            <div class="info">
-                <div>
-                    <p th:text="${game.name}">NONE</p>
-                    <br>
-                    <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
+        <li th:each="game,i : ${games}" >
+            <div>
+                <img th:src="@{${game.main_img_path}}">
+                <img th:src="@{${game.sub_img_path}}">
+                <div class="info">
+                    <div>
+                        <p th:text="${game.name}">NONE</p>
+                        <br>
+                        <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
+                    </div>
+                    <p class="price"th:text="${game.price}">NONE</p>
                 </div>
-                <p class="price"th:text="${game.price}">NONE</p>
             </div>
-        </div></a></li>
+        </li>
     </ul>
 </div>
 </body>

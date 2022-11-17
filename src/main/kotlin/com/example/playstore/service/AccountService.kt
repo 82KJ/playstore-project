@@ -18,11 +18,20 @@ class AccountService {
     fun findAccount(id:String):Account?{
         var gamesInBasket = accountMapper.findGameInBasket(id)
         var myGames = accountMapper.findMyGame(id)
-        var account = accountMapper.findAccount(id)
-        account?.basket = gamesInBasket
-        account?.myGame = myGames
+        var coreInfo = accountMapper.findAccount(id)
+        var account:Account?
 
-        return account
+        if (coreInfo != null){
+            account = Account(id=coreInfo.id, password=coreInfo.password, is_admin=coreInfo.is_admin, gameMoney=coreInfo.gameMoney, birthDate = coreInfo.birthDate)
+            account.basket = gamesInBasket
+            account.myGame = myGames
+
+            return account
+        }
+        else{
+            return null
+        }
+
     }
 
     fun saveBasket(account_id:String, gameId:Int): MutableList<Int>? {
