@@ -30,6 +30,7 @@
   </div>
   <hr style="border:1px color= silver;" width="90%">
   <ul>
+    <li th:if="${games.size} == 0" style="font-weight: bold; font-size: 2vw;">검색 결과가 없습니다😂</li>
     <li th:each="game,i : ${games}" ><a th:href='@{/admin/game/{gameId}(gameId=${game.id})}'><div>
       <img th:src="@{${game.main_img_path}}">
       <div class="info">
