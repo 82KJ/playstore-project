@@ -2,24 +2,53 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/gameInfoStyle.css}" rel="stylesheet" href="/css/gameInfoStyle.css">
     <title>Title</title>
 </head>
 <body>
-    여기는 게임 상세 페이지입니다
+    <div class="layout">
+        <div class="layout_main_img">
+            <img th:src="@{${game.main_img_path}}">
+        </div>
 
-    <br>
-    <img th:src="@{${game.main_img_path}}">
-    <img th:src="@{${game.sub_img_path}}">
-    <div th:text="${game.name}"></div>
-    <div th:text="${game.description}"></div>
-    <div th:text="${game.price}"></div>
-    <div th:text="${game.limit_age}"></div>
-    <br>
+        <div class="layout_content">
+            <div class="layout_top">
+                <div class="name">
+                    <span th:text="${game.name}"></span>
+                </div>
+                <div class="undo">
+                    <a href="/user"><button>돌아가기</button></a>
+                </div>
+            </div>
 
-<!--    isInBasket이 false라면 버튼이 보이고, true라면 버튼이 안보이고 '장바구니에 담겨 있다'라는 문구 출력하도록 설계하기-->
-    <form th:action="@{/user/push-basket/{gameId}(gameId=${game.id})}" method="post">
-        <input type="submit" name="basket">
-    </form>
+            <div class="layout_mid">
+                <div class="sub_img">
+                    <img th:src="@{${game.sub_img_path}}">
+                </div>
+            </div>
 
+            <div class="layout_bottom">
+                <div>
+                    <div class="price">
+                        <span>\  </span>
+                        <span th:text="${game.price}"></span>
+                    </div>
+                    <div class="limit_age">
+                        <span>만 </span>
+                        <span th:text="${game.limit_age}"></span>
+                        <span>세 제한</span>
+                    </div>
+                </div>
+                <!--    isInBasket이 false라면 버튼이 보이고, true라면 버튼이 안보이고 '장바구니에 담겨 있다'라는 문구 출력하도록 설계하기-->
+                <form th:action="@{/user/push-basket/{gameId}(gameId=${game.id})}" method="post">
+                    <div class="Button"><button type="submit">장바구니</button></div>
+                </form>
+            </div>
+            <div class="description">
+                <p th:text="${game.description}"></p>
+            </div>
+        </div>
+        </div>
+    </div>
 </body>
 </html>
