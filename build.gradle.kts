@@ -24,6 +24,7 @@ dependencies {
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
 	runtimeOnly("com.mysql:mysql-connector-j")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.withType<KotlinCompile> {

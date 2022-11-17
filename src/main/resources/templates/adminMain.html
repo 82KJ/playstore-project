@@ -10,7 +10,7 @@
 <body>
 <div class="menuBox">
 
-<!--  만약 search를 통해 넘어온 games가 비어있다면, " 검색 결과가 없습니다"라고 문구 띄우도록 수정해줘-->
+  <!--  만약 search를 통해 넘어온 games가 비어있다면, " 검색 결과가 없습니다"라고 문구 띄우도록 수정해줘-->
   <form class="menuBox_top" action="/admin" method="get">
     <img th:src="@{/img/logo.png}" src="img/logo.png">
     <div>
@@ -25,9 +25,10 @@
 </div>
 <div class="gameBox" >
   <div class="gameBox_top">
-    <a th:href="@{/admin/add}"><img th:src="@{/img/add_icon.png}" src="img/add_icon.png"></a>
-    <a href="/"><img th:src="@{/img/logout_dark_icon.png}" src="img/logout_dark_icon.png"></a>
+    <a href="/user/basket">🎮 게임추가</a>
+    <a href="/">❌ 로그아웃</a>
   </div>
+  <hr style="border:1px color= silver;" width="90%">
   <ul>
     <li th:each="game,i : ${games}" ><a th:href='@{/admin/game/{gameId}(gameId=${game.id})}'><div>
       <img th:src="@{${game.main_img_path}}">

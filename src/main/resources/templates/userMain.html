@@ -2,33 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/css/userMainStyle.css}" rel="stylesheet" href="/css/userMainStyle.css">
+    <link th:href="@{/css/userMainStyle.css}" rel="stylesheet" href="css/userMainStyle.css">
     <title>Title</title>
 </head>
 <body>
 <div class="menuBox">
 
-<!--  만약 search를 통해 넘어온 games가 비어있다면, " 검색 결과가 없습니다"라고 문구 띄우도록 수정해줘-->
+    <!--  만약 search를 통해 넘어온 games가 비어있다면, " 검색 결과가 없습니다"라고 문구 띄우도록 수정해줘-->
 
     <form class="menuBox_top" action="/user" method="get">
-        <img th:src="@{/img/logo.png}" src="/img/logo.png">
+        <img th:src="@{/img/logo.png}" src="img/logo.png">
         <div>
             <input class="searchBar" name="search" type="text" placeholder="Search game">
             <input class="submit" type="submit">
         </div>
     </form>
     <div class="menuBox_bottom">
-        <a href="/user/mypage"><img th:src="@{/img/mypage_icon.png}" src="/img/mypage_icon.png"></a>
+        <a href="/user/mypage"><img th:src="@{/img/mypage_icon.png}" src="img/mypage_icon.png"></a>
         <p th:text="'게임머니: ' + ${id} + '원'">게임 머니: 999,999원</p>
     </div>
 </div>
 <div class="gameBox">
     <div class="gameBox_top">
-        <a href="/user/basket"><img th:src="@{/img/backet_icon.png}" src="/img/backet_icon.png"></a>
-        <a href="/"><img th:src="@{/img/logout_icon.png}" src="/img/logout_icon.png.png"></a>
+        <a href="/user/basket">🛒 장바구니</a>
+        <a href="/">❌ 로그아웃</a>
     </div>
+    <hr style="border:1px color= silver;" width="90%">
     <ul>
-
         <li th:each="game,i : ${games}" ><a th:href='@{/user/game/{gameId}(gameId=${game.id})}'><div>
             <img th:src="@{${game.main_img_path}}">
             <div class="info">

@@ -7,6 +7,7 @@
     --gameBox-width: 70vw;
     --gameBox-height: 100vh;
 
+    --grar-color: #848484;
     --red-color: #F95E62;
 }
 
@@ -17,7 +18,7 @@
 }
 
 input{
-    font-family: Typo_SsangmunDongB;
+    font-weight: bold;
 }
 
 
@@ -63,7 +64,7 @@ body{
 .menuBox > .menuBox_top > div > .submit{
     width: 5.78vw;
     font-size: 1.1vw;
-    color: dimgray;
+    color: var(--grar-color);;
 }
 
 .menuBox > .menuBox_top > div > .searchBar:hover{
@@ -109,16 +110,21 @@ body{
     display: flex;
     justify-content: flex-end;
     padding-right: 4vw;
-    padding-top: 0.468vh;
+    padding-top: 5vh;
 }
 
-.gameBox .gameBox_top > a > img{
-    width: 3.75vw;
+
+.gameBox .gameBox_top > a {
+    font-size: 1.25vw;
+    color: var(--grar-color);
+    padding-left: 1vw;
+    font-family: Typo_SsangmunDongB;
 }
 
-.gameBox .gameBox_top > a > img:hover{
+.gameBox .gameBox_top > a:hover{
     opacity: 0.7;
 }
+
 
 
 .gameBox > ul{
