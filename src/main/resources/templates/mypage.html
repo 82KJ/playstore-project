@@ -23,8 +23,9 @@
     </div>
     <ul>
 
-        <li th:each="game,i : ${games}" ><a th:href=''><div>
+        <li th:each="game,i : ${games}" ><div>
             <img th:src="@{${game.main_img_path}}">
+            <img th:src="@{${game.sub_img_path}}">
             <div class="info">
                 <div>
                     <p th:text="${game.name}">NONE</p>

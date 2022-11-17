@@ -79,16 +79,4 @@ class UserPageController {
         return "redirect:/user/game/${gameId}"
     }
 
-    @GetMapping("/mypage")
-    fun showMyPage():String{
-        return "mypage.html"
-    }
-
-    @GetMapping("/backet")
-    fun showbacket():String{
-        return "backet.html"
-    }
-
-
-
 }

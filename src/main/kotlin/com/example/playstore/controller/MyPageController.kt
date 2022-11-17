@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession
 
 
 @Controller
-@RequestMapping("/mypage")
+@RequestMapping("/user/mypage")
 class MyPageController {
 
     @Autowired
@@ -29,14 +29,13 @@ class MyPageController {
     fun showMyPage(request:HttpServletRequest, model:Model): String {
         var session: HttpSession = request.session
         var account:Account = session.getAttribute("ss_account") as Account
-        println(account)
+        var myGames:MutableList<Game> = mutableListOf()
 
-        var games:List<Game>
+        account.myGame?.forEach {
+            myGames.add(gameService.findGame(it.first))
+        }
 
-
-        games = listOf(gameService.findGame(9))
-        model.addAttribute("games", games)
-
+        model.addAttribute("games", myGames)
 
         return "mypage.html"
     }
