@@ -4,6 +4,7 @@ import com.example.playstore.mapper.AccountMapper
 import com.example.playstore.model.Account
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class AccountService {
@@ -34,10 +35,30 @@ class AccountService {
 
     }
 
-    fun saveBasket(account_id:String, gameId:Int): MutableList<Int>? {
-        accountMapper.saveBasket(account_id, gameId)
-        var games = accountMapper.findGameInBasket(account_id)
+    fun saveBasket(accountId:String, gameId:Int): MutableList<Int>? {
+        accountMapper.saveBasket(accountId, gameId)
+        var games = accountMapper.findGameInBasket(accountId)
 
         return games
     }
+
+    fun deleteGameInBasket(accountId: String, gameIdList:List<String>):MutableList<Int>? {
+        gameIdList.forEach {
+            accountMapper.deleteGameInBasket(accountId, it.toInt())
+        }
+        var games = accountMapper.findGameInBasket(accountId)
+
+        return games
+    }
+
+    fun saveGameList(accountId:String, gameIdList:List<String>): MutableList<Pair<Int, LocalDateTime?>>?{
+        gameIdList.forEach {
+            accountMapper.saveGameList(accountId, it.toInt())
+        }
+
+        var myGamelist = accountMapper.findMyGame(accountId)
+
+        return myGamelist
+    }
+
 }

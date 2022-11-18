@@ -2,6 +2,7 @@ package com.example.playstore.mapper
 
 import com.example.playstore.model.Account
 import com.example.playstore.model.AccountCoreInfo
+import org.apache.ibatis.annotations.Delete
 import org.apache.ibatis.annotations.Insert
 import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Param
@@ -23,6 +24,13 @@ interface AccountMapper {
     @Select("SELECT game_id FROM basket WHERE account_id=#{account_id}")
     fun findGameInBasket(@Param("account_id") account_id:String): MutableList<Int>?
 
-    @Select("SELECT game_id, playtime FROM account_and_game WHERE account_id=#{account_id}")
-    fun findMyGame(@Param("account_id") account_id: String): MutableList<Pair<Int, LocalDateTime?>>?
+    @Delete("DELETE FROM basket WHERE account_id=#{accountId} and game_id=#{gameId}")
+    fun deleteGameInBasket(@Param("accountId") accountId: String, @Param("gameId") gameId: Int)
+
+    @Select("SELECT game_id, playtime FROM account_and_game WHERE account_id=#{accountId}")
+    fun findMyGame(@Param("accountId") accountId: String): MutableList<Pair<Int, LocalDateTime?>>?
+
+    @Insert("INSERT INTO account_and_game(account_id, game_id) VALUES(#{accountId}, #{gameId})")
+    fun saveGameList(@Param("accountId") accountId:String, @Param("gameId") gameId:Int)
+
 }

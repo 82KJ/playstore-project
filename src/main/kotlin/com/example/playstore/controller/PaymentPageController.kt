@@ -2,6 +2,7 @@ package com.example.playstore.controller
 
 import com.example.playstore.model.Account
 import com.example.playstore.model.Game
+import com.example.playstore.service.AccountService
 import com.example.playstore.service.GameService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -19,9 +20,11 @@ class PaymentPageController {
 
     @Autowired
     lateinit var gameService: GameService
+    @Autowired
+    lateinit var accountService: AccountService
 
     @PostMapping("")
-    fun showPaymentPage(@RequestParam("checkedGame") gameIdList:List<String> ,request: HttpServletRequest,model: Model): String {
+    fun showPaymentPage(@RequestParam("checkedGame") gameIdList:List<String>, request: HttpServletRequest,model: Model): String {
         var session: HttpSession = request.session
         var account: Account = session.getAttribute("ss_account") as Account
 
@@ -42,10 +45,14 @@ class PaymentPageController {
     }
 
     @PostMapping("/complete")
-    fun showPaymentCompletePage(@RequestParam("gameIdList") gameIdList:List<String>, model: Model): String {
+    fun showPaymentCompletePage(@RequestParam("gameIdList") gameIdList:List<String>, request: HttpServletRequest, model: Model): String {
 
-        // 1. account - game table insert 구현하기
+        var session: HttpSession = request.session
+        var account: Account = session.getAttribute("ss_account") as Account
 
+        // 1. account - game table insert 구현하기 + basket table 에서는 제거
+        account.myGame = accountService.saveGameList(account.id, gameIdList)
+        account.basket = accountService.deleteGameInBasket(account.id, gameIdList)
 
         // 2.
         var gameList:MutableList<Game> = mutableListOf()
