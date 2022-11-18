@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>여기는 게임 구매 페이지 입니다</h1>
+
+  <li th:each="game,i : ${games}" ><div>
+      <img th:src="@{${game.main_img_path}}">
+      <div class="info">
+          <div>
+              <p th:text="${game.name}">NONE</p>
+              <br>
+              <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
+          </div>
+          <p class="price"th:text="${game.price}">NONE</p>
+      </div>
+  </div></li>
+
+  <div th:text="'구매 금액: '+ ${totalPaymentCost}"></div>
+    <div th:text="'현재잔액: '+ ${account.gameMoney}"></div>
+  <div th:text="'구매 후 잔액: '+ ${remainingCost}"></div>
+
+
+
+<!--    게임 구매 버튼 ( /user/payment/complete )만들고 누르면, 게임을 구매하시겠습니까? 하고 경고창 뜨고 확인 누르면,-->
+<!--    구매가 완료되었습니다!하고 전면에 뜨면서 mypage로 이동 // 메인 페이지로 이동 두개 버튼 만들기 ㅇㅇ-->
+
+  <form action="/user/payment/complete" method="post">
+      <div th:each="game:${games}">
+          <input type="hidden" name="gameIdList" th:value="${game.id}"/>
+      </div>
+      <input type="submit"/>
+  </form>
+
+</body>
+</html>

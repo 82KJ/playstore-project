@@ -51,14 +51,14 @@ class UserPageController {
         // 있다면, true 전달 --> 장바구니 추가 버튼 안보이기
         // 없다면, false 전달 --> 장바구니 추가 버튼 보이기
         if (account.basket?.contains(gameId) == true){
-            print("장바구니에 존재")
+            //print("장바구니에 존재")
             model.addAttribute("isInBasket", true)
-            print(account)
+            //print(account)
         }
         else{
-            print("장바구니에 없습니다")
+            //print("장바구니에 없습니다")
             model.addAttribute("isInBasket", false)
-            print(account)
+            //print(account)
         }
 
         model.addAttribute("game", game)

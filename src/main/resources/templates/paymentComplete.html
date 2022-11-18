@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1> 구매 완료 페이지</h1>
+  <button>메인 페이지 이동</button>
+  <button>마이 페이지 이동</button>
+
+  <br><br>
+  다음의 게임을 구매했습니다!
+  <li th:each="game,i : ${games}" >
+      <div>
+          <img th:src="@{${game.main_img_path}}">
+          <div class="info">
+              <div>
+                  <p th:text="${game.name}">NONE</p>
+              </div>
+              <p class="price"th:text="${game.price}">NONE</p>
+          </div>
+      </div>
+  </li>
+
+</body>
+</html>

@@ -9,20 +9,23 @@
   <div th:text="${account.id}"></div>
   <br>
 
-  <li th:each="game,i : ${games}" >
-      <div>
-          <img th:src="@{${game.main_img_path}}">
-          <img th:src="@{${game.sub_img_path}}">
-          <div class="info">
-              <div>
-                  <p th:text="${game.name}">NONE</p>
-                  <br>
-                  <p th:text="'연령나이: '+ ${game.limit_age}">NONE</p>
-              </div>
-              <p class="price"th:text="${game.price}">NONE</p>
-          </div>
-      </div>
-  </li>
+<!--체크 박스로 구성된 각 게임 상품에 대해서, 선택된 게임 상품의 아이디에 대해서 리스트를 구성해서 /user/payment 으로 전달해주기-->
+<!--  input의 name만 같으면, 선택된 값을 자동으로 리스트로 보내준다고 함-->
 
+  <form action="/user/payment" method="post">
+      <li th:each="game,i : ${games}" >
+          <input type="checkbox" name="checkedGame" th:value="${game.id}"/>
+          <div>
+              <img th:src="@{${game.main_img_path}}">
+              <div class="info">
+                  <div>
+                      <p th:text="${game.name}">NONE</p>
+                  </div>
+                  <p class="price"th:text="${game.price}">NONE</p>
+              </div>
+          </div>
+      </li>
+      <input type="submit"/>
+  </form>
 </body>
 </html>

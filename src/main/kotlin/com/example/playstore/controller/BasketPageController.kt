@@ -29,7 +29,7 @@ class BasketPageController {
             myBasketGames.add(gameService.findGame(it))
         }
 
-        print(myBasketGames)
+        //print(myBasketGames)
 
         model.addAttribute("games", myBasketGames)
         model.addAttribute("account", account)
