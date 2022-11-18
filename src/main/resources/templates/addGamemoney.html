@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/addGamemoneyStyle.css">
+  <title>Title</title>
+</head>
+<body>
+<div class="logo_box">
+  <a href="../"><h2><</h2></a>
+  <h2>+충전</h2>
+  <div><h2> </h2></div>
+</div>
+
+<div class="layout">
+  <form action="/user/" method="post">
+    <div class="layout_content_box_1">
+      <h3>1. 게임 머니 금액</h3>
+      <div class="moneyChoice_box">
+        <div class="moneyChoice">
+          <input type="radio" id="addMoneyChoice1" name="addMoney" value="1000" checked>
+          <label for="addMoneyChoice1">1,000원</label>
+        </div>
+        <div class="moneyChoice">
+          <input type="radio" id="addMoneyChoice2" name="addMoney" value="5000">
+          <label for="addMoneyChoice2">5,000원</label>
+        </div>
+        <div class="moneyChoice">
+          <input type="radio" id="addMoneyChoice3" name="addMoney" value="10000">
+          <label for="addMoneyChoice3">10,000원</label>
+        </div>
+        <div class="moneyChoice">
+          <input type="radio" id="addMoneyChoice4" name="addMoney" value="50000">
+          <label for="addMoneyChoice4">50,000원</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout_content_box_2">
+      <h3>2. 결제 수단</h3>
+      <div class="payment_box">
+
+        <div class="payment_box_input_box">
+          <div class="payment_box_input_1">
+            <label>*결제 수단 선택</label>
+            <select name="paymentMeans">
+              <option value="card">신용/체크카드</option>
+            </select>
+          </div>
+          <div class="payment_box_input_2">
+            <label>*카드 번호 입력</label>
+            <div class="cardnum">
+              <input name="cardnum1" type="text" maxlength="4" required>
+              <input name="cardnum2" type="password" maxlength="4" required>
+              <input name="cardnum3" type="text" maxlength="4" required>
+              <input name="cardnum4" type="password" maxlength="4" required>
+            </div>
+          </div>
+          <div class="payment_box_input_3">
+            <label>*만료일(월/년)</label>
+            <div class="expireDate">
+              <select name="expireMonth">
+                <div th:each="month : ${#numbers.sequence(1,12)}">
+                  <option th:text="${month}" th:value="${month}"></option>
+                </div>
+              </select>
+              <!--만료 년도는 백에서 리스트를 받아서 하는것으로 나중에 수정-->
+              <select name="expireYear">
+                <div th:each="year : ${#numbers.sequence(2022,2041)}">
+                  <option th:text="${year}" th:value="${year}"></option>
+                </div>
+              </select>
+            </div>
+          </div>
+          <div class="payment_box_input_4">
+            <label>*보안코드(CVC)</label>
+            <input name="cvc" type="text" maxlength="3" required>
+          </div>
+        </div>
+
+        <div class="card_imgs">
+          <img th:src="@{/img/cards.png}" src="/img/cards.png">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="layout_content_box_3">
+      <button type="submit">주문 제출</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
