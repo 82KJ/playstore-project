@@ -6,41 +6,47 @@
     <title>관리자 - 게임 추가</title>
 </head>
 <body>
-<div class="imgBox">
-    <div>
-        <img th:src="@{/img/logo.png}" src="/img/logo.png">
+    <div class="layout">
+        <div class="undo">
+            <a href="/admin"><button>취소</button></a>
+        </div>
+        <form action="/admin/add-game" method="post" enctype="multipart/form-data">
+            <div class="layout_main_img_input">
+                <div class="img_label">
+                    <label for="main_img_upload"><img th:src="@{/img/edit_icon.png}" src="img/edit_icon.png"></label>
+                    <input type="file" name="main_img" id="main_img_upload">
+                </div>
+            </div>
+
+            <div class="layout_content">
+                <div class="layout_top">
+                    <div class="name_input">
+                        <input class="nameInput" name="name" type="text" placeholder="game name" required>
+                    </div>
+                    <div class="saveButton">
+                        <button type="submit">저장</button>
+                    </div>
+                </div>
+
+                <div class="layout_mid">
+                    <div class="sub_img_input">
+                        <div class="img_label">
+                            <label for="sub_img_upload"><img th:src="@{/img/edit_icon.png}" src="img/edit_icon.png"></label>
+                            <input type="file" name="sub_img" id="sub_img_upload">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layout_bottom">
+                    <div>
+                        <input name="price" type="text" placeholder="game price" required>
+                        <input name="limit_age" type="text" placeholder="limit age" required>
+                    </div>
+                    <div class="fakeButton"><button disabled>장바구니</button></div>
+                </div>
+                    <textarea name="description" placeholder="detail" required></textarea>
+            </div>
+        </form>
     </div>
-</div>
-<div class="layout">
-    <form action="/admin/add-game" method="post" enctype="multipart/form-data">
-        <div class="layout_top">
-            <input class="nameInput" name="name" type="text"placeholder="game name">
-            <div class="buttonBox">
-                <button type="submit">저장</button>
-            </div>
-        </div>
-        <div class="layout_img">
-            <input type="file" name="main_img">
-            <img src="img/game_img.png">
-        </div>
-
-<!-- 두번째 이미지 추가 설계 해줘-->
-        <div class="layout_img2">
-            두번째 이미지 영역!
-            <input type="file" name="sub_img">
-            <img src="img/game_img.png">
-        </div>
-<!---------------------------->
-
-        <div class="layout_bottom">
-            <div>
-                <input name="price" type="text" placeholder="game price">
-                <input name="limit_age" type="text" placeholder="limit age">
-            </div>
-            <div class="layout_bottom_fakeButon">장바구니</div>
-        </div>
-        <textarea name="description" ></textarea>
-    </form>
-</div>
 </body>
 </html>
