@@ -2,26 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/paymentCompleteStyle.css}" rel="stylesheet" href="/css/paymentCompleteStyle.css">
     <title>Title</title>
 </head>
 <body>
-  <h1> 구매 완료 페이지</h1>
-  <button>메인 페이지 이동</button>
-  <button>마이 페이지 이동</button>
 
-  <br><br>
-  다음의 게임을 구매했습니다!
-  <li th:each="game,i : ${games}" >
-      <div>
-          <img th:src="@{${game.main_img_path}}">
-          <div class="info">
-              <div>
-                  <p th:text="${game.name}">NONE</p>
-              </div>
-              <p class="price"th:text="${game.price}">NONE</p>
-          </div>
-      </div>
-  </li>
+<div class="logo_box">
+    <div></div>
+    <h2>구매 완료</h2>
+    <div></div>
+</div>
+
+<div class="layout">
+
+    <div class="layout_content_box_1">
+        <h3>구매가 정상적으로 완료되었습니다!</h3>
+
+        <div class="gameList">
+            <ul>
+                <li class="item" th:each="game,i : ${games}" >
+                    <p th:text="${game.name}">NONE</p>
+                    <!--백에서 최종 결제 금액 받아오기-->
+                    <p class="price" th:text="${totalPaymentCost} + '원'">NONE</p>
+                </li>
+                <li class="totalPrice">
+                    <p>구매 금액</p>
+                    <p class="price">NONE</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="button_box">
+            <a href="/user"><button class="button_1">쇼핑 계속하기</button></a>
+            <a href="/user/mypage"><button class="button_2">구매내역 확인</button></a>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
