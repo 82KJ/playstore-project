@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/accessFailStyle.css}" rel="stylesheet" href="/css/accessFailStyle.css">
     <title>Title</title>
 </head>
 <body>
-    <h1>권한이 없습니다</h1>
+
+<div class="logo_box">
+    <div></div>
+    <h2>Error!</h2>
+    <div></div>
+</div>
+
+<div class="layout">
+    <div class="layout_content_box_1">
+        <h3>비정상적인 접근입니다.</h3>
+
+        <div class="button_box">
+            <a href="../"><button class="button_1">이전으로 돌아가기</button></a>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
