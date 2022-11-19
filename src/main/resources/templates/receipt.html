@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>🧾 영수증</title>
+    <link  th:href="@{/css/receiptStyle.css}"  rel="stylesheet" href="css/receiptStyle.css">
+</head>
+<body>
+    <nav>
+        <a href="/user/mypage"><img th:src="@{/img/chevron_left_icon.png}" src="img/chevron_left_icon.png" alt=""></a>
+        <p>🧾 영수증</p>
+    </nav>
+    <div class="contents">
+        <p>구매 내역</p>
+        <ul>
+            <li th:if="${games.size} == 0" style="font-weight: bold; font-size: 2vw;">구입한 게임이 없습니다😂</li>
+            <li th:each="game,i : ${games}" >
+                <div>
+                    <div class="leftBox">
+                        <img th:src="@{${game.main_img_path}}" src="img/game_img.png">
+                        <div class="info">
+                            <p th:text="${game.name}">NONE</p>
+                            <p class="price"th:text="${game.price}">NONE</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

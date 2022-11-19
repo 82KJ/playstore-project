@@ -37,6 +37,8 @@ class UserPageController {
             model.addAttribute("games", games)
         }
 
+        model.addAttribute("gameMoney", account.gameMoney)
+
         return "userMain.html"
     }
 

@@ -1,6 +1,4 @@
 package com.example.playstore.controller
-
-
 import com.example.playstore.model.Account
 import com.example.playstore.model.Game
 import com.example.playstore.service.AccountService
@@ -17,8 +15,8 @@ import javax.servlet.http.HttpSession
 
 
 @Controller
-@RequestMapping("/user/mypage")
-class MyPageController {
+@RequestMapping("/user/mypage/receipt")
+class ReceiptController {
 
     @Autowired
     lateinit var gameService: GameService
@@ -36,8 +34,8 @@ class MyPageController {
         }
 
         model.addAttribute("games", myGames)
-        model.addAttribute("gameMoney", account.gameMoney)
-        return "mypage.html"
+
+        return "receipt.html"
     }
 
 }

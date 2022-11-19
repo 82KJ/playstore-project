@@ -16,12 +16,12 @@
     </form>
     <div class="menuBox_bottom">
         <a href="/user"><img th:src="@{/img/mainPage_icon.png}" src="img/mainPage_icon.png"></a>
-        <p th:text="'게임머니: ' + ${id} + '원'">게임 머니: 999,999원</p>
+        <p th:text="'게임머니: ' + ${gameMoney} + '원'">게임 머니: 999,999원</p>
     </div>
 </div>
 <div class="gameBox">
     <div class="gameBox_top">
-        <a href="/">🧾 영수증</a>
+        <a href="/user/mypage/receipt">🧾 영수증</a>
         <a href="/">🔏 패스워드 수정</a>
         <a href="/">🔋 충전</a>
         <a href="/">💲 환불</a>
