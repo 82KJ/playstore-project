@@ -1,0 +1,204 @@
+@import 'reset.css';
+
+@font-face{
+    font-family: "Typo_SsangmunDongB";
+    src:url("Typo_SsangmunDongB.ttf")format("truetype");
+}
+
+:root{
+    --logo_box_width: 100vw;
+    --logo_box_height: 8vh;
+    --logo_box_background_color: #3B8BF8 0% 0% no-repeat padding-box;
+    --logo_box_padding_width: 2vw;
+
+    --layout_background_color: #F3F3F3 0% 0% no-repeat padding-box;
+    --layout_width: 100vw;
+
+    --content_width: 60vw;
+    --content_margin_height: 5vh;
+    --content_padding_height: 4vh;
+    --content_padding_width: 2vw;
+
+    --input_box_margin_height: 3.5vh;
+
+    --input_margin_height: 0.6vh;
+    --input_margin_width: 1vw;
+
+    --input_height: 5.5vh;
+    --input_inside_padding: .8em;
+    --input_background_color: #FFFFFF 0% 0% no-repeat padding-box;
+    --input_opacity: 0.5;
+
+    --input_radio_width: 1vw;
+    --input_radio_height: 1vh;
+
+    --button_height: 5.5vh;
+    --button_width: calc(var(--content_width) - var(--content_padding_width));
+    --button_background_blue_color: #4D98FD 0% 0% no-repeat padding-box;
+
+    --box_shadow: 0px 5px 10px #00000029;
+    --border: 1px solid #707070;
+    --border_radius: 16px;
+    --hover_opacity: 0.7;
+
+    --h2_font_size: 1.8rem;
+    --h2_font_color: white;
+
+    --h3_font_size: 1.4rem;
+
+    --label_font_size: 0.8rem;
+    --label_font_color: #909090;
+}
+
+h2{
+    color: var(--h2_font_color);
+    font-size: var(--h2_font_size);
+}
+
+h3{
+    font-size: var(--h3_font_size);
+}
+
+label{
+    font-size: var(--label_font_size);
+    color: var(--label_font_color);
+}
+
+input[type="text"]{
+    width: calc(var(--content_width) / 1.5);
+    height: var(--input_height);
+
+    background: var(--input_background_color);
+
+    box-shadow: var(--box_shadow);
+    border-radius: var(--border_radius);
+    border: var(--border);
+
+    opacity: var(--input_opacity);
+
+    margin-top: var(--input_margin_height);
+    margin-right: var(--input_margin_width);
+    padding-left: var(--input_inside_padding);
+}
+
+ select{
+     width: calc(var(--content_width) / 1.5 + 1vw);
+     height: var(--input_height);
+
+     background: var(--input_background_color);
+
+     box-shadow: var(--box_shadow);
+     border-radius: var(--border_radius);
+     border: var(--border);
+
+     opacity: var(--input_opacity);
+
+     margin-top: var(--input_margin_height);
+     margin-right: var(--input_margin_width);
+     padding-left: var(--input_inside_padding);
+ }
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family:Typo_SsangmunDongB;
+    background: var(--layout_background_color);
+}
+
+.logo_box{
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: var(--logo_box_width);
+    height: var(--logo_box_height);
+
+    background: var(--logo_box_background_color);
+
+    padding-left: var(--logo_box_padding_width);
+    padding-right: var(--logo_box_padding_width);
+}
+
+.logo_box > h2{
+    position: relative;
+
+    right: calc(var(--logo_box_padding_width) + 2vw);
+}
+
+.layout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--layout_width);
+
+    margin-bottom: var(--content_margin_height);
+}
+
+.layout > form > .layout_content_box_1, .layout_content_box_2, .layout_content_box_3, .layout_content_box_4 {
+    width: var(--content_width);
+
+    margin-top: var(--content_margin_height);
+    margin-bottom: var(--content_margin_height);
+
+    padding-top: var(--content_padding_height);
+    padding-bottom: var(--content_padding_height);
+    padding-left: var(--content_padding_width);
+    padding-right: var(--content_padding_width);
+
+    background: white;
+}
+
+.layout > form > .layout_content_box_1 > .balance {
+    display: flex;
+    flex-direction: row;
+
+    width: calc(var(--content_width) / 1.5);
+
+    justify-content: space-between;
+    margin-top: var(--input_box_margin_height);
+}
+
+
+.layout > form > .layout_content_box_2 > .refund_money_input {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: var(--input_box_margin_height);
+}
+
+.layout > form > .layout_content_box_3 > .bank_account_input_1, .bank_account_input_2{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: var(--input_box_margin_height);
+}
+
+.layout > form > .layout_content_box_4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.layout > form > .layout_content_box_4 > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: var(--button_width);
+    height: var(--button_height);
+
+    color: white;
+    background: var(--button_background_blue_color);
+
+    font-size: large;
+    font-weight: bold;
+}
+
+.layout > form > .layout_content_box_4 > button:hover{
+    opacity: var(--hover_opacity);
+    cursor: pointer;
+}

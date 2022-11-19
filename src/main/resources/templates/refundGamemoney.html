@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/refundGamemoneyStyle.css}" rel="stylesheet" href="/css/refundGamemoneyStyle.css">
+  <title>Title</title>
+</head>
+<body>
+<div class="logo_box">
+  <a href="../"><h2><</h2></a>
+  <h2>-환전</h2>
+  <div><h2> </h2></div>
+</div>
+
+<div class="layout">
+  <form action="/user/" method="post">
+    <div class="layout_content_box_1">
+      <h3>PLAY STORE 계정</h3>
+      <div class="balance">
+        <p>
+          <label>현재 계정 잔고</label>
+        </p>
+        <p>
+          <label th:text="${gameMoney}">9999</label>
+          <label> 원</label>
+        </p>
+      </div>
+    </div>
+    <div class="layout_content_box_2">
+      <h3>1. 환전 금액 입력</h3>
+      <div class="refund_money_input">
+        <label>*환전 금액</label>
+        <input name="refundMoney" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
+      </div>
+      <!--백에서 환전 금액 에러 메세지 출력 -->
+      <div class="refund_result" th:text="${msg}"></div>
+    </div>
+
+    <div class="layout_content_box_3">
+      <h3>2. 환전 계좌 입력</h3>
+      <div class="bank_account_input_1">
+        <label>*은행 선택</label>
+        <select name="paymentMeans">
+          <!--백에서 은행 리스트 받아서 출력하는거로 수정-->
+          <div th:each="month : ${#numbers.sequence(1,3)}">
+            <option value="card">신한은행</option>
+          </div>
+        </select>
+      </div>
+      <div class="bank_account_input_2">
+        <label>*계좌번호</label>
+        <input name="refundMoney" type="text" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" required>
+      </div>
+    </div>
+
+    <div class="layout_content_box_4">
+      <button type="submit">주문 제출</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
