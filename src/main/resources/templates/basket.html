@@ -2,30 +2,63 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>장바구니</title>
+    <link th:href="@{/css/basketStyle.css}" rel="stylesheet" href="css/basketStyle.css">
 </head>
 <body>
-  <h1>여기는 장바구니 페이지입니다</h1>
-  <div th:text="${account.id}"></div>
-  <br>
-
 <!--체크 박스로 구성된 각 게임 상품에 대해서, 선택된 게임 상품의 아이디에 대해서 리스트를 구성해서 /user/payment 으로 전달해주기-->
 <!--  input의 name만 같으면, 선택된 값을 자동으로 리스트로 보내준다고 함-->
+<nav>
+    <a href="/user"><img th:src="@{/img/chevron_left_icon.png}" src="img/chevron_left_icon.png" alt=""></a>
+    <p>🛒장바구니</p>
+</nav>
+<div class="contents">
+    <p>구매할 게임 체크</p>
+    <form class="checkboxs" action="/user/payment" method="post">
+        <ul>
+            <li th:if="${games.size} == 0" style="font-weight: bold; font-size: 2vw;">장비구니가 비워져있습니다😂</li>
+            <li th:each="game,i : ${games}" >
+                <div>
+                    <div class="leftBox">
+                        <img th:src="@{${game.main_img_path}}" src="img/game_img.png">
+                        <div class="info">
+                            <p th:text="${game.name}">NONE</p>
+                            <p class="price"th:text="${game.price} + 원">NONE</p>
+                        </div>
+                    </div>
+                    <!-- 어디로 넘어가는 지 물어봐야 할 듯 -->
+                    <div class="rightBox">
+                        <a href="#"><img th:src="@{/img/cancle_icon.png}" src="img/cancle_icon.png"></a>
+                        <input type="checkbox" name="checkedGame" th:value="${game.id}"/>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="submitBox">
+            <input type="submit" value="구매하기">
+        </div>
+    </form>
+</div>
+<script defer>
+    const submitButton = document.querySelector('.submitBox').querySelector('input');
+    console.log(submitButton);
+    submitButton.addEventListener('click', (e) => {
+        const checkboxes = document.querySelector('.checkboxs');
+        let isCheck = false;
+        for( let i = 0; i < checkboxes.length; i ++){
+            if(checkboxes[i].checked === true){
+                isCheck = true;
+                break;
+            }
+        }
 
-  <form action="/user/payment" method="post">
-      <li th:each="game,i : ${games}" >
-          <input type="checkbox" name="checkedGame" th:value="${game.id}"/>
-          <div>
-              <img th:src="@{${game.main_img_path}}">
-              <div class="info">
-                  <div>
-                      <p th:text="${game.name}">NONE</p>
-                  </div>
-                  <p class="price"th:text="${game.price}">NONE</p>
-              </div>
-          </div>
-      </li>
-      <input type="submit"/>
-  </form>
+        if(isCheck === false){
+            e.preventDefault();
+            alert('구매할 게임을 선택해주세요😅');
+        }
+    })
+
+
+</script>
 </body>
 </html>
