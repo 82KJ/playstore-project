@@ -12,7 +12,7 @@ import java.time.LocalDateTime
 @Mapper
 interface AccountMapper {
 
-    @Insert("INSERT INTO account(id, password, is_admin, birthDate) VALUES(#{account.id}, #{account.password}, #{account.is_admin}, #{account.birthDate})")
+    @Insert("INSERT INTO account(id, password, is_admin, birthDate, gameMoney) VALUES(#{account.id}, #{account.password}, #{account.is_admin}, #{account.birthDate}, #{account.gameMoney})")
     fun insert(@Param("account") account: Account)
 
     @Select("SELECT * FROM account WHERE id=#{id}")

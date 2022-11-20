@@ -49,6 +49,10 @@
             </div>
         </div>
 
+        <div th:each="game:${games}">
+            <input type="hidden" name="gameIdList" th:value="${game.id}"/>
+        </div>
+
         <div class="layout_content_box_3">
             <button type="submit">결제</button>
         </div>
