@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert
 import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Param
 import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.Update
 import java.time.LocalDateTime
 
 @Mapper
@@ -32,5 +33,8 @@ interface AccountMapper {
 
     @Insert("INSERT INTO account_and_game(account_id, game_id) VALUES(#{accountId}, #{gameId})")
     fun saveGameList(@Param("accountId") accountId:String, @Param("gameId") gameId:Int)
+
+    @Update("UPDATE game SET gameMoney = #{totalGameMoney} WHERE id=#{id}")
+    fun modifyGameMoney(@Param("totalGameMoney") totalGameMoney:Int):AccountCoreInfo?
 
 }
