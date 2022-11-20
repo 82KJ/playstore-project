@@ -41,7 +41,8 @@
                 </div>
                 <!--    isInBasket이 false라면 버튼이 보이고, true라면 버튼이 안보이고 '장바구니에 담겨 있다'라는 문구 출력하도록 설계하기-->
                 <form th:action="@{/user/push-basket/{gameId}(gameId=${game.id})}" method="post">
-                    <div class="Button"><button type="submit">장바구니</button></div>
+                    <div th:if="${isInBasket} == false" class="Button"><button type="submit">장바구니</button></div>
+                    <div  th:if="${isInBasket} == true">이미 장바구니에 담겨 있습니다😅</div>
                 </form>
             </div>
             <div class="description">
