@@ -51,6 +51,14 @@ class AccountService {
         return games
     }
 
+    fun deleteGameInBasket(accountId: String, gameId:Int):MutableList<Int>? {
+
+        accountMapper.deleteGameInBasket(accountId, gameId)
+        var games = accountMapper.findGameInBasket(accountId)
+
+        return games
+    }
+
     fun saveGameList(accountId:String, gameIdList:List<String>): MutableList<Pair<Int, LocalDateTime?>>?{
         gameIdList.forEach {
             accountMapper.saveGameList(accountId, it.toInt())

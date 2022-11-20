@@ -28,7 +28,7 @@
                     </div>
                     <!-- 어디로 넘어가는 지 물어봐야 할 듯 -->
                     <div class="rightBox">
-                        <a href="#"><img th:src="@{/img/cancle_icon.png}" src="img/cancle_icon.png"></a>
+                        <a th:href='@{/user/basket/delete/{gameId}(gameId=${game.id})}'><img th:src="@{/img/cancle_icon.png}" src="img/cancle_icon.png"></a>
                         <input type="checkbox" name="checkedGame" th:value="${game.id}"/>
                     </div>
                 </div>
