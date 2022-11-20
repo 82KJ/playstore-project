@@ -35,6 +35,6 @@ interface AccountMapper {
     fun saveGameList(@Param("accountId") accountId:String, @Param("gameId") gameId:Int)
 
     @Update("UPDATE game SET gameMoney = #{totalGameMoney} WHERE id=#{id}")
-    fun modifyGameMoney(@Param("totalGameMoney") totalGameMoney:Int):AccountCoreInfo?
+    fun chargeGameMoney(@Param("totalGameMoney") totalGameMoney:Int):AccountCoreInfo?
 
 }
