@@ -36,6 +36,11 @@ class PaymentPageController {
             totalPaymentCost += game.price
         }
 
+        // 프론트앤드에서 판단하고 경고창 띄우기 --> 게임머니 충전 페이지로 이동하시겠습니까?
+        if (totalPaymentCost > account.gameMoney){
+            return "redirect:/user/mypage/charge"
+        }
+
         model.addAttribute("games", gameList)
         model.addAttribute("account", account)
         model.addAttribute("totalPaymentCost", totalPaymentCost)

@@ -40,4 +40,10 @@ class MyPageController {
         return "mypage.html"
     }
 
+    @GetMapping("/charge")
+    fun showChargePage(request:HttpServletRequest, model:Model): String {
+
+        return "addGamemoney.html"
+    }
+
 }
