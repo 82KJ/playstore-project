@@ -69,4 +69,12 @@ class AccountService {
         return myGamelist
     }
 
+    fun getPlayTime(accountId: String, gameId: Int) {
+        return accountMapper.getPlayTime(accountId, gameId)
+    }
+
+    fun setPlayTime(accountId:String, gameId:Int, playTime:LocalDateTime){
+        accountMapper.setPlayTime(accountId, gameId, playTime)
+    }
+
 }

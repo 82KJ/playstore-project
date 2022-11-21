@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert
 import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Param
 import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.Update
 import java.time.LocalDateTime
 
 @Mapper
@@ -30,7 +31,13 @@ interface AccountMapper {
     @Select("SELECT game_id, playtime FROM account_and_game WHERE account_id=#{accountId}")
     fun findMyGame(@Param("accountId") accountId: String): MutableList<Pair<Int, LocalDateTime?>>?
 
+
     @Insert("INSERT INTO account_and_game(account_id, game_id) VALUES(#{accountId}, #{gameId})")
     fun saveGameList(@Param("accountId") accountId:String, @Param("gameId") gameId:Int)
 
+    @Select("SELECT playtime FROM account_and_game WHERE account_id=#{accountId} and game_id=#{gameId}")
+    fun getPlayTime(@Param("accountId") accountId: String, @Param("gameId") gameId: Int)
+
+    @Update("UPDATE account_and_game SET playtime=#{playTime} WHERE account_id=#{accountId} and game_id=#{gameId}")
+    fun setPlayTime(@Param("accountId") accountId: String, @Param("gameId") gameId: Int, @Param("playTime") playTime: LocalDateTime)
 }
