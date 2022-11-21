@@ -31,7 +31,6 @@ interface AccountMapper {
     @Select("SELECT game_id, playtime FROM account_and_game WHERE account_id=#{accountId}")
     fun findMyGame(@Param("accountId") accountId: String): MutableList<Pair<Int, LocalDateTime?>>?
 
-
     @Insert("INSERT INTO account_and_game(account_id, game_id) VALUES(#{accountId}, #{gameId})")
     fun saveGameList(@Param("accountId") accountId:String, @Param("gameId") gameId:Int)
 

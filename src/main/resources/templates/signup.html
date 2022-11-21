@@ -26,7 +26,7 @@
 
                 <div class = "sign_up_result" th:text="${msg}"></div>
             </div>
-            <input type="submit" value="Submit">
+            <input class="form_input" type="submit" value="Submit">
             <a href="/login">Already have an account?</a>
         </form>
     </div>
@@ -34,6 +34,32 @@
         <img th:src="@{/img/logo.png}" src="/img/logo.png" alt="logo">
     </div>
 </div>
+<script defer>
+    const submitButton = document.querySelector('.form_input');
+    console.log(submitButton);
+    submitButton.addEventListener('click', (e) => {
+        const id_box = document.querySelector('.inputBoxs > .id-box').querySelector('input');
+        const birthDate_box = document.querySelector('.inputBoxs > .birthDate-box').querySelector('input');
+        const password = document.querySelector('.inputBoxs > .password-box').querySelector('input');
+        const pwcheck = document.querySelector('.inputBoxs > .pwcheck-box').querySelector('input');
 
+        if(id_box.value === ""){
+            e.preventDefault();
+            alert('아이디를 입력해주세요😅');
+        }
+        else if(birthDate_box.value === ""){
+            e.preventDefault();
+            alert('생년원일을 입력해주세요😅');
+        }
+        else if(password.value === ""){
+            e.preventDefault();
+            alert('패스워드를 입력해주세요😅');
+        }
+        else if(pwcheck.value === ""){
+            e.preventDefault();
+            alert('패스워드 확인을 입력해주세요😅');
+        }
+    })
+</script>
 </body>
 </html>

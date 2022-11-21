@@ -25,12 +25,8 @@ class SignupPageController {
     lateinit var accountService: AccountService
 
     @GetMapping("")
-    fun showSignUpPage(model:Model, request:HttpServletRequest): String {
-        // 세션 초기화 코드는 회원가입 페이지에서 필요없습니다~ 알아서 지워주세요!
-//        var session: HttpSession = request.session
-//        session.invalidate()
-
-        // 하단 메세지 코드는 id 중복 체크때 msg 띄우는 용도로 활용하면 될수도?
+    fun showSignUpPage(model: Model, request: HttpServletRequest): String {
+        // id 중복 체크 msg
         var msg = model.asMap()["msg"] as String?
         if (msg == null) msg = ""
 
@@ -40,18 +36,43 @@ class SignupPageController {
     }
 
     @PostMapping("/success")
+    fun showSignUpSuccessPage(
+        @RequestParam("id") id: String,
+        model: Model
+    ): String {
+        model.addAttribute("id", id)
+        return "signupSuccess.html"
+    }
+
+    @PostMapping("")
     fun saveUserInfo(
         @RequestParam("id") id: String,
         @RequestParam("birthDate") birthDate: Date,
         @RequestParam("password") password: String,
+        @RequestParam("pwcheck") pwcheck: String,
+        redirectAttributes: RedirectAttributes,
+        request: HttpServletRequest,
         model: Model
     ): String {
         var account = Account(id = id, password = password, is_admin = 0, birthDate = birthDate, gameMoney = 0)
         accountService.saveAccount(account)
 
+        var idcheck = accountService.findAccount(id)
+
         model.addAttribute("id", id)
         model.addAttribute("password", password)
+        model.addAttribute("gameMoney", 0)
 
-        return "signupSuccess.html"
+        return if (idcheck == null && password == pwcheck) {
+            "/success"
+        } else if (idcheck != null) {
+            redirectAttributes.addFlashAttribute("msg", "이미 존재하는 ID입니다")
+            "redirect:/"
+        } else if (password != pwcheck) {
+            redirectAttributes.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다")
+            "redirect:/"
+        } else {
+            "redirect:/"
+        }
     }
 }

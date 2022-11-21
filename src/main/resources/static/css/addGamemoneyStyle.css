@@ -82,7 +82,7 @@ input[type="text"], input[type="password"], select{
 
 input[type="radio"]{
     width: var(--input_radio_width);
-    height: var(--input_radio_height: 1vh;
+    height: var(--input_radio_height);
 }
 
 body{
