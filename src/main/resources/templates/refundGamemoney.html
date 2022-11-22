@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <link th:href="@{/css/refundGamemoneyStyle.css}" rel="stylesheet" href="/css/refundGamemoneyStyle.css">
-  <title>Title</title>
+  <title>💲 환전</title>
 </head>
 <body>
-<div class="logo_box">
-  <a href="/user/mypage/"><h2><</h2></a>
-  <h2>-환전</h2>
-  <div><h2> </h2></div>
-</div>
+<nav>
+  <a href="/user/mypage/"><img th:src="@{/img/chevron_left_icon.png}" src="img/chevron_left_icon.png" alt=""></a>
+  <p>💲 환전</p>
+</nav>
 
 <div class="layout">
   <form action="/user/" method="post">

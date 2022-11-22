@@ -1,0 +1,31 @@
+@font-face{
+    font-family: "Typo_SsangmunDongB";
+    font-weight: normal;
+    src:url("Typo_SsangmunDongB.ttf")format("truetype");
+}
+
+:root{
+    --blue-color: #3B8BF8;
+    --nav-height: 11.85vh;
+    --nav-width: 100vw;
+}
+
+nav{
+    width: 100%;
+    height: var(--nav-height);
+    background-color: var(--blue-color);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav > a{
+    padding-right: 37vw;
+    padding-left: 1vw;
+}
+
+nav > p{
+    color: white;
+    font-family: Typo_SsangmunDongB;
+    font-size: calc(1em + 1vw) ;
+}

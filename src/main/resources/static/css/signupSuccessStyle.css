@@ -1,4 +1,5 @@
 @import 'reset.css';
+@import 'navStyle.css';
 
 @font-face{
     font-family: "Typo_SsangmunDongB";
@@ -6,15 +7,6 @@
 }
 
 :root{
-    --logo_box_width: 100vw;
-    --logo_box_height: 8vh;
-    --logo_box_background_color: #3B8BF8 0% 0% no-repeat padding-box;
-
-    --logo_img_width: 7vw;
-    --logo_img_height: 5vh;
-    --logo_img_padding_width:  1vw;
-    --logo_img_padding_height:  1vh;
-
     --content_width: 100vw;
     --content_height: 70vh;
     --content_padding_height: 5vh;
@@ -29,8 +21,6 @@
 
     --font_size: 1.2rem;
 }
-
-
 
 body{
     width: 100vw;
