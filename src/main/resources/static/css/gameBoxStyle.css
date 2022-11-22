@@ -1,0 +1,56 @@
+/*유저 메인, 관리자 메인 페이지*/
+ul{
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 62vw;
+    padding-left: 3.229vw;
+    margin-top: 6vh;
+}
+
+/* 스크롤바 설정*/
+ul::-webkit-scrollbar{
+    width: 1.66vw;
+}
+
+/* 스크롤바 막대 설정*/
+ul::-webkit-scrollbar-thumb{
+    background-color: #E7E7E7;
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 39px;
+}
+
+ul >li{
+    padding-left: 2.18vw;
+    padding-bottom: 3.7vh;
+}
+
+ul >li > a> div{
+    width: 16vw;
+    height: 59.53vh;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 5px 5px #00000029;
+}
+
+ul >li > a> div:hover{
+    width: 16.5vw;
+    height: 60vh;
+    opacity: 0.7;
+}
+
+ul >li > a> div > img{
+    width: 100%;
+    height: 33.33vh;
+}
+
+ul >li > a > div > .info{
+    height: calc(59.53vh - 33.33vh);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+ul >li > a > div > .info > .price{
+    color: #FF4141;
+}
