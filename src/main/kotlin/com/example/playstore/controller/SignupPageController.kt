@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 import java.sql.Date
+import java.time.LocalDate
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 
@@ -31,6 +32,7 @@ class SignupPageController {
         if (msg == null) msg = ""
 
         model.addAttribute("msg", msg)
+        model.addAttribute("maxDate", LocalDate.now())
 
         return "signup.html"
     }
