@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/css/addGamemoneyStyle.css">
-  <title>Title</title>
+  <title>🔋 충전</title>
 </head>
 <body>
-<div class="logo_box">
-  <a href="../"><h2><</h2></a>
-  <h2>+충전</h2>
-  <div><h2> </h2></div>
-</div>
+<nav>
+  <a href="/user/mypage/"><img th:src="@{/img/chevron_left_icon.png}" src="img/chevron_left_icon.png" alt=""></a>
+  <p>🔋 충전</p>
+</nav>
 
 <div class="layout">
   <form action="/user/" method="post">
@@ -43,29 +42,29 @@
         <div class="payment_box_input_box">
           <div class="payment_box_input_1">
             <label>*결제 수단 선택</label>
-            <select name="paymentMeans">
+            <select name="paymentMeans" required>
               <option value="card">신용/체크카드</option>
             </select>
           </div>
           <div class="payment_box_input_2">
             <label>*카드 번호 입력</label>
             <div class="cardnum">
-              <input name="cardnum1" type="text" maxlength="4" required>
-              <input name="cardnum2" type="password" maxlength="4" required>
-              <input name="cardnum3" type="text" maxlength="4" required>
-              <input name="cardnum4" type="password" maxlength="4" required>
+              <input name="cardnum1" type="text" pattern=".{4,4}" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
+              <input name="cardnum2" type="password" pattern=".{4,4}" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
+              <input name="cardnum3" type="text" pattern=".{4,4}" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
+              <input name="cardnum4" type="password" pattern=".{4,4}" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
             </div>
           </div>
           <div class="payment_box_input_3">
             <label>*만료일(월/년)</label>
             <div class="expireDate">
-              <select name="expireMonth">
+              <select name="expireMonth" required>
                 <div th:each="month : ${#numbers.sequence(1,12)}">
                   <option th:text="${month}" th:value="${month}"></option>
                 </div>
               </select>
               <!--만료 년도는 백에서 리스트를 받아서 하는것으로 나중에 수정-->
-              <select name="expireYear">
+              <select name="expireYear" required>
                 <div th:each="year : ${#numbers.sequence(2022,2041)}">
                   <option th:text="${year}" th:value="${year}"></option>
                 </div>
@@ -74,7 +73,7 @@
           </div>
           <div class="payment_box_input_4">
             <label>*보안코드(CVC)</label>
-            <input name="cvc" type="text" maxlength="3" required>
+            <input name="cvc" type="text" pattern=".{3,3}" maxlength="3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
           </div>
         </div>
 

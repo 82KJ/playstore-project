@@ -34,7 +34,9 @@ interface AccountMapper {
     @Insert("INSERT INTO account_and_game(account_id, game_id) VALUES(#{accountId}, #{gameId})")
     fun saveGameList(@Param("accountId") accountId:String, @Param("gameId") gameId:Int)
 
-    @Update("UPDATE game SET gameMoney = #{totalGameMoney} WHERE id=#{id}")
-    fun chargeGameMoney(@Param("totalGameMoney") totalGameMoney:Int):AccountCoreInfo?
+    @Select("SELECT playtime FROM account_and_game WHERE account_id=#{accountId} and game_id=#{gameId}")
+    fun getPlayTime(@Param("accountId") accountId: String, @Param("gameId") gameId: Int)
 
+    @Update("UPDATE account_and_game SET playtime=#{playTime} WHERE account_id=#{accountId} and game_id=#{gameId}")
+    fun setPlayTime(@Param("accountId") accountId: String, @Param("gameId") gameId: Int, @Param("playTime") playTime: LocalDateTime)
 }

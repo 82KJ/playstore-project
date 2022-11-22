@@ -1,4 +1,5 @@
 @import 'reset.css';
+@import 'LogoBoxStyle.css';
 
 :root{
     --background-color: #3B8BF8 0% 0% no-repeat padding-box;
@@ -6,9 +7,6 @@
     --inputBox-height-size: 9vh;
 
     --padding-bottom: 5%;
-
-    --logo-padding-left:  10%;
-    --logo-size: calc(15rem + 5vw);
 }
 
 @font-face{
@@ -44,14 +42,6 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.login-box_logo{
-    padding-left: var(--logo-padding-left);
-}
-
-.login-box_logo > img{
-    width: var(--logo-size);
 }
 
 .login-box_contents{

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 import java.sql.Date
+import java.time.LocalDate
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 
@@ -31,17 +32,9 @@ class SignupPageController {
         if (msg == null) msg = ""
 
         model.addAttribute("msg", msg)
+        model.addAttribute("maxDate", LocalDate.now())
 
         return "signup.html"
-    }
-
-    @PostMapping("/success")
-    fun showSignUpSuccessPage(
-        @RequestParam("id") id: String,
-        model: Model
-    ): String {
-        model.addAttribute("id", id)
-        return "signupSuccess.html"
     }
 
     @PostMapping("")
@@ -54,25 +47,20 @@ class SignupPageController {
         request: HttpServletRequest,
         model: Model
     ): String {
-        var account = Account(id = id, password = password, is_admin = 0, birthDate = birthDate, gameMoney = 0)
-        accountService.saveAccount(account)
-
         var idcheck = accountService.findAccount(id)
 
-        model.addAttribute("id", id)
-        model.addAttribute("password", password)
-        model.addAttribute("gameMoney", 0)
-
-        return if (idcheck == null && password == pwcheck) {
-            "/success"
-        } else if (idcheck != null) {
-            redirectAttributes.addFlashAttribute("msg", "이미 존재하는 ID입니다")
-            "redirect:/"
-        } else if (password != pwcheck) {
-            redirectAttributes.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다")
-            "redirect:/"
+        return if (idcheck == null) {
+            var account = Account(id = id, password = password, is_admin = 0, birthDate = birthDate, gameMoney = 0)
+            accountService.saveAccount(account)
+            model.addAttribute("id", id)
+            "signupSuccess.html"
         } else {
-            "redirect:/"
+            redirectAttributes.addFlashAttribute("id", id)
+            redirectAttributes.addFlashAttribute("date", birthDate)
+            redirectAttributes.addFlashAttribute("pw", password)
+            redirectAttributes.addFlashAttribute("pwcheck", pwcheck)
+            redirectAttributes.addFlashAttribute("msg", "이미 존재하는 ID입니다")
+            "redirect:/signup"
         }
     }
 }

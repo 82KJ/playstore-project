@@ -1,4 +1,5 @@
 @import 'reset.css';
+@import 'navStyle.css';
 
 :root{
     --blue-color: #3B8BF8;
@@ -31,26 +32,6 @@ body::-webkit-scrollbar-thumb{
     /* 스크롤바 둥글게 설정    */
     border-radius: 39px;
 
-}
-
-/* ========================nav========================== */
-nav{
-    height: var(--nav-height);
-    background-color: var(--blue-color);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-nav > a{
-    padding-right: 40vw;
-    padding-left: 1vw;
-}
-
-nav > p{
-    color: white;
-    font-family: Typo_SsangmunDongB;
-    font-size: calc(1em + 1vw) ;
 }
 
 

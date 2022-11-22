@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/css/paymentStyle.css}" rel="stylesheet" href="/css/paymentStyle.css">
-    <title>Title</title>
+    <title>\구매</title>
 </head>
 <body>
 <!--    게임 구매 버튼 ( /user/payment/complete )만들고 누르면, 게임을 구매하시겠습니까? 하고 경고창 뜨고 확인 누르면,-->
 <!--    구매가 완료되었습니다!하고 전면에 뜨면서 mypage로 이동 // 메인 페이지로 이동 두개 버튼 만들기 ㅇㅇ-->
 
-<div class="logo_box">
-    <a href="../"><h2><</h2></a>
-    <h2>\구매</h2>
-    <div><h2> </h2></div>
-</div>
+<nav>
+    <a href="/user/basket"><img th:src="@{/img/chevron_left_icon.png}" src="img/chevron_left_icon.png" alt=""></a>
+    <p>\구매</p>
+</nav>
 
 <div class="layout">
     <form action="/user/payment/complete" method="post">

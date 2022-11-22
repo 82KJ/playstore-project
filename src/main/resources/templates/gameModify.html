@@ -31,7 +31,7 @@
             <div class="layout_content">
                 <div class="layout_top">
                     <div class="name_input">
-                        <input class="nameInput" name="name" type="text" th:value="${game.name}" required>
+                        <input class="nameInput" maxlength="45" name="name" type="text" th:value="${game.name}" required>
                     </div>
                     <div class="saveButton">
                         <button type="submit">저장</button>
@@ -50,8 +50,8 @@
 
                 <div class="layout_bottom">
                     <div>
-                        <input name="price" type="text" th:value="${game.price}" required>
-                        <input name="limit_age" type="text" th:value="${game.limit_age}" required>
+                        <input name="price" type="text" maxlength="10" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" th:value="${game.price}" required>
+                        <input name="limit_age" type="text" maxlength="2" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" th:value="${game.limit_age}" required>
                     </div>
                     <div class="fakeButton"><button disabled>장바구니</button></div>
                 </div>

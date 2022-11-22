@@ -22,9 +22,9 @@
 <div class="gameBox">
     <div class="gameBox_top">
         <a href="/user/mypage/receipt">🧾 영수증</a>
-        <a href="/user/mypage/">🔏 패스워드 수정</a>
+        <a href="/user/mypage/resetpw">🔏 패스워드 수정</a>
         <a href="/user/mypage/charge">🔋 충전</a>
-        <a href="/user/mypage/">💲 환불</a>
+        <a href="/user/mypage/refundmoney">💲 환불</a>
     </div>
     <hr style="border:1px color= silver;" width="90%">
     <ul>
@@ -42,9 +42,13 @@
                     </div>
                 </div>
             </div>
-            <div class="buttonBox">
+            <div th:if="${game.invisible} == 0" class="buttonBox">
                 <a href="#">🔄REFUND</a>
-                <a href="#">🕹PLAY</a>
+                <a th:href='@{/user/mypage/playGame/{gameId}(gameId=${game.id})}'>🕹PLAY</a>
+            </div>
+            <div th:if="${game.invisible} == 1" class="buttonBox">
+                <a href="#">🔄REFUND</a>
+                <p>이 게임을 더이상 이용할 수 없습니다.</p>
             </div>
         </div></li>
     </ul>

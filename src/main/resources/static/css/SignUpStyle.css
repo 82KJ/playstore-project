@@ -1,4 +1,5 @@
 @import 'reset.css';
+@import 'LogoBoxStyle.css';
 
 :root{
     --background-color: #3B8BF8 0% 0% no-repeat padding-box;
@@ -6,9 +7,6 @@
     --inputBox-height-size: 9vh;
 
     --padding-bottom: 5%;
-
-    --logo-padding-right:  10%;
-    --logo-size: calc(15rem + 5vw);
 }
 
 @font-face{
@@ -67,14 +65,6 @@ body{
     align-items: center;
 }
 
-.sign-up-box_logo{
-    padding-right: var(--logo-padding-right);
-}
-
-.sign-up-box_logo > img{
-    width: var(--logo-size);
-}
-
 .sign-up-box_contents{
     display: flex;
     flex-direction: column;
@@ -99,7 +89,7 @@ body{
 }
 
 .sign-up-box_contents form > .inputBoxs{
-    padding-bottom: calc(var(--padding-bottom) * 2);
+    padding-bottom: var(--padding-bottom);
 }
 
 .sign-up-box_contents form > .inputBoxs > div{
@@ -137,6 +127,12 @@ body{
      color:#FFFFFF;
      font-size: calc(2rem);
      font-weight: bold;
+}
+
+.signup_result{
+    padding-bottom: 0px;
+    padding-top: calc(var(--padding-bottom) / 2);
+    color: #FF4141;
 }
 
 
