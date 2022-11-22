@@ -89,7 +89,7 @@ body{
 }
 
 .sign-up-box_contents form > .inputBoxs{
-    padding-bottom: calc(var(--padding-bottom) * 2);
+    padding-bottom: var(--padding-bottom);
 }
 
 .sign-up-box_contents form > .inputBoxs > div{
@@ -127,6 +127,12 @@ body{
      color:#FFFFFF;
      font-size: calc(2rem);
      font-weight: bold;
+}
+
+.signup_result{
+    padding-bottom: 0px;
+    padding-top: calc(var(--padding-bottom) / 2);
+    color: #FF4141;
 }
 
 

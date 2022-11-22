@@ -2,28 +2,28 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>회원가입</title>
     <link th:href="@{/css/SignUpStyle.css}" rel="stylesheet" href="/css/SignUpStyle.css">
 </head>
 <body>
 <div class="sign-up-box">
     <div class="sign-up-box_contents">
         <h2>Create Accout</h2>
-        <form action="/signup/success" method="post">
+        <form action="/signup" method="post">
             <div class="inputBoxs">
                 <div class="id-box">
-                    <input name="id" pattern=".{4,12}" maxlength="12" type="text" placeholder="id(4-12)">
+                    <input name="id" pattern=".{4,12}" maxlength="12" type="text" th:value="${id}" placeholder="id(4-12)">
                 </div>
                 <div class="birthDate-box">
-                    <input name="birthDate" type="date" data-placeholder="date of birth: yyyy-mm-dd" required aria-required="true" th:min="${minDate}" th:max="${maxDate}">
+                    <input name="birthDate" type="date" th:value="${date}" data-placeholder="date of birth: yyyy-mm-dd" required aria-required="true" th:max="${maxDate}">
                 </div>
                 <div class="password-box">
-                    <input name="password" pattern=".{6,12}" maxlength="12" type="password" placeholder="Password(6-12)">
+                    <input name="password" pattern=".{6,12}" maxlength="12" type="password" th:value="${pw}" placeholder="Password(6-12)">
                 </div>
                 <div class="pwcheck-box">
-                    <input name="pwcheck" pattern=".{6,12}" maxlength="12" type="password" placeholder="Repeat password">
+                    <input name="pwcheck" pattern=".{6,12}" maxlength="12" type="password" th:value="${pwcheck}" placeholder="Repeat password">
                 </div>
-
+                <div class = "signup_result" th:text="${msg}"></div>
             </div>
             <input class="form_input" type="submit" value="Submit">
             <a href="/login">Already have an account?</a>
