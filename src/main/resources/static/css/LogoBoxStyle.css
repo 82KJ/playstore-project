@@ -1,0 +1,15 @@
+/* 로그인, 회원가입 페이지*/
+:root{
+    --logo-padding-left:  10%;
+    --logo-size: calc(15rem + 5vw);
+}
+
+.logo_box{
+    padding-left: var(--logo-padding-left);
+    padding-right: var(--logo-padding-left);
+}
+
+.logo_box > img{
+    width: var(--logo-size);
+}
+
