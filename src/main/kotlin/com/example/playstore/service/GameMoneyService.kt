@@ -1,7 +1,6 @@
 package com.example.playstore.service
 
 import com.example.playstore.mapper.AccountMapper
-import com.example.playstore.model.AccountCoreInfo
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
