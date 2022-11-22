@@ -30,8 +30,18 @@ class BasketPageController {
 
         var myBasketGames:MutableList<Game> = mutableListOf()
 
+        var invisibleGameIdList:MutableList<Int> = mutableListOf()
         account.basket?.forEach {
-            myBasketGames.add(gameService.findGame(it))
+            var game = gameService.findGame(it)
+            if (game.invisible == 1){
+                invisibleGameIdList.add(it)
+            }else{
+                myBasketGames.add(game)
+            }
+        }
+
+        invisibleGameIdList.forEach {
+            account.basket = accountService.deleteGameInBasket(account.id, it)
         }
 
 
