@@ -40,8 +40,6 @@ interface AccountMapper {
     @Update("UPDATE account_and_game SET playtime=#{playTime} WHERE account_id=#{accountId} and game_id=#{gameId}")
     fun setPlayTime(@Param("accountId") accountId: String, @Param("gameId") gameId: Int, @Param("playTime") playTime: LocalDateTime)
 
-    @Select("SELECT gameMoney FROM account WHERE id=#{id}")
-    fun findCurrentMoney(@Param("id") id:String): Int
     @Update("UPDATE account SET gameMoney = #{totalGameMoney} WHERE id=#{id}")
     fun modifyGameMoney(@Param("id") id:String, @Param("totalGameMoney") totalGameMoney:Int): Boolean
 

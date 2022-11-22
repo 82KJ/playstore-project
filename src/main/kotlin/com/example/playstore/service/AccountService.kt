@@ -77,8 +77,4 @@ class AccountService {
         accountMapper.setPlayTime(accountId, gameId, playTime)
     }
 
-    fun findCurrentMoney(id:String):Int {
-        return accountMapper.findCurrentMoney(id)
-    }
-
 }
