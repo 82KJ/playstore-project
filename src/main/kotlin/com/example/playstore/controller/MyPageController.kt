@@ -4,13 +4,15 @@ package com.example.playstore.controller
 import com.example.playstore.model.Account
 import com.example.playstore.model.Game
 import com.example.playstore.service.AccountService
+import com.example.playstore.service.GameMoneyService
 import com.example.playstore.service.GameService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.expression.spel.ast.NullLiteral
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.*
-import java.time.LocalDateTime
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 
@@ -22,7 +24,7 @@ class MyPageController {
     @Autowired
     lateinit var gameService: GameService
     @Autowired
-    lateinit var accountService: AccountService
+    lateinit var gameMoneyService : GameMoneyService
 
     @GetMapping("")
     fun showMyPage(request:HttpServletRequest, model:Model): String {
@@ -40,46 +42,36 @@ class MyPageController {
     }
 
     @GetMapping("/charge")
-    fun showChargePage(request:HttpServletRequest, model:Model): String {
+    fun showChargePage(): String {
 
         return "addGamemoney.html"
     }
 
-    @GetMapping("/refundmoney")
-    fun showRefundPage(request:HttpServletRequest, model:Model): String {
+    @PostMapping("/add-money")
+    fun chargeMoney( @RequestParam("addMoney") addMoney: String, request:HttpServletRequest, model:Model) : String{
 
-        return "refundGamemoney.html"
-    }
-
-    @GetMapping("/resetpw")
-    fun showResetpwPage(request:HttpServletRequest, model:Model): String {
-
-        return "resetPassword.html"
-    }
-
-    @GetMapping("/playGame/{gameId}")
-    fun playGame(@PathVariable gameId:Int,  request:HttpServletRequest, model:Model): String {
         var session: HttpSession = request.session
-        var account: Account = session.getAttribute("ss_account") as Account
-        var account_id = account.id
-        var indexNum = 0
+        var account:Account = session.getAttribute("ss_account") as Account
 
-        while(true){
-            if(account.myGame?.get(indexNum)?.first==gameId){
-                break
-            }
-            indexNum++
+        model.addAttribute("addMoney", addMoney)
+
+        var totalGameMoney = 0
+
+        if (addMoney == "5000") {
+            totalGameMoney = account.gameMoney + 5000
         }
-        var playTime = account.myGame?.get(indexNum)?.second
-
-        print(playTime)
-        if(playTime==null){
-            accountService.setPlayTime(account_id, gameId, LocalDateTime.now())
+        else if (addMoney == "10000") {
+            totalGameMoney = account.gameMoney + 10000
+        }
+        else if (addMoney == "50000") {
+            totalGameMoney = account.gameMoney + 50000
+        }
+        else {
+            totalGameMoney = account.gameMoney + 1000
         }
 
-        return "playGame.html"
+        gameMoneyService.modifyGameMoney(account.id,totalGameMoney)
 
-
+        return "redirect:/user/mypage/charge"
     }
-
 }
