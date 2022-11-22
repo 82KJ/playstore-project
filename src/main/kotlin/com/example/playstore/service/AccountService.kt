@@ -77,4 +77,9 @@ class AccountService {
         accountMapper.setPlayTime(accountId, gameId, playTime)
     }
 
+
+    fun deductGameMoney(accountId:String, cost:Int){
+        accountMapper.setGameMoney(accountId, cost)
+    }
+
 }

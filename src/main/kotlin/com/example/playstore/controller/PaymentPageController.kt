@@ -64,6 +64,9 @@ class PaymentPageController {
         // 1. account - game table insert 구현하기 + basket table 에서는 제거
         account.myGame = accountService.saveGameList(account.id, gameIdList)
         account.basket = accountService.deleteGameInBasket(account.id, gameIdList)
+        account.gameMoney -= totalPaymentCost
+        accountService.deductGameMoney(account.id, account.gameMoney)
+
 
         // 2.
         var gameList:MutableList<Game> = mutableListOf()
@@ -72,6 +75,7 @@ class PaymentPageController {
             gameList.add(game)
         }
         model.addAttribute("games", gameList)
+        model.addAttribute("totalPaymentCost", totalPaymentCost)
 
         return "paymentComplete.html"
     }

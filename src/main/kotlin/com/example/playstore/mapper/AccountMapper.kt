@@ -43,4 +43,7 @@ interface AccountMapper {
     @Update("UPDATE account SET gameMoney = #{totalGameMoney} WHERE id=#{id}")
     fun modifyGameMoney(@Param("id") id:String, @Param("totalGameMoney") totalGameMoney:Int): Boolean
 
+    @Update("UPDATE account SET gameMoney=#{cost} WHERE id=#{accountId}")
+    fun setGameMoney(@Param("accountId") accountId: String, @Param("cost") cost: Int)
+
 }
