@@ -42,9 +42,13 @@
                     </div>
                 </div>
             </div>
-            <div class="buttonBox">
+            <div th:if="${game.invisible} == 0" class="buttonBox">
                 <a href="#">🔄REFUND</a>
                 <a th:href='@{/user/mypage/playGame/{gameId}(gameId=${game.id})}'>🕹PLAY</a>
+            </div>
+            <div th:if="${game.invisible} == 1" class="buttonBox">
+                <a href="#">🔄REFUND</a>
+                <p>이 게임을 더이상 이용할 수 없습니다.</p>
             </div>
         </div></li>
     </ul>
