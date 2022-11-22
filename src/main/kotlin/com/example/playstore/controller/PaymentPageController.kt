@@ -36,11 +36,6 @@ class PaymentPageController {
             totalPaymentCost += game.price
         }
 
-        // 프론트앤드에서 판단하고 경고창 띄우기 --> 게임머니 충전 페이지로 이동하시겠습니까?
-        if (totalPaymentCost > account.gameMoney){
-            return "redirect:/user/mypage/charge"
-        }
-
         model.addAttribute("games", gameList)
         model.addAttribute("account", account)
         model.addAttribute("totalPaymentCost", totalPaymentCost)
@@ -54,6 +49,17 @@ class PaymentPageController {
 
         var session: HttpSession = request.session
         var account: Account = session.getAttribute("ss_account") as Account
+        var totalPaymentCost = 0
+
+        gameIdList.forEach{
+            var game = gameService.findGame(it.toInt())
+            totalPaymentCost += game.price
+        }
+
+        // 프론트앤드에서 판단하고 경고창 띄우기 --> 게임머니 충전 페이지로 이동하시겠습니까?
+        if (totalPaymentCost > account.gameMoney){
+            return "redirect:/user/mypage/charge"
+        }
 
         // 1. account - game table insert 구현하기 + basket table 에서는 제거
         account.myGame = accountService.saveGameList(account.id, gameIdList)
