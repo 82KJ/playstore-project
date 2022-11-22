@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 
@@ -49,20 +51,33 @@ class UserPageController {
         var session: HttpSession = request.session
         var account:Account = session.getAttribute("ss_account") as Account
 
-        // account의 basket 안에 해당 게임 넘버가 있는지 찾기
-        // 있다면, true 전달 --> 장바구니 추가 버튼 안보이기
-        // 없다면, false 전달 --> 장바구니 추가 버튼 보이기
-        if (account.basket?.contains(gameId) == true){
-            print("장바구니에 존재")
-            model.addAttribute("isInBasket", true)
-            //print(account)
-        }
-        else{
-            print("장바구니에 없습니다")
-            model.addAttribute("isInBasket", false)
-            //print(account)
+        var isInBasket = account.basket?.contains(gameId)
+        var isInMyGame:Boolean = false
+        account.myGame?.forEach {
+            if(it.first == gameId){
+                isInMyGame = true
+                return@forEach
+            }
         }
 
+        var accountBirthDate = account.birthDate.toString()
+        var day = accountBirthDate.substring(8,10).toInt()
+        var month = accountBirthDate.substring(5,7).toInt()
+        var year = accountBirthDate.substring(0,4).toInt()
+
+        var now = LocalDate.now()
+        var strNow = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+        var accountAge = now.year - year
+        if (now.monthValue - month <= 0 && now.dayOfMonth - day< 0){
+            accountAge -= 1
+        }
+
+        var isLowerThanLimitAge = (accountAge < game.limit_age)
+
+        model.addAttribute("isInBasket", isInBasket)
+        model.addAttribute("isInMyGame", isInMyGame)
+        model.addAttribute("isLowerThanLimitAge", isLowerThanLimitAge)
         model.addAttribute("game", game)
 
         return "gameInfo.html"
