@@ -23,11 +23,11 @@
                 <li class="item" th:each="game,i : ${games}" >
                     <p th:text="${game.name}">NONE</p>
                     <!--백에서 최종 결제 금액 받아오기-->
-                    <p class="price" th:text="${totalPaymentCost} + '원'">NONE</p>
+                    <p class="price" th:text="${game.price} + '원'">NONE</p>
                 </li>
                 <li class="totalPrice">
                     <p>구매 금액</p>
-                    <p class="price">NONE</p>
+                    <p class="price" th:text="${totalPaymentCost} + '원'">NONE</p>
                 </li>
             </ul>
         </div>
