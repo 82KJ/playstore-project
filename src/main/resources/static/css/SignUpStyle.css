@@ -1,4 +1,5 @@
 @import 'reset.css';
+@import 'LogoBoxStyle.css';
 
 :root{
     --background-color: #3B8BF8 0% 0% no-repeat padding-box;
@@ -6,9 +7,6 @@
     --inputBox-height-size: 9vh;
 
     --padding-bottom: 5%;
-
-    --logo-padding-right:  10%;
-    --logo-size: calc(15rem + 5vw);
 }
 
 @font-face{
@@ -65,14 +63,6 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.sign-up-box_logo{
-    padding-right: var(--logo-padding-right);
-}
-
-.sign-up-box_logo > img{
-    width: var(--logo-size);
 }
 
 .sign-up-box_contents{
