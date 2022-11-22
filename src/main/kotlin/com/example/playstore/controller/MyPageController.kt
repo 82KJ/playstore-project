@@ -51,6 +51,12 @@ class MyPageController {
         return "refundGamemoney.html"
     }
 
+    @GetMapping("/resetpw")
+    fun showResetpwPage(request:HttpServletRequest, model:Model): String {
+
+        return "resetPassword.html"
+    }
+
     @GetMapping("/playGame/{gameId}")
     fun playGame(@PathVariable gameId:Int,  request:HttpServletRequest, model:Model): String {
         var session: HttpSession = request.session
