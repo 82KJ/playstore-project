@@ -18,5 +18,5 @@ data class AccountCoreInfo (
     var password:String,
     var is_admin:Int,
     var gameMoney:Int,
-    var birthDate: Date
+    var birthDate:Date
 )

@@ -23,7 +23,7 @@ class AccountService {
         var account:Account?
 
         if (coreInfo != null){
-            account = Account(id=coreInfo.id, password=coreInfo.password, is_admin=coreInfo.is_admin, gameMoney=coreInfo.gameMoney, birthDate = coreInfo.birthDate)
+            account = Account(id=coreInfo.id, password=coreInfo.password, is_admin=coreInfo.is_admin, gameMoney=coreInfo.gameMoney, birthDate=coreInfo.birthDate)
             account.basket = gamesInBasket
             account.myGame = myGames
 
@@ -33,6 +33,10 @@ class AccountService {
             return null
         }
 
+    }
+
+    fun resetPassword(id:String, pw:String){
+        accountMapper.resetPassword(id, pw)
     }
 
     fun saveBasket(accountId:String, gameId:Int): MutableList<Int>? {

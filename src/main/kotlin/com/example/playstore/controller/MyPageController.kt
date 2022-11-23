@@ -38,6 +38,7 @@ class MyPageController {
 
         model.addAttribute("games", myGames)
         model.addAttribute("gameMoney", account.gameMoney)
+
         return "mypage.html"
     }
 

@@ -46,4 +46,7 @@ interface AccountMapper {
     @Update("UPDATE account SET gameMoney=#{cost} WHERE id=#{accountId}")
     fun setGameMoney(@Param("accountId") accountId: String, @Param("cost") cost: Int)
 
+    @Update("UPDATE account SET password=#{pw} WHERE id=#{accountId}")
+    fun resetPassword(@Param("accountId")accountId:String, @Param("pw")pw:String)
+
 }
