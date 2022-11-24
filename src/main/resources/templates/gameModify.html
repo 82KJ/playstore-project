@@ -9,7 +9,7 @@
 <div class="layout">
     <div class="delete_undo">
         <div class="undo">
-            <a href="/admin"><button>취소</button></a>
+            <a href="/admin" onclick="return confirm('취소하시겠습니까?')" ><button>취소</button></a>
         </div>
         <div class="delete">
             <form th:action="@{/admin/game/{gameId}/delete(gameId=${game.id})}" onsubmit="return confirm('정말로 삭제하시겠습니까?');" method="post">

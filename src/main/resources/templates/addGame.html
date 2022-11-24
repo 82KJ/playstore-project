@@ -8,7 +8,7 @@
 <body>
     <div class="layout">
         <div class="undo">
-            <a href="/admin"><button>취소</button></a>
+            <a href="/admin" onclick="return confirm('취소하시겠습니까?')"><button>취소</button></a>
         </div>
         <form action="/admin/add-game" onsubmit="return confirm('추가하시겠습니까?');" method="post" enctype="multipart/form-data">
             <div class="layout_main_img_input">
