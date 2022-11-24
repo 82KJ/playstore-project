@@ -32,7 +32,7 @@
         <input name="refundMoney" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
       </div>
       <!--백에서 환전 금액 에러 메세지 출력 -->
-      <div class="refund_result" th:text="${msg}"></div>
+      <div class="refund_result" th:text="${msg}" style="color: red; padding-top: 1vh;"></div>
     </div>
 
     <div class="layout_content_box_3">
@@ -57,5 +57,17 @@
     </div>
   </form>
 </div>
+<script defer>
+  const submitButton = document.querySelector('.layout_content_box_4 > button');
+  submitButton.addEventListener('click', (e) => {
+    const input_box = document.querySelector('.refund_money_input').querySelector('input');
+
+    if(parseInt(input_box.value) <= 10000){
+      e.preventDefault();
+      alert('10,000원 이상으로 입력해주세요😅');
+    }
+
+  })
+</script>
 </body>
 </html>
