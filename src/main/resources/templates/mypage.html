@@ -9,10 +9,10 @@
 <div class="menuBox">
     <form class="menuBox_top" action="/user" method="get">
         <img th:src="@{/img/logo.png}" src="img/logo.png">
-        <div>
-            <input class="searchBar" name="search" type="text" placeholder="Search game">
-            <input class="submit" type="submit">
-        </div>
+<!--        <div>-->
+<!--            <input class="searchBar" name="search" type="text" placeholder="Search game">-->
+<!--            <input class="submit" type="submit">-->
+<!--        </div>-->
     </form>
     <div class="menuBox_bottom">
         <a href="/user"><img th:src="@{/img/mainPage_icon.png}" src="img/mainPage_icon.png"></a>
@@ -27,34 +27,32 @@
         <a href="/user/mypage/refund">💲 환불</a>
     </div>
     <hr style="border:1px color= silver;" width="90%">
-    <form action="" method="post">
-        <ul>
-            <li th:if="${games.size} == 0" style="font-weight: bold; font-size: 2vw;">구입한 게임이 없습니다😂</li>
-            <li th:each="game,i : ${games}" ><div>
-                <div class="leftBox">
-                    <img th:src="@{${game.main_img_path}}" src="img/game_img.png">
-                    <div class="infoBox">
-                        <div class="name">
-                            <p th:text="${game.name}">NONE</p>
-                            <p>(환불가능)</p>
-                        </div>
-                        <div class="dsc">
-                            <p th:text="${game.description}">NONE</p>
-                        </div>
+    <ul>
+        <li th:if="${games.size} == 0" style="font-weight: bold; font-size: 2vw;">구입한 게임이 없습니다😂</li>
+        <li th:each="game,i : ${games}" ><div>
+            <div class="leftBox">
+                <img th:src="@{${game.main_img_path}}" src="img/game_img.png">
+                <div class="infoBox">
+                    <div class="name">
+                        <p th:text="${game.name}">NONE</p>
+                        <p>(환불가능)</p>
+                    </div>
+                    <div class="dsc">
+                        <p th:text="${game.description}">NONE</p>
                     </div>
                 </div>
-                <div th:if="${game.invisible} == 0" class="buttonBox">
-<!--                    <input class="refunButton" type="submit" value="🔄REFUND">-->
-                    <a class="refunButton" href="#">🔄REFUND</a>
-<!--                    <input class="playButton" type="submit" value="🕹PLAY">-->
-                    <a class="playButton" th:href='@{/user/mypage/playGame/{gameId}(gameId=${game.id})}'>🕹PLAY</a>
-                </div>
-                <div th:if="${game.invisible} == 1" class="buttonBox">
-                    <p>이 게임을 더이상 이용할 수 없습니다.</p>
-                </div>
-            </div></li>
-        </ul>
-    </form>
+            </div>
+            <div th:if="${game.invisible} == 0" class="buttonBox">
+                <!--                    <input class="refunButton" type="submit" value="🔄REFUND">-->
+                <a class="refunButton" href="#">🔄REFUND</a>
+                <!--                    <input class="playButton" type="submit" value="🕹PLAY">-->
+                <a class="playButton" th:href='@{/user/mypage/playGame/{gameId}(gameId=${game.id})}'>🕹PLAY</a>
+            </div>
+            <div th:if="${game.invisible} == 1" class="buttonBox">
+                <p>이 게임을 더이상 이용할 수 없습니다.</p>
+            </div>
+        </div></li>
+    </ul>
 
 </div>
 <script defer>

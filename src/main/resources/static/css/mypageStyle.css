@@ -26,6 +26,7 @@ body{
     font-family: Typo_SsangmunDongB;
 }
 
+
 /* ====================== game box ======================== */
 
 .gameBox{
@@ -54,33 +55,32 @@ body{
 
 /* =======================ui======================== */
 
-.gameBox > form > ul{
+.gameBox > ul{
     overflow-y: scroll;
-
 }
 
 /* 스크롤바 설정*/
-.gameBox > form > ul::-webkit-scrollbar{
+.gameBox > ul::-webkit-scrollbar{
     width: 1.66vw;
 }
 
 /* 스크롤바 막대 설정*/
-.gameBox > form > ul::-webkit-scrollbar-thumb{
+.gameBox > ul::-webkit-scrollbar-thumb{
     background-color: #E7E7E7;
     /* 스크롤바 둥글게 설정    */
     border-radius: 39px;
 }
 
-.gameBox > form > ul{
+.gameBox > ul{
     padding-top: 5vh;
     padding-left: 3vw;
 }
 
-.gameBox > form > ul > li{
+.gameBox > ul > li{
     padding-bottom: 5vh;
 }
 
-.gameBox > form > ul > li > div{
+.gameBox > ul > li > div{
     width: 50vw;
     height: 27vh;
     display: flex;
@@ -91,42 +91,45 @@ body{
     justify-content: space-between;
 }
 
-.gameBox > form > ul > li > div > .leftBox{
+.gameBox > ul > li > div > .leftBox{
     display: flex;
 }
-.gameBox > form > ul > li > div > .leftBox>.infoBox{
+.gameBox > ul > li > div > .leftBox > img{
+    width: 15vw;
+}
+.gameBox > ul > li > div > .leftBox>.infoBox{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.gameBox > form > ul > li > div > .leftBox> .infoBox{
+.gameBox > ul > li > div > .leftBox> .infoBox{
     padding-left: 1vw;
 }
 
-.gameBox > form > ul > li > div > .leftBox> .infoBox > div> p{
+.gameBox > ul > li > div > .leftBox> .infoBox > div> p{
     font-size: 1.5vw;
     color: #454545;
 }
 
-.gameBox > form > ul > li > div > .leftBox> .infoBox > .name{
+.gameBox > ul > li > div > .leftBox> .infoBox > .name{
     padding-top: 2vh;
 }
-.gameBox > form > ul > li > div > .leftBox>  .infoBox > .dsc{
+.gameBox > ul > li > div > .leftBox>  .infoBox > .dsc{
     width: 20vw;
 }
 
-.gameBox > form > ul > li > div > .leftBox>  .infoBox > .dsc> p{
+.gameBox > ul > li > div > .leftBox>  .infoBox > .dsc> p{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.gameBox > form > ul > li > div > .leftBox > img{
-    height: 27vh;  
+.gameBox > ul > li > div > .leftBox > img{
+    height: 27vh;
 }
 
-.gameBox > form > ul > li > div > .buttonBox{
+.gameBox > ul > li > div > .buttonBox{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -134,7 +137,7 @@ body{
     padding-top: 2vh;
 }
 
-.gameBox > form > ul > li > div > .buttonBox > a{
+.gameBox > ul > li > div > .buttonBox > a{
     font-size: 1.5vw;
     color: #2f60a3
 }
