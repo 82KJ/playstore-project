@@ -45,7 +45,11 @@ class RefundPageController {
         return "refundGameMoney.html"
     }
     @GetMapping("/modify")
-    fun showRefundPage(): String {
+    fun showRefundPage(request:HttpServletRequest, model:Model): String {
+        var session: HttpSession = request.session
+        var account:Account = session.getAttribute("ss_account") as Account
+
+        model.addAttribute("gameMoney", account.gameMoney)
         return "refund.html"
     }
 
@@ -53,17 +57,18 @@ class RefundPageController {
     fun refundGameMoney(@RequestParam("refundMoney") refundMoney: Int,
                         redirectAttributes: RedirectAttributes,
                         request: HttpServletRequest,
-                        model: Model):String{
+                        model: Model):String {
         model.addAttribute("refundMoney", refundMoney)
 
         var session: HttpSession = request.session
         var account: Account = session.getAttribute("ss_account") as Account
 
-        //사용자 게임 머니 = DB게임머니 - 환전금액 입력한 값
-        var totalGameMoney = account.gameMoney - refundMoney
+        //사용자 게임 머니 = DB게임머니 - 환전금액 입력한 값 - 수수료(500)
+        var totalGameMoney = account.gameMoney - refundMoney - 500
 
         return if (account.gameMoney > refundMoney) {
              gameMoneyService.modifyGameMoney(account.id, totalGameMoney)
+             account.gameMoney += totalGameMoney
 
             "redirect:/user/mypage/refund/modify"
         }
