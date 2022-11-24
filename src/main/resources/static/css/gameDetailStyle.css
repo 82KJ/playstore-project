@@ -111,28 +111,28 @@ input:hover{
 }
 
 /* 사진 업로드 */
-input[type="file"] {
-  position: absolute;
+/*input[type="file"] {*/
+/*  position: absolute;*/
 
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip:rect(0,0,0,0);
-  border: 0;
-}
+/*  width: 1px;*/
+/*  height: 1px;*/
+/*  padding: 0;*/
+/*  margin: -1px;*/
+/*  !*overflow: hidden;*!*/
+/*  clip:rect(0,0,0,0);*/
+/*  border: 0;*/
+/*}*/
 
-label {
-  position : absolute;
+/*label {*/
+/*  !*position : absolute;*!*/
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
 
-  cursor: pointer;
-  opacity: 1;
-}
+/*  cursor: pointer;*/
+/*  opacity: 1;*/
+/*}*/
 /* 사진 업로드 */
 
 /* 상세 설명 */
