@@ -53,7 +53,7 @@
                         <input name="price" type="text" maxlength="10" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" th:value="${game.price}" required>
                         <input name="limit_age" type="text" maxlength="2" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" th:value="${game.limit_age}" required>
                     </div>
-                    <div class="fakeButton"><button disabled>장바구니</button></div>
+<!--                    <div class="fakeButton"><button disabled>장바구니</button></div>-->
                 </div>
                 <textarea name="description" th:text="${game.description}" required></textarea>
             </div>

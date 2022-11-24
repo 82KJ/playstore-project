@@ -124,7 +124,7 @@ input[type="file"] {
 }
 
 label {
-  position : absolute
+  position : absolute;
 
   display: flex;
   align-items: center;
