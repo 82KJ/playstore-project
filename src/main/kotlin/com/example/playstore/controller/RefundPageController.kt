@@ -70,7 +70,10 @@ class RefundPageController {
              gameMoneyService.modifyGameMoney(account.id, totalGameMoney)
              account.gameMoney += totalGameMoney
 
-            "redirect:/user/mypage/refund/modify"
+            model.addAttribute("refundMoney", refundMoney)
+            model.addAttribute("refundTotalMoney", refundMoney-500)
+
+            "refundGamemoneyComplete.html"
         }
         else  {
             redirectAttributes.addFlashAttribute("msg", "현금화할 수 없는 금액입니다")
