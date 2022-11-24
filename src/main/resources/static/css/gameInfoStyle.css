@@ -97,6 +97,8 @@ p {
     padding-top: var(--input_inside_padding);
 
     font-size: calc(var(--font_size) / 1.8);
+
+    white-space: pre-line;
 }
 
 /* =====================layout=================== */
