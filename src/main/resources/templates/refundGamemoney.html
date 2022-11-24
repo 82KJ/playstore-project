@@ -12,7 +12,7 @@
 </nav>
 
 <div class="layout">
-  <form action="/user/mypage/refund" method="post">
+  <form action="/user/mypage/refund" onsubmit="return confirm('환전하시겠습니까?');" method="post">
     <div class="layout_content_box_1">
       <h3>PLAY STORE 계정</h3>
       <div class="balance">
@@ -62,7 +62,7 @@
   submitButton.addEventListener('click', (e) => {
     const input_box = document.querySelector('.refund_money_input').querySelector('input');
 
-    if(parseInt(input_box.value) <= 10000){
+    if(parseInt(input_box.value) < 10000){
       e.preventDefault();
       alert('10,000원 이상으로 입력해주세요😅');
     }

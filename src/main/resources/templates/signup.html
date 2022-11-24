@@ -9,7 +9,7 @@
 <div class="sign-up-box">
     <div class="sign-up-box_contents">
         <h2>Create Accout</h2>
-        <form action="/signup" method="post">
+        <form action="/signup" onsubmit="return confirm('가입 하시겠습니까?');" method="post">
             <div class="inputBoxs">
                 <div class="id-box">
                     <input name="id" pattern=".{4,12}" maxlength="12" type="text" th:value="${id}" placeholder="id(4-12)">

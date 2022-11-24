@@ -13,7 +13,7 @@
 </nav>
 
 <div class="layout">
-    <form action="/user/payment/complete" method="post">
+    <form action="/user/payment/complete" onsubmit="return confirm('구매하시겠습니까?');" method="post">
 
         <div class="layout_content_box_1">
             <h3>주문/결제</h3>
