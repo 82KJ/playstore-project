@@ -42,9 +42,14 @@
         <div class="payment_box_input_box">
           <div class="payment_box_input_1">
             <label>*결제 수단 선택</label>
-            <select name="paymentMeans" required>
-              <option value="card">신용/체크카드</option>
-            </select>
+            <div>
+              <select name="paymentMeans" required>
+                <option value="card">신용/체크카드</option>
+              </select>
+              <div class="card_imgs">
+                <img th:src="@{/img/cards.png}" src="/img/cards.png">
+              </div>
+            </div>
           </div>
           <div class="payment_box_input_2">
             <label>*카드 번호 입력</label>
@@ -76,11 +81,6 @@
             <input name="cvc" type="text" pattern=".{3,3}" maxlength="3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
           </div>
         </div>
-
-        <div class="card_imgs">
-          <img th:src="@{/img/cards.png}" src="/img/cards.png">
-        </div>
-
       </div>
     </div>
 
