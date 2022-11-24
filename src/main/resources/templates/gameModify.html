@@ -12,14 +12,14 @@
             <a href="/admin"><button>취소</button></a>
         </div>
         <div class="delete">
-            <form th:action="@{/admin/game/{gameId}/delete(gameId=${game.id})}" method="post">
-                <a onclick="if (confirm('정말로 삭제하시겠습니까?')) document.getElementById('delete_form').submit();" style="cursor: pointer;" ><button>삭제</button></a>
+            <form th:action="@{/admin/game/{gameId}/delete(gameId=${game.id})}" onsubmit="return confirm('정말로 삭제하시겠습니까?');" method="post">
+                <a style="cursor: pointer;" ><button>삭제</button></a>
             </form>
         </div>
     </div>
 
     <div class="modify">
-        <form th:action="@{/admin/game/{gameId}/modify(gameId=${game.id})}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/admin/game/{gameId}/modify(gameId=${game.id})}" onsubmit="return confirm('수정하시겠습니까?');" method="post" enctype="multipart/form-data">
             <div class="layout_main_img_input">
                 <img th:src="@{${game.main_img_path}}">
                 <div class="img_label">

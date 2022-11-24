@@ -10,7 +10,7 @@
         <div class="undo">
             <a href="/admin"><button>취소</button></a>
         </div>
-        <form action="/admin/add-game" method="post" enctype="multipart/form-data">
+        <form action="/admin/add-game" onsubmit="return confirm('추가하시겠습니까?');" method="post" enctype="multipart/form-data">
             <div class="layout_main_img_input">
                 <div class="img_label">
 <!--                    <label for="main_img_upload"><img th:src="@{/img/edit_icon.png}" src="img/edit_icon.png"></label>-->
