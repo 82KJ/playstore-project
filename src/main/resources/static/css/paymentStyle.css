@@ -35,6 +35,7 @@
     --h3_font_size: 1.4rem;
 
     --label_margin_height: 1vh;
+    --label_margin_width: 3vw;
     --label_font_size: 0.8rem;
     --label_font_color: #909090;
 }
@@ -119,6 +120,26 @@ body{
     margin-top: var(--content_inside_margin_height);
 }
 
+.layout > form > .layout_content_box_2 > .totalCosts > .labelBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.layout > form > .layout_content_box_2 > .totalCosts > .labelBox > label{
+    margin-right:var(--label_margin_width);
+}
+
+.layout > form > .layout_content_box_2 > .totalCosts > .totalTextBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.layout > form > .layout_content_box_2 > .totalCosts > .totalTextBox > p{
+    display: flex;
+    flex-direction: row;
+    margin-right:calc(var(--label_margin_width) / 3);
+}
+
 
 .layout > form > .layout_content_box_3 {
     display: flex;
@@ -126,7 +147,7 @@ body{
     align-items: center;
 }
 
-.layout > form > .layout_content_box_3 > button {
+button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,7 +162,7 @@ body{
     font-weight: bold;
 }
 
-.layout > form > .layout_content_box_3 > button:hover{
+button:hover{
     opacity: var(--hover_opacity);
     cursor: pointer;
 }

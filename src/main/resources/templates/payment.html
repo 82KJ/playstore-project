@@ -6,8 +6,6 @@
     <title>\구매</title>
 </head>
 <body>
-<!--    게임 구매 버튼 ( /user/payment/complete )만들고 누르면, 게임을 구매하시겠습니까? 하고 경고창 뜨고 확인 누르면,-->
-<!--    구매가 완료되었습니다!하고 전면에 뜨면서 mypage로 이동 // 메인 페이지로 이동 두개 버튼 만들기 ㅇㅇ-->
 
 <nav>
     <a href="/user/basket"><img th:src="@{/img/chevron_left_icon.png}" src="img/chevron_left_icon.png" alt=""></a>
@@ -39,12 +37,18 @@
         <div class="layout_content_box_2">
             <h3>최종 결제 금액</h3>
             <div class="totalCosts">
-                <label>구매 금액</label>
-                <div th:text="${totalPaymentCost}">NONE</div>
-                <label>현재 잔액</label>
-                <div th:text="${account.gameMoney}">NONE</div>
-                <label>구매 후 잔액</label>
-                <div th:text="${remainingCost}">NONE</div>
+                <div class="labelBox">
+                    <label>현재 잔액</label>
+                    <label> 구매 금액</label>
+                    <label> 구매 후 잔액</label>
+                </div>
+                <div class="totalTextBox">
+                    <p th:text="${account.gameMoney} + '원'">NONE</p>
+                    <p>-</p>
+                    <p th:text="${totalPaymentCost} + '원'">NONE</p>
+                    <p>=</p>
+                    <p th:text="${remainingCost}+ '원'">NONE</p>
+                </div>
             </div>
         </div>
 
@@ -53,7 +57,8 @@
         </div>
 
         <div class="layout_content_box_3">
-            <button type="submit">결제</button>
+            <button th:if="${remainingCost} >= 0" type="submit">결제</button>
+            <a href="/user/mypage/charge"><button th:if="${remainingCost} < 0" type="button">충전</button></a>
         </div>
 
     </form>
