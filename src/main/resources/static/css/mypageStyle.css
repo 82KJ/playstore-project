@@ -61,6 +61,7 @@ body{
 
 .gameBox > form > ul{
     overflow-y: scroll;
+    height: 80vh;
 }
 
 /* 스크롤바 설정*/
