@@ -36,6 +36,9 @@ class MyPageController {
             myGames.add(gameService.findGame(it.first))
         }
 
+        val comparator:Comparator<Game> = compareBy {it.invisible}
+        myGames.sortWith(comparator)
+
         model.addAttribute("games", myGames)
         model.addAttribute("gameMoney", account.gameMoney)
 
