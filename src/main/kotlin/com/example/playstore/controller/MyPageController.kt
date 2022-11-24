@@ -76,6 +76,8 @@ class MyPageController {
 
         gameMoneyService.modifyGameMoney(account.id,totalGameMoney)
 
-        return "redirect:/user/mypage/charge"
+        model.addAttribute("addMoney", addMoney)
+
+        return "addGamemoneyComplete.html"
     }
 }

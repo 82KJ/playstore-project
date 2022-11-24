@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/paymentCompleteStyle.css}" rel="stylesheet" href="/css/paymentCompleteStyle.css">
+    <title>충전 완료</title>
+</head>
+<body>
+
+<nav>
+    <a></a>
+    <p>충전 완료</p>
+</nav>
+
+<div class="layout">
+
+    <div class="layout_content_box_1">
+        <h3>충전이 정상적으로 완료되었습니다!</h3>
+
+        <div class="gameList">
+            <ul>
+                <li class="totalPrice">
+                    <p>충전 금액</p>
+                    <p class="price" th:text="${addMoney} + '원'">NONE</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="button_box">
+            <a href="/user/mypage"><button class="button_1">마이페이지 이동</button></a>
+            <a href="/user/basket"><button class="button_2">장바구니 이동</button></a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
