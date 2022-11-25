@@ -30,7 +30,7 @@ class GameService {
         return gameMapper.deleteGame(gameId)
     }
 
-    fun addGame(game:Game, main_img:MultipartFile, sub_img:MultipartFile){
+    fun saveGame(game:Game, main_img:MultipartFile, sub_img:MultipartFile): Int {
         var imgPath:String = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\imgs"
 
         var uuid1:String = UUID.randomUUID().toString()
@@ -50,7 +50,7 @@ class GameService {
         game.sub_img_path = "/imgs/" + subImgName
         game.invisible = 0
 
-        gameMapper.saveGame(game)
+        return gameMapper.saveGame(game)
     }
 
 

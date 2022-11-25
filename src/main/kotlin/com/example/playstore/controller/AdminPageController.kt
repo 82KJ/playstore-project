@@ -44,7 +44,7 @@ class AdminPageController {
 
     @PostMapping("/add-game")
     fun addGame(game:Game, main_img:MultipartFile, sub_img:MultipartFile):String{
-        gameService.addGame(game, main_img, sub_img)
+        var isAccept = gameService.saveGame(game, main_img, sub_img)
 
         return "redirect:/admin"
     }
