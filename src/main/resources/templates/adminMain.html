@@ -4,14 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link th:href="@{/css/adminMainStyle.css}" rel="stylesheet" href="css/adminMainStyle.css">
-  <link rel="shortcut icon" type="image/x-icon" th:href="@{img/titleImg.png}" href="img/titleImg.png" >
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" sizes="16x16">
   <title>playstore - admin</title>
+  <link th:href="@{/css/adminMainStyle.css}" rel="stylesheet" href="css/adminMainStyle.css">
 </head>
 <body>
 <div class="menuBox">
-
-  <!--  만약 search를 통해 넘어온 games가 비어있다면, " 검색 결과가 없습니다"라고 문구 띄우도록 수정해줘-->
   <form class="menuBox_top" action="/admin" method="get">
     <img th:src="@{/img/logo.png}" src="img/logo.png">
     <div>
@@ -27,7 +25,7 @@
 <div class="gameBox" >
   <div class="gameBox_top">
     <a th:href="@{/admin/add}" >🎮 게임추가</a>
-    <a href="/">❌ 로그아웃</a>
+    <a href="/" onclick="return confirm('로그아웃 하시겠습니까?')" >❌ 로그아웃</a>
   </div>
   <hr style="border:1px color= silver;" width="90%">
   <ul>

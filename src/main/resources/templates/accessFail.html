@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/x-icon" th:href="@{img/titleImg.png}" href="img/titleImg.png" >
-    <link th:href="@{/css/accessFailStyle.css}" rel="stylesheet" href="/css/accessFailStyle.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" sizes="16x16">
     <title>Error!</title>
+    <link th:href="@{/css/accessFailStyle.css}" rel="stylesheet" href="/css/accessFailStyle.css">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
         <h3>비정상적인 접근입니다.</h3>
 
         <div class="button_box">
-            <a href="../"><button class="button_1">이전으로 돌아가기</button></a>
+            <a href="/user"><button class="button_1">메인화면으로 이동</button></a>
         </div>
     </div>
 

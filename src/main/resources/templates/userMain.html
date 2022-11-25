@@ -2,15 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/css/userMainStyle.css}" rel="stylesheet" href="css/userMainStyle.css">
-    <link rel="shortcut icon" type="image/x-icon" th:href="@{img/titleImg.png}" href="img/titleImg.png" >
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" sizes="16x16">
     <title>UserMain</title>
+    <link th:href="@{/css/userMainStyle.css}" rel="stylesheet" href="css/userMainStyle.css">
 </head>
 <body>
 <div class="menuBox">
-
-    <!--  만약 search를 통해 넘어온 games가 비어있다면, " 검색 결과가 없습니다"라고 문구 띄우도록 수정해줘-->
-
     <form class="menuBox_top" action="/user" method="get">
         <img th:src="@{/img/logo.png}" src="img/logo.png">
         <div>
@@ -26,7 +23,7 @@
 <div class="gameBox">
     <div class="gameBox_top">
         <a href="/user/basket">🛒 장바구니</a>
-        <a href="/">❌ 로그아웃</a>
+        <a href="/" onclick="return confirm('로그아웃 하시겠습니까?')">❌ 로그아웃</a>
     </div>
     <hr style="border:1px color= silver;" width="90%">
     <ul>
