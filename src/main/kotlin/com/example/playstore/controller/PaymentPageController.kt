@@ -52,10 +52,12 @@ class PaymentPageController {
 
         var session: HttpSession = request.session
         var account: Account = session.getAttribute("ss_account") as Account
+        var gameList:MutableList<Game> = mutableListOf()
         var totalPaymentCost = 0
 
         gameIdList.forEach{
             var game = gameService.findGame(it.toInt())
+            gameList.add(game)
             totalPaymentCost += game.price
         }
 
@@ -68,11 +70,6 @@ class PaymentPageController {
         account.myGame = accountService.saveGameList(account.id, gameIdList)
         account.basket = accountService.deleteGameInBasket(account.id, gameIdList)
 
-        var gameList:MutableList<Game> = mutableListOf()
-        gameIdList.forEach{
-            var game = gameService.findGame(it.toInt())
-            gameList.add(game)
-        }
         model.addAttribute("games", gameList)
         model.addAttribute("totalPaymentCost", totalPaymentCost)
 
