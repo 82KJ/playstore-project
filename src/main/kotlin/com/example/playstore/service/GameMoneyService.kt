@@ -13,4 +13,8 @@ class GameMoneyService {
     fun modifyGameMoney(id:String, totalGameMoney:Int): Boolean  {
         return accountMapper.modifyGameMoney(id, totalGameMoney)
     }
+
+    fun subGameMoney(accountId:String, cost:Int){
+        accountMapper.setGameMoney(accountId, cost)
+    }
 }

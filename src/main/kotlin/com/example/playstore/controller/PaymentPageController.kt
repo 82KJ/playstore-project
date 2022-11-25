@@ -3,6 +3,7 @@ package com.example.playstore.controller
 import com.example.playstore.model.Account
 import com.example.playstore.model.Game
 import com.example.playstore.service.AccountService
+import com.example.playstore.service.GameMoneyService
 import com.example.playstore.service.GameService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -22,6 +23,8 @@ class PaymentPageController {
     lateinit var gameService: GameService
     @Autowired
     lateinit var accountService: AccountService
+    @Autowired
+    lateinit var gameMoneyService: GameMoneyService
 
     @PostMapping("")
     fun showPaymentPage(@RequestParam("checkedGame") gameIdList:List<String>, request: HttpServletRequest,model: Model): String {
@@ -56,19 +59,15 @@ class PaymentPageController {
             totalPaymentCost += game.price
         }
 
-        // 프론트앤드에서 판단하고 경고창 띄우기 --> 게임머니 충전 페이지로 이동하시겠습니까?
         if (totalPaymentCost > account.gameMoney){
             return "redirect:/user/mypage/charge"
         }
 
-        // 1. account - game table insert 구현하기 + basket table 에서는 제거
+        account.gameMoney -= totalPaymentCost
+        gameMoneyService.subGameMoney(account.id, account.gameMoney)
         account.myGame = accountService.saveGameList(account.id, gameIdList)
         account.basket = accountService.deleteGameInBasket(account.id, gameIdList)
-        account.gameMoney -= totalPaymentCost
-        accountService.deductGameMoney(account.id, account.gameMoney)
 
-
-        // 2.
         var gameList:MutableList<Game> = mutableListOf()
         gameIdList.forEach{
             var game = gameService.findGame(it.toInt())
