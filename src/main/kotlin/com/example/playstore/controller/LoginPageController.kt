@@ -35,14 +35,15 @@ class LoginPageController {
     }
 
     @PostMapping("")
-    fun checkLogin(@RequestParam("id") id:String, @RequestParam("password") password:String, request:HttpServletRequest, redirectAttributes: RedirectAttributes): String {
+    fun checkLogin(@RequestParam("id") id:String, @RequestParam("password") password:String,
+                   request:HttpServletRequest, redirectAttributes: RedirectAttributes): String {
         var account = accountService.findAccount(id)
 
         return if (account == null){
-            redirectAttributes.addFlashAttribute("msg", "ID가 존재하지 않습니다")
+            redirectAttributes.addFlashAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다")
             "redirect:/"
         } else if (account.password != password){
-            redirectAttributes.addFlashAttribute("msg", "Password가 일치하지 않습니다")
+            redirectAttributes.addFlashAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다")
             "redirect:/"
         } else if (account.is_admin == 1){
             var session:HttpSession = request.session
