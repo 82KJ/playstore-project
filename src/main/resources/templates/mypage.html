@@ -31,13 +31,12 @@
     <form>
         <ul>
             <li th:if="${games.size} == 0" style="font-weight: bold; font-size: 2vw;">구입한 게임이 없습니다😂</li>
-            <li th:each="game,i : ${games}" ><div>
+            <li th:each="game,i : ${games}"><div>
                 <div class="leftBox">
                     <img th:src="@{${game.main_img_path}}" src="img/game_img.png">
                     <div class="infoBox">
                         <div class="name">
                             <p th:text="${game.name}">NONE</p>
-                            <p>(환불가능)</p>
                         </div>
                         <div class="dsc">
                             <p th:text="${game.description}">NONE</p>
@@ -46,7 +45,7 @@
                 </div>
                 <div th:if="${game.invisible} == 0" class="buttonBox">
                     <!--                    <input class="refunButton" type="submit" value="🔄REFUND">-->
-                    <a class="refunButton" href="#">🔄REFUND</a>
+                    <a th:if="${refundable[i.index]} == 1 " class="refunButton" th:href='@{/user/mypage/refundGame/{gameId}(gameId=${game.id})}'>🔄REFUND</a>
                     <!--                    <input class="playButton" type="submit" value="🕹PLAY">-->
                     <a class="playButton" th:href='@{/user/mypage/playGame/{gameId}(gameId=${game.id})}'>🕹PLAY</a>
                 </div>

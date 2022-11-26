@@ -49,4 +49,6 @@ interface AccountMapper {
     @Update("UPDATE account SET password=#{pw} WHERE id=#{accountId}")
     fun resetPassword(@Param("accountId")accountId:String, @Param("pw")pw:String)
 
+    @Delete("DELETE FROM account_and_game WHERE account_id=#{accountId} and game_id=#{gameId}")
+    fun refundGame(@Param("accountId")accountId:String, @Param("gameId")gameId:Int)
 }

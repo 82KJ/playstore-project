@@ -26,7 +26,7 @@ class UserPageController {
     fun showUserPage(request:HttpServletRequest, model:Model, @RequestParam(required = false) search: String?): String {
         var session: HttpSession = request.session
         var account:Account = session.getAttribute("ss_account") as Account
-        println(account)
+
 
         var games:List<Game>
 

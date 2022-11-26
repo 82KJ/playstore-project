@@ -31,4 +31,7 @@ interface GameMapper {
     @Update("UPDATE game SET name=#{game.name}, description=#{game.description}, price=#{game.price}, main_img_path=#{game.main_img_path}, main_img_name=#{game.main_img_name}, limit_age=#{game.limit_age}, sub_img_path=#{game.sub_img_path}, sub_img_name=#{game.sub_img_name} WHERE id=#{gameId}")
     fun modifyGame(@Param("game") game:Game, @Param("gameId") gameId:Int) : Boolean
 
+    @Select("SELECT price FROM game WHERE id=#{gameId}")
+    fun getPrice(@Param("gameId")gameId:Int): Int
+
 }

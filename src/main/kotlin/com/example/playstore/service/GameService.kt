@@ -87,6 +87,8 @@ class GameService {
         return gameMapper.modifyGame(game, gameId)
     }
 
-
+    fun getPrice(gameId:Int): Int{
+        return gameMapper.getPrice(gameId)
+    }
 
 }

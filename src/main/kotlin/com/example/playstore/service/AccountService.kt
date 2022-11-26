@@ -63,6 +63,10 @@ class AccountService {
         return games
     }
 
+    fun refundGame(accountId:String, gameId:Int){
+        accountMapper.refundGame(accountId, gameId)
+    }
+
     fun saveGameList(accountId:String, gameIdList:List<String>): MutableList<Pair<Int, LocalDateTime?>>?{
         gameIdList.forEach {
             accountMapper.saveGameList(accountId, it.toInt())
