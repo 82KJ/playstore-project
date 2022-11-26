@@ -135,10 +135,18 @@ class MyPageController {
         // 1. 게임 삭제 요청
         account.myGame = accountService.deleteGameList(account.id, gameId)
 
+        var game = gameService.findGame(gameId)
+
         // 2. 게임 머니 환불 요청
-        account.gameMoney += gameService.findGame(gameId).price
+        var PreviousCost = account.gameMoney
+        account.gameMoney += game.price
         gameMoneyService.modifyGameMoney(account.id, account.gameMoney)
 
-        return "redirect:/user/mypage"
+        model.addAttribute("PreviousCost", PreviousCost)
+        model.addAttribute("gameName", game.name)
+        model.addAttribute("gamePrice", game.price)
+        model.addAttribute("remainingCost", account.gameMoney)
+
+        return "gameRefundComplete.html"
     }
 }

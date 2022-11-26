@@ -21,6 +21,10 @@
     <div class="gameList">
       <ul>
         <li class="item" >
+          <p>기존 잔액</p>
+          <p class="price" th:text="${PreviousCost} + '원'">NONE</p>
+        </li>
+        <li class="item" >
           <p th:text="${gameName}">NONE</p>
           <p class="price" th:text="${gamePrice} + '원'">NONE</p>
         </li>
