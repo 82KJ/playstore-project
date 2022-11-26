@@ -32,7 +32,10 @@ class AccountService {
         else{
             return null
         }
+    }
 
+    fun findMyGame(accountId: String): MutableList<Pair<Int, LocalDateTime?>>? {
+        return accountMapper.findMyGame(accountId)
     }
 
     fun resetPassword(id:String, pw:String){
@@ -63,10 +66,6 @@ class AccountService {
         return games
     }
 
-    fun refundGame(accountId:String, gameId:Int){
-        accountMapper.refundGame(accountId, gameId)
-    }
-
     fun saveGameList(accountId:String, gameIdList:List<String>): MutableList<Pair<Int, LocalDateTime?>>?{
         gameIdList.forEach {
             accountMapper.saveGameList(accountId, it.toInt())
@@ -85,5 +84,11 @@ class AccountService {
         accountMapper.setPlayTime(accountId, gameId, playTime)
     }
 
+    fun deleteGameList(accountId: String, gameId: Int): MutableList<Pair<Int, LocalDateTime?>>? {
+        accountMapper.deleteGameList(accountId, gameId)
+
+        var myGameList = accountMapper.findMyGame(accountId)
+        return myGameList
+    }
 
 }

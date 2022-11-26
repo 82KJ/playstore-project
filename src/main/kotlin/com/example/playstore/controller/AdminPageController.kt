@@ -66,8 +66,7 @@ class AdminPageController {
 
     @PostMapping("/game/{gameId}/modify")
     fun modifyGame(@PathVariable gameId: Int, game:Game, main_img:MultipartFile, sub_img:MultipartFile):String{
-
-        gameService.modifyGame(game,main_img,sub_img,gameId)
+        var isAccept = gameService.modifyGame(game,main_img,sub_img,gameId)
 
         return "redirect:/admin"
     }

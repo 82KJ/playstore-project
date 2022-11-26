@@ -45,7 +45,8 @@ class resetPasswordController {
 
 
         if(pw==pck){
-            var account = accountService.resetPassword(id,pw)
+            accountService.resetPassword(id,pw)
+            account.password = pw
         }
         return "redirect:/user/mypage"
     }

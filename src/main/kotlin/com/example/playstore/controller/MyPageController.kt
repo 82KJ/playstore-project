@@ -33,8 +33,7 @@ class MyPageController {
         var myGames:MutableList<Game> = mutableListOf()
         var refundable=mutableListOf<Int>()
 
-
-
+        account.myGame = accountService.findMyGame(account.id)
         account.myGame?.forEach {
             myGames.add(gameService.findGame(it.first))
         }
@@ -48,7 +47,6 @@ class MyPageController {
             var rTime=account.myGame?.get(i-1)?.second
             if(rTime==null){
                 refundable.add(1)
-                break;
             }
             else{
                 rTime=rTime.plusHours(2)
@@ -61,13 +59,10 @@ class MyPageController {
                 }
             }
         }
-        println(refundable.indexOf(1))
 
         model.addAttribute("games", myGames)
         model.addAttribute("gameMoney", account.gameMoney)
         model.addAttribute("refundable", refundable)
-
-
 
         return "mypage.html"
     }
@@ -101,6 +96,7 @@ class MyPageController {
             totalGameMoney = account.gameMoney + 1000
         }
 
+        account.gameMoney = totalGameMoney
         gameMoneyService.modifyGameMoney(account.id,totalGameMoney)
 
         model.addAttribute("addMoney", addMoney)
@@ -113,9 +109,6 @@ class MyPageController {
         var session: HttpSession = request.session
         var account: Account = session.getAttribute("ss_account") as Account
         var account_id = account.id
-        var myGames:MutableList<Game> = mutableListOf()
-        var refundable=mutableListOf<Int>()
-
         var indexNum = 0
 
         while(true){
@@ -126,102 +119,26 @@ class MyPageController {
         }
         var playTime = account.myGame?.get(indexNum)?.second
 
-        print(playTime)
         if(playTime==null){
             accountService.setPlayTime(account_id, gameId, LocalDateTime.now())
-        }
-        account.myGame?.forEach {
-            myGames.add(gameService.findGame(it.first))
+            account.myGame = accountService.findMyGame(account.id)
         }
 
-        val comparator:Comparator<Game> = compareBy {it.invisible}
-
-        myGames.sortWith(comparator)
-
-        val count=account.myGame?.size
-
-        for(i in 1..count!!){
-            var rTime=account.myGame?.get(i-1)?.second
-            if(rTime==null){
-                refundable.add(1)
-                break;
-            }
-            else{
-                rTime=rTime.plusHours(2)
-                var n:LocalDateTime=LocalDateTime.now()
-                if(n<=rTime){
-                    refundable.add(1)
-                }
-                else{
-                    refundable.add(0)
-                }
-            }
-        }
-        println(refundable.indexOf(1))
-
-        model.addAttribute("games", myGames)
-        model.addAttribute("gameMoney", account.gameMoney)
-        model.addAttribute("refundable", refundable)
-
-
-
-        return "mypage.html"
+        return "redirect:/user/mypage"
     }
 
     @GetMapping("/refundGame/{gameId}")
     fun refundGame(@PathVariable gameId:Int, request:HttpServletRequest, model:Model): String {
         var session: HttpSession = request.session
         var account:Account = session.getAttribute("ss_account") as Account
-        var myGames:MutableList<Game> = mutableListOf()
-        var refundable=mutableListOf<Int>()
 
-        var currentMoney=account.gameMoney
+        // 1. 게임 삭제 요청
+        account.myGame = accountService.deleteGameList(account.id, gameId)
 
-        var price:Int = gameService.getPrice(gameId)
+        // 2. 게임 머니 환불 요청
+        account.gameMoney += gameService.findGame(gameId).price
+        gameMoneyService.modifyGameMoney(account.id, account.gameMoney)
 
-
-        account.gameMoney=currentMoney
-        gameMoneyService.modifyGameMoney(account.id,currentMoney)
-        accountService.refundGame(account.id,gameId)
-
-
-
-
-
-        account.myGame?.forEach {
-            myGames.add(gameService.findGame(it.first))
-        }
-
-        val comparator:Comparator<Game> = compareBy {it.invisible}
-        myGames.sortWith(comparator)
-
-        val count=account.myGame?.size
-
-        for(i in 1..count!!){
-            var rTime=account.myGame?.get(i-1)?.second
-            if(rTime==null){
-                refundable.add(1)
-                break;
-            }
-            else{
-                rTime=rTime.plusHours(2)
-                var n:LocalDateTime=LocalDateTime.now()
-                if(n<=rTime){
-                    refundable.add(1)
-                }
-                else{
-                    refundable.add(0)
-                }
-            }
-        }
-        println(refundable.indexOf(1))
-
-        model.addAttribute("games", myGames)
-        model.addAttribute("gameMoney", account.gameMoney)
-        model.addAttribute("refundable", refundable)
-
-
-
-        return "mypage.html"
+        return "redirect:/user/mypage"
     }
 }

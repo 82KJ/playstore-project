@@ -63,15 +63,15 @@ class RefundPageController {
         var session: HttpSession = request.session
         var account: Account = session.getAttribute("ss_account") as Account
 
-        //사용자 게임 머니 = DB게임머니 - 환전금액 입력한 값 - 수수료(500)
+        //사용자 게임 머니 = DB게임머니 - 환전금액 입력한 값
         var totalGameMoney = account.gameMoney - refundMoney - 500
 
-        return if (account.gameMoney > refundMoney) {
+        return if (account.gameMoney > refundMoney + 500 && refundMoney >= 10000) {
              gameMoneyService.modifyGameMoney(account.id, totalGameMoney)
-             account.gameMoney += totalGameMoney
+             account.gameMoney = totalGameMoney
 
             model.addAttribute("refundMoney", refundMoney)
-            model.addAttribute("refundTotalMoney", refundMoney-500)
+            model.addAttribute("refundTotalMoney", refundMoney + 500)
 
             "refundGamemoneyComplete.html"
         }

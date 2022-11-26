@@ -27,6 +27,7 @@ class UserPageController {
         var session: HttpSession = request.session
         var account:Account = session.getAttribute("ss_account") as Account
 
+        println(account)
 
         var games:List<Game>
 
